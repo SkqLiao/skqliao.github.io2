@@ -2,23 +2,22 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>【线段树+Kruskal】JZOJ 5060 公路建设 - Skqliao&#39;s Blog</title>
+<title>分类: 51nod - Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="题目大意有 $n$ 个点， $m$ 条边， $q$ 个询问。每次给定一个区间 $[l_i,r_i]$，求这些边构成的图在保证联通块个数最小的情况下所需最小花费。">
-<meta name="keywords" content="线段树,最小生成树">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【线段树+Kruskal】JZOJ 5060 公路建设">
-<meta property="og:url" content="https://skqliao.github.io/2019/02/06/JZOJ-5060/index.html">
+    <meta name="description" content="An Oier&apos;s Blog">
+<meta name="keywords" content="OI">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Skqliao&#39;s Blog">
+<meta property="og:url" content="https://skqliao.github.io/categories/51nod/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="题目大意有 $n$ 个点， $m$ 条边， $q$ 个询问。每次给定一个区间 $[l_i,r_i]$，求这些边构成的图在保证联通块个数最小的情况下所需最小花费。">
+<meta property="og:description" content="An Oier&apos;s Blog">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-06T06:58:20.857Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【线段树+Kruskal】JZOJ 5060 公路建设">
-<meta name="twitter:description" content="题目大意有 $n$ 个点， $m$ 条边， $q$ 个询问。每次给定一个区间 $[l_i,r_i]$，求这些边构成的图在保证联通块个数最小的情况下所需最小花费。">
+<meta name="twitter:title" content="Skqliao&#39;s Blog">
+<meta name="twitter:description" content="An Oier&apos;s Blog">
 
 
 
@@ -90,7 +89,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="【线段树+Kruskal】JZOJ 5060 公路建设" height="28">
+                <img src="/images/logo.svg" alt="Skqliao&#39;s Blog" height="28">
             
             </a>
         </div>
@@ -136,22 +135,34 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分类</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">51nod</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-06T06:18:19.000Z">2019-02-06</time>
+                <time class="level-item has-text-grey" datetime="2019-02-06T06:45:08.000Z">2019-02-06</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                <a class="has-link-grey -link" href="/categories/51nod/">51nod</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 537 个字)
+                    3 分钟 读完 (大约 512 个字)
                 </span>
                 
                 
@@ -160,85 +171,31 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                【线段树+Kruskal】JZOJ 5060 公路建设
+                <a class="has-link-black-ter" href="/2019/02/06/51nod-1601/">【01Trie+Pruefer】51nod 1601 完全图的最小生成树计数</a>
             
         </h1>
         <div class="content">
-            <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>有 $n$ 个点， $m$ 条边， $q$ 个询问。每次给定一个区间 $[l_i,r_i]$，求这些边构成的图在保证联通块个数最小的情况下所需最小花费。</p>
-<a id="more"></a>
-<h2 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h2><p>$n\leq 100$<br>$m\leq 100000$<br>$q\leq 15000$</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>将题意翻译一下就是求区间最小生成树的权值。</p>
-<p>假设已知 $[l,m]$ 和 $[m+1,r]$ 的最小生成树，那么 $[l,r]$ 的mst显然是由这两棵mst中的边构成的。</p>
-<p>具体地说，在线段树中，通过Kruskal保存子区间mst上的所有边，然后用归并排序合并两个子区间的边，并再做kruskal求出父亲节点的mst上的所有边。查询时按照同样方法合并答案。</p>
-<p>复杂度 $O(n\alpha(n)(m\log{m}+q\log{m}))$。</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> * @Author: Skqliao</span></span><br><span class="line"><span class="hljs-comment"> * @Date: 2019-01-26 16:40:30</span></span><br><span class="line"><span class="hljs-comment"> * @LastEditTime: 2019-01-26 17:12:13</span></span><br><span class="line"><span class="hljs-comment"> * @Source: GDOI2017第二轮模拟day1</span></span><br><span class="line"><span class="hljs-comment"> * @Problem: JZOJ 5060 公路建设</span></span><br><span class="line"><span class="hljs-comment"> * @Url: https://jzoj.net/senior/#main/show/5060</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">open</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    freopen(<span class="hljs-string">"highway.in"</span>, <span class="hljs-string">"r"</span>, <span class="hljs-built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="hljs-string">"highway.out"</span>, <span class="hljs-string">"w"</span>, <span class="hljs-built_in">stdout</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">100</span> + <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXM = <span class="hljs-number">100000</span> + <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> N, M, Q;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> u, v, w;</span><br><span class="line">    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt; (<span class="hljs-keyword">const</span> Node &amp;x) <span class="hljs-keyword">const</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> w &lt; x.w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; A[MAXM], T[MAXM &lt;&lt; <span class="hljs-number">2</span>][MAXN], Tmp[MAXN &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LT rt &lt;&lt; 1, l, m</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> RT rt &lt;&lt; 1 | 1, m + 1, r</span></span><br><span class="line"><span class="hljs-keyword">int</span> Len[MAXM &lt;&lt; <span class="hljs-number">2</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> Anc[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">findAnc</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> Anc[x] == x ? x : Anc[x] = findAnc(Anc[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">merge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    x = findAnc(x), y = findAnc(y);</span><br><span class="line">    <span class="hljs-keyword">if</span> (x != y) &#123;</span><br><span class="line">        Anc[y] = x;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pushUp</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> len = <span class="hljs-built_in">std</span>::merge(T[l], T[l] + Len[l], T[r], T[r] + Len[r], Tmp) - Tmp;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        Anc[i] = i;</span><br><span class="line">    &#125; </span><br><span class="line">    Len[x] = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (merge(Tmp[i].u, Tmp[i].v)) &#123;</span><br><span class="line">            T[x][Len[x]++] = Tmp[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rt, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (l == r) &#123;</span><br><span class="line">        Len[rt] = <span class="hljs-number">1</span>;</span><br><span class="line">        T[rt][<span class="hljs-number">0</span>] = A[l];</span><br><span class="line">        <span class="hljs-keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">    build(LT);</span><br><span class="line">    build(RT);</span><br><span class="line">    pushUp(rt, rt &lt;&lt; <span class="hljs-number">1</span>, rt &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rt, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (a &lt;= l &amp;&amp; r &lt;= b) &#123;</span><br><span class="line">        pushUp(<span class="hljs-number">0</span>, rt, <span class="hljs-number">0</span>);</span><br><span class="line">        <span class="hljs-keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (a &lt;= m) &#123;</span><br><span class="line">        query(LT, a, b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (m &lt; b) &#123;</span><br><span class="line">        query(RT, a, b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    open();</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;N, &amp;M, &amp;Q);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= M; ++i) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;A[i].u, &amp;A[i].v, &amp;A[i].w);</span><br><span class="line">    &#125;</span><br><span class="line">    build(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, M);</span><br><span class="line">    <span class="hljs-keyword">int</span> l, r;</span><br><span class="line">    <span class="hljs-keyword">while</span> (Q--) &#123;</span><br><span class="line">        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> sum = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;l, &amp;r);</span><br><span class="line">        Len[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">        query(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, M, l, r);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; Len[<span class="hljs-number">0</span>]; ++i) &#123;</span><br><span class="line">            sum += T[<span class="hljs-number">0</span>][i].w;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>有 $n$ 个点，每个点有点权 $a_i$，点 $u,v$ 之间的边边权为 $a_u \oplus a_v$。求该完全图的最小生成树的权值与方案数。</p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/最小生成树/">最小生成树</a>, <a class="has-link-grey -link" href="/tags/线段树/">线段树</a>
+                <a class="button is-size-7 is-light" href="/2019/02/06/51nod-1601/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
     </div>
 </div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-        </div>
-    </div>
-</div>
 
 
 
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/06/51nod-1601/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">【01Trie+Pruefer】51nod 1601 完全图的最小生成树计数</span>
-            </a>
-        </div>
-        
-        
-    </div>
-</div>
 
 
 </div>
@@ -846,7 +803,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="【线段树+Kruskal】JZOJ 5060 公路建设" height="28">
+                    <img src="/images/logo.svg" alt="Skqliao&#39;s Blog" height="28">
                 
                 </a>
                 <p class="is-size-7">
