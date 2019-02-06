@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割 - Skqliao&#39;s Blog</title>
+<title>最小割树学习笔记（Gomory-Hu Tree） - Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="题目大意在无向图 $G$ 中，对于任意点对 $(i,j)$ 有最小割 $cut(i,j)$，求有多少个数值不同的最小割。">
+    <meta name="description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$ 将图恢复成最初形">
 <meta name="keywords" content="最小割树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割">
-<meta property="og:url" content="https://skqliao.github.io/2019/02/06/BZOJ-4519/index.html">
+<meta property="og:title" content="最小割树学习笔记（Gomory-Hu Tree）">
+<meta property="og:url" content="https://skqliao.github.io/Gomory-Hu-Tree/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="题目大意在无向图 $G$ 中，对于任意点对 $(i,j)$ 有最小割 $cut(i,j)$，求有多少个数值不同的最小割。">
+<meta property="og:description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$ 将图恢复成最初形">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-06T06:58:16.349Z">
+<meta property="og:updated_time" content="2019-02-06T07:09:45.729Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割">
-<meta name="twitter:description" content="题目大意在无向图 $G$ 中，对于任意点对 $(i,j)$ 有最小割 $cut(i,j)$，求有多少个数值不同的最小割。">
+<meta name="twitter:title" content="最小割树学习笔记（Gomory-Hu Tree）">
+<meta name="twitter:description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$ 将图恢复成最初形">
 
 
 
@@ -90,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割" height="28">
+                <img src="/images/logo.svg" alt="最小割树学习笔记（Gomory-Hu Tree）" height="28">
             
             </a>
         </div>
@@ -141,17 +141,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-06T06:47:12.000Z">2019-02-06</time>
+                <time class="level-item has-text-grey" datetime="2019-02-06T07:02:28.000Z">2019-02-06</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 537 个字)
+                    3 分钟 读完 (大约 445 个字)
                 </span>
                 
                 
@@ -160,16 +160,34 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割
+                最小割树学习笔记（Gomory-Hu Tree）
             
         </h1>
         <div class="content">
-            <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>在无向图 $G$ 中，对于任意点对 $(i,j)$ 有最小割 $cut(i,j)$，求有多少个数值不同的最小割。</p>
-<a id="more"></a>
-<h2 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h2><p>$N\leq 850$<br>$M\leq 8500$</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>最小割树模板题，求出最小割树后将所有边unique得到答案。</p>
-<p>复杂度 $O(n\times f)$，$f$ 为最大流复杂度。</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> * @Author: Skqliao</span></span><br><span class="line"><span class="hljs-comment"> * @Date: 2019-02-02 22:26:52</span></span><br><span class="line"><span class="hljs-comment"> * @LastEditTime: 2019-02-02 22:54:36</span></span><br><span class="line"><span class="hljs-comment"> * @Source: CQOI 2016</span></span><br><span class="line"><span class="hljs-comment"> * @Problem: 4519: [Cqoi2016]不同的最小割</span></span><br><span class="line"><span class="hljs-comment"> * @Url: https://lydsy.com/JudgeOnline/problem.php?id=4519</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">850</span> + <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXM = <span class="hljs-number">8500</span> + <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> GH_Tree &#123;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> v, f, cap, nxt;</span><br><span class="line">&#125; E[MAXM &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> H[MAXN], cntE;</span><br><span class="line"><span class="hljs-keyword">int</span> Idx[MAXN], Tmp[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> S, T;</span><br><span class="line"><span class="hljs-keyword">int</span> Dis[MAXN], Cur[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> Col[MAXN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    cntE = <span class="hljs-number">-1</span>;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(H, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> H);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        Idx[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">    E[++cntE] = (Edge)&#123;v, f, f, H[u]&#125;;</span><br><span class="line">    H[u] = cntE;</span><br><span class="line">    E[++cntE] = (Edge)&#123;u, f, f, H[v]&#125;;</span><br><span class="line">    H[v] = cntE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">bfs</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; Que;</span><br><span class="line">    <span class="hljs-keyword">while</span> (!Que.empty()) Que.pop();</span><br><span class="line">    <span class="hljs-built_in">memcpy</span>(Cur, H, <span class="hljs-keyword">sizeof</span> H);</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Dis, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> Dis);</span><br><span class="line">    Dis[S] = <span class="hljs-number">0</span>;</span><br><span class="line">    Que.push(S);</span><br><span class="line">    <span class="hljs-keyword">while</span> (!Que.empty()) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = Que.front();</span><br><span class="line">        Que.pop();</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = H[x]; ~i; i = E[i].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> &amp;v = E[i].v;</span><br><span class="line">            <span class="hljs-keyword">if</span> (Dis[v] == <span class="hljs-number">-1</span> &amp;&amp; E[i].f) &#123;</span><br><span class="line">                Dis[v] = Dis[x] + <span class="hljs-number">1</span>;</span><br><span class="line">                Que.push(v);</span><br><span class="line">                <span class="hljs-keyword">if</span> (v == T) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> maxf)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (x == T || !maxf) <span class="hljs-keyword">return</span> maxf;</span><br><span class="line">    <span class="hljs-keyword">int</span> left = maxf;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> &amp;i = Cur[x]; ~i; i = E[i].nxt) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> &amp;v = E[i].v;</span><br><span class="line">        <span class="hljs-keyword">if</span> (Dis[v] == Dis[x] + <span class="hljs-number">1</span> &amp;&amp; E[i].f) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> flow = dfs(v, <span class="hljs-built_in">std</span>::min(left, E[i].f));</span><br><span class="line">            <span class="hljs-keyword">if</span> (flow) &#123;</span><br><span class="line">                left -= flow;</span><br><span class="line">                E[i].f -= flow;</span><br><span class="line">                E[i ^ <span class="hljs-number">1</span>].f += flow;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span></span><br><span class="line">                Dis[v] = <span class="hljs-number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> maxf - left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dinic</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> flow = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (bfs()) flow += dfs(S, INT_MAX);</span><br><span class="line">    <span class="hljs-keyword">return</span> flow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    Col[x] = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = H[x]; ~i; i = E[i].nxt) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> &amp;v = E[i].v;</span><br><span class="line">        <span class="hljs-keyword">if</span> (E[i].f &amp;&amp; !Col[v]) dfs(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; V;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (l == r) <span class="hljs-keyword">return</span>;</span><br><span class="line">    S = Idx[l], T = Idx[r];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= cntE; ++i) &#123;</span><br><span class="line">        E[i].f = E[i].cap;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> f = dinic();</span><br><span class="line">    V.push_back(f);</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Col, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> Col);</span><br><span class="line">    dfs(S);</span><br><span class="line">    <span class="hljs-keyword">int</span> L = l, R = r;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = l; i &lt;= r; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (Col[Idx[i]])</span><br><span class="line">            Tmp[L++] = Idx[i];</span><br><span class="line">        <span class="hljs-keyword">else</span></span><br><span class="line">            Tmp[R--] = Idx[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">memcpy</span>(Idx, Tmp, <span class="hljs-keyword">sizeof</span> Tmp);</span><br><span class="line">    build(l, R);</span><br><span class="line">    build(L, r);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    init(n);</span><br><span class="line">    <span class="hljs-keyword">int</span> u, v, f;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;f);</span><br><span class="line">        addEdge(u, v, f);</span><br><span class="line">    &#125;</span><br><span class="line">    build(<span class="hljs-number">1</span>, n);</span><br><span class="line">    <span class="hljs-built_in">std</span>::sort(V.begin(), V.end());</span><br><span class="line">    V.erase(<span class="hljs-built_in">std</span>::unique(V.begin(), V.end()), V.end());</span><br><span class="line">    <span class="hljs-keyword">return</span> V.size();</span><br><span class="line">&#125;</span><br><span class="line">&#125;  <span class="hljs-comment">// namespace GH_Tree</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> N, M;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;N, &amp;M);</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, GH_Tree::solve(N, M));</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h2 id="总论"><a href="#总论" class="headerlink" title="总论"></a>总论</h2><p>在无向图中，最小割树等价于所有点对间的最小割。</p>
+<p>对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。</p>
+<p>具体步骤如下：</p>
+<ol>
+<li>任意选择两点 $s,t$</li>
+<li>求两点间最大流 $f$</li>
+<li>得到最小割隔开的两个集合</li>
+<li>最小割树上连接 $(s,t)$，边权为 $f$</li>
+<li>将图恢复成最初形态（还原边权）</li>
+<li>递归到这两个新集合中，重复操作1，直到集合中只有 $1$ 个点为止</li>
+</ol>
+<p>由于每次集合总数增加 $1$，因此一共做 $n-1$ 次以上流程。</p>
+<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h2><p>Q1：如何求最小割隔开的两个集合？</p>
+<p>A1：由于最小割上的边一定将流量限制流满了，因此从 $s$ 开始，通过未流满流量限制的边遍历到的且在当前集合中的点为与 $s$ 联通的点集合，剩下的点与 $t$ 联通的点集合。</p>
+<p>Q2：用什么算法求最大流啊？会被卡吗？</p>
+<p>A2：根据相关法律法规，ISAP和Dinic受到保护，应该不会被卡，EK死就死了。当然你愿意写HLPP也不拦着。</p>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>可以得到任意点对间的最小割，通常用于预处理。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><ul>
+<li><a href="https://www.luogu.org/problemnew/show/P4897" target="_blank" rel="noopener">luogu P4897 【模板】最小割树（Gomory-Hu Tree）</a></li>
+<li><a href="https://skqliao.top/index.php/archives/12/" target="_blank" rel="noopener">【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割</a></li>
+<li><a href="https://skqliao.top/index.php/archives/13/" target="_blank" rel="noopener">【最小割树】[ZJOI 2011] BZOJ 2229 最小割</a></li>
+</ul>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -228,16 +246,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/06/BZOJ-2229/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Steiner-Tree/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">【最小割树】[ZJOI 2011] BZOJ 2229 最小割</span>
+                <span class="level-item"></span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/06/BZOJ-4006/">
-                <span class="level-item">【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/BZOJ-2229/">
+                <span class="level-item">【最小割树】[ZJOI 2011] BZOJ 2229 最小割</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -469,7 +487,7 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/Steiner-Tree/" class="media-left">
+            <a href="/Steiner-Tree/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="">
                 </p>
@@ -478,7 +496,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:03:06.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/Steiner-Tree/" class="has-link-black-ter is-size-6"></a>
+                    <a href="/Steiner-Tree/" class="has-link-black-ter is-size-6"></a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
                     </p>
@@ -488,7 +506,7 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/Gomory-Hu-Tree/" class="media-left">
+            <a href="/Gomory-Hu-Tree/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="最小割树学习笔记（Gomory-Hu Tree）">
                 </p>
@@ -497,7 +515,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:02:28.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/Gomory-Hu-Tree/" class="has-link-black-ter is-size-6">最小割树学习笔记（Gomory-Hu Tree）</a>
+                    <a href="/Gomory-Hu-Tree/" class="has-link-black-ter is-size-6">最小割树学习笔记（Gomory-Hu Tree）</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
                     </p>
@@ -507,7 +525,7 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/BZOJ-2229/" class="media-left">
+            <a href="/BZOJ-2229/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【最小割树】[ZJOI 2011] BZOJ 2229 最小割">
                 </p>
@@ -516,7 +534,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:20.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/BZOJ-2229/" class="has-link-black-ter is-size-6">【最小割树】[ZJOI 2011] BZOJ 2229 最小割</a>
+                    <a href="/BZOJ-2229/" class="has-link-black-ter is-size-6">【最小割树】[ZJOI 2011] BZOJ 2229 最小割</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -526,7 +544,7 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/BZOJ-4519/" class="media-left">
+            <a href="/BZOJ-4519/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割">
                 </p>
@@ -535,7 +553,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:12.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/BZOJ-4519/" class="has-link-black-ter is-size-6">【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割</a>
+                    <a href="/BZOJ-4519/" class="has-link-black-ter is-size-6">【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -545,7 +563,7 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/BZOJ-4006/" class="media-left">
+            <a href="/BZOJ-4006/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接">
                 </p>
@@ -554,7 +572,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:01.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/BZOJ-4006/" class="has-link-black-ter is-size-6">【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接</a>
+                    <a href="/BZOJ-4006/" class="has-link-black-ter is-size-6">【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -672,7 +690,7 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/Steiner-Tree/" class="media-left">
+            <a href="/Steiner-Tree/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="">
                 </p>
@@ -681,7 +699,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:03:06.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/Steiner-Tree/" class="has-link-black-ter is-size-6"></a>
+                    <a href="/Steiner-Tree/" class="has-link-black-ter is-size-6"></a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
                     </p>
@@ -691,7 +709,7 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/Gomory-Hu-Tree/" class="media-left">
+            <a href="/Gomory-Hu-Tree/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="最小割树学习笔记（Gomory-Hu Tree）">
                 </p>
@@ -700,7 +718,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:02:28.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/Gomory-Hu-Tree/" class="has-link-black-ter is-size-6">最小割树学习笔记（Gomory-Hu Tree）</a>
+                    <a href="/Gomory-Hu-Tree/" class="has-link-black-ter is-size-6">最小割树学习笔记（Gomory-Hu Tree）</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
                     </p>
@@ -710,7 +728,7 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/BZOJ-2229/" class="media-left">
+            <a href="/BZOJ-2229/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【最小割树】[ZJOI 2011] BZOJ 2229 最小割">
                 </p>
@@ -719,7 +737,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:20.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/BZOJ-2229/" class="has-link-black-ter is-size-6">【最小割树】[ZJOI 2011] BZOJ 2229 最小割</a>
+                    <a href="/BZOJ-2229/" class="has-link-black-ter is-size-6">【最小割树】[ZJOI 2011] BZOJ 2229 最小割</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -729,7 +747,7 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/BZOJ-4519/" class="media-left">
+            <a href="/BZOJ-4519/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割">
                 </p>
@@ -738,7 +756,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:12.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/BZOJ-4519/" class="has-link-black-ter is-size-6">【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割</a>
+                    <a href="/BZOJ-4519/" class="has-link-black-ter is-size-6">【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -748,7 +766,7 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/BZOJ-4006/" class="media-left">
+            <a href="/BZOJ-4006/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接">
                 </p>
@@ -757,7 +775,7 @@
             <div class="media-content">
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:01.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/BZOJ-4006/" class="has-link-black-ter is-size-6">【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接</a>
+                    <a href="/BZOJ-4006/" class="has-link-black-ter is-size-6">【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -867,7 +885,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割" height="28">
+                    <img src="/images/logo.svg" alt="最小割树学习笔记（Gomory-Hu Tree）" height="28">
                 
                 </a>
                 <p class="is-size-7">
