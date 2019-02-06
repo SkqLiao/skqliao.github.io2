@@ -215,7 +215,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 445 个字)
+                    3 分钟 读完 (大约 446 个字)
                 </span>
                 
                 
@@ -230,30 +230,16 @@
         <div class="content">
             <h2 id="总论"><a href="#总论" class="headerlink" title="总论"></a>总论</h2><p>在无向图中，最小割树等价于所有点对间的最小割。</p>
 <p>对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。</p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。</p>
-<p>具体步骤如下：</p>
-<ol>
-<li>任意选择两点 $s,t$</li>
-<li>求两点间最大流 $f$</li>
-<li>得到最小割隔开的两个集合</li>
-<li>最小割树上连接 $(s,t)$，边权为 $f$</li>
-<li>将图恢复成最初形态（还原边权）</li>
-<li>递归到这两个新集合中，重复操作1，直到集合中只有 $1$ 个点为止</li>
-</ol>
-<p>由于每次集合总数增加 $1$，因此一共做 $n-1$ 次以上流程。</p>
-<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h2><p>Q1：如何求最小割隔开的两个集合？</p>
-<p>A1：由于最小割上的边一定将流量限制流满了，因此从 $s$ 开始，通过未流满流量限制的边遍历到的且在当前集合中的点为与 $s$ 联通的点集合，剩下的点与 $t$ 联通的点集合。</p>
-<p>Q2：用什么算法求最大流啊？会被卡吗？</p>
-<p>A2：根据相关法律法规，ISAP和Dinic受到保护，应该不会被卡，EK死就死了。当然你愿意写HLPP也不拦着。</p>
-<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>可以得到任意点对间的最小割，通常用于预处理。</p>
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><ul>
-<li><a href="https://www.luogu.org/problemnew/show/P4897" target="_blank" rel="noopener">luogu P4897 【模板】最小割树（Gomory-Hu Tree）</a></li>
-<li><a href="https://skqliao.top/index.php/archives/12/" target="_blank" rel="noopener">【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割</a></li>
-<li><a href="https://skqliao.top/index.php/archives/13/" target="_blank" rel="noopener">【最小割树】[ZJOI 2011] BZOJ 2229 最小割</a></li>
-</ul>
-
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/Gomory-Hu-Tree/#more">阅读更多</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>

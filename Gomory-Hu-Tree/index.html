@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$ 将图恢复成最初形">
+    <meta name="description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。">
 <meta name="keywords" content="最小割树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最小割树学习笔记（Gomory-Hu Tree）">
 <meta property="og:url" content="https://skqliao.github.io/Gomory-Hu-Tree/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$ 将图恢复成最初形">
+<meta property="og:description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-06T07:09:45.729Z">
+<meta property="og:updated_time" content="2019-02-06T07:12:58.257Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最小割树学习笔记（Gomory-Hu Tree）">
-<meta name="twitter:description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$ 将图恢复成最初形">
+<meta name="twitter:description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。">
 
 
 
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 445 个字)
+                    3 分钟 读完 (大约 446 个字)
                 </span>
                 
                 
@@ -166,6 +166,7 @@
         <div class="content">
             <h2 id="总论"><a href="#总论" class="headerlink" title="总论"></a>总论</h2><p>在无向图中，最小割树等价于所有点对间的最小割。</p>
 <p>对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。</p>
+<a id="more"></a>
 <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。</p>
 <p>具体步骤如下：</p>
 <ol>
