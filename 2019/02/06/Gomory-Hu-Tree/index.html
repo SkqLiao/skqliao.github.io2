@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$  将图恢复成最初">
+    <meta name="description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$ 将图恢复成最初形">
 <meta name="keywords" content="最小割树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最小割树学习笔记（Gomory-Hu Tree）">
 <meta property="og:url" content="https://skqliao.github.io/2019/02/06/Gomory-Hu-Tree/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$  将图恢复成最初">
+<meta property="og:description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$ 将图恢复成最初形">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-06T07:07:18.065Z">
+<meta property="og:updated_time" content="2019-02-06T07:09:45.729Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="最小割树学习笔记（Gomory-Hu Tree）">
-<meta name="twitter:description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$  将图恢复成最初">
+<meta name="twitter:description" content="总论在无向图中，最小割树等价于所有点对间的最小割。 对于任意点对 $(s,t)$，它们之间的最小割为最小割树上 $(s,t)$ 路径间的最小边权值。 过程可以通过求 $n-1$ 次最大流构建出具有 $n$ 个点的无向图 $G$ 的最小割树。 具体步骤如下：  任意选择两点 $s,t$ 求两点间最大流 $f$ 得到最小割隔开的两个集合 最小割树上连接 $(s,t)$，边权为 $f$ 将图恢复成最初形">
 
 
 
@@ -172,10 +172,8 @@
 <li>任意选择两点 $s,t$</li>
 <li>求两点间最大流 $f$</li>
 <li>得到最小割隔开的两个集合</li>
-<li><p>最小割树上连接 $(s,t)$，边权为 $f$</p>
-</li>
-<li><p>将图恢复成最初形态（还原边权）</p>
-</li>
+<li>最小割树上连接 $(s,t)$，边权为 $f$</li>
+<li>将图恢复成最初形态（还原边权）</li>
 <li>递归到这两个新集合中，重复操作1，直到集合中只有 $1$ 个点为止</li>
 </ol>
 <p>由于每次集合总数增加 $1$，因此一共做 $n-1$ 次以上流程。</p>
@@ -311,7 +309,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        8
                     </p>
                 </div>
             </div>
@@ -489,25 +487,6 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/Steiner-Tree-1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Steiner Tree">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:07:25.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/Steiner-Tree-1/" class="has-link-black-ter is-size-6">Steiner Tree</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/02/06/Steiner-Tree/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="">
@@ -582,6 +561,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/02/06/BZOJ-4006/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:01.000Z">2019-02-06</time></div>
+                    <a href="/2019/02/06/BZOJ-4006/" class="has-link-black-ter is-size-6">【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -600,7 +598,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
@@ -692,25 +690,6 @@
         
         <article class="media">
             
-            <a href="/2019/02/06/Steiner-Tree-1/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Steiner Tree">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:07:25.000Z">2019-02-06</time></div>
-                    <a href="/2019/02/06/Steiner-Tree-1/" class="has-link-black-ter is-size-6">Steiner Tree</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
             <a href="/2019/02/06/Steiner-Tree/" class="media-left">
                 <p class="image is-64x64">
                     <img class="thumbnail" src="/images/thumbnail.svg" alt="">
@@ -785,6 +764,25 @@
             </div>
         </article>
         
+        <article class="media">
+            
+            <a href="/2019/02/06/BZOJ-4006/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:01.000Z">2019-02-06</time></div>
+                    <a href="/2019/02/06/BZOJ-4006/" class="has-link-black-ter is-size-6">【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
     </div>
 </div>
 
@@ -803,7 +801,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">9</span>
+                    <span class="level-item tag">8</span>
                 </span>
             </a>
         </li>
