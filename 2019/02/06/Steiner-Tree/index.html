@@ -2,22 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类: BZOJ - Skqliao&#39;s Blog</title>
+<title>Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="An Oier&apos;s Blog">
-<meta name="keywords" content="OI">
-<meta property="og:type" content="website">
+    <meta name="description" content="总论斯坦纳树可以理解为一棵使得指定点集合联通的树，而最小斯坦纳树在联通的基础上要求边权和最小。（是不是有点类似于最小生成树？） 通常通过状压DP+最短路松弛的方式来解决此类问题。">
+<meta name="keywords" content="斯坦纳树">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Skqliao&#39;s Blog">
-<meta property="og:url" content="https://skqliao.github.io/categories/BZOJ/index.html">
+<meta property="og:url" content="https://skqliao.github.io/2019/02/06/Steiner-Tree/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="An Oier&apos;s Blog">
+<meta property="og:description" content="总论斯坦纳树可以理解为一棵使得指定点集合联通的树，而最小斯坦纳树在联通的基础上要求边权和最小。（是不是有点类似于最小生成树？） 通常通过状压DP+最短路松弛的方式来解决此类问题。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-06T07:05:32.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Skqliao&#39;s Blog">
-<meta name="twitter:description" content="An Oier&apos;s Blog">
+<meta name="twitter:description" content="总论斯坦纳树可以理解为一棵使得指定点集合联通的树，而最小斯坦纳树在联通的基础上要求边权和最小。（是不是有点类似于最小生成树？） 通常通过状压DP+最短路松弛的方式来解决此类问题。">
 
 
 
@@ -89,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Skqliao&#39;s Blog" height="28">
+                <img src="/images/logo.svg" alt="" height="28">
             
             </a>
         </div>
@@ -135,223 +136,128 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-02-06T07:03:06.000Z">2019-02-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 分钟 读完 (大约 469 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                
+            
+        </h1>
+        <div class="content">
+            <h2 id="总论"><a href="#总论" class="headerlink" title="总论"></a>总论</h2><p>斯坦纳树可以理解为一棵使得指定点集合联通的树，而最小斯坦纳树在联通的基础上要求边权和最小。（是不是有点类似于最小生成树？）</p>
+<p>通常通过状压DP+最短路松弛的方式来解决此类问题。</p>
+<a id="more"></a>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>具体过程不妨从一个简单问题出发。</p>
+<p>无向图 $G$ 上有 $n$ 个点，选择若干个点使得它们包含点集合 $S={a_1,a_2,\cdots,a_m}$，且 $S$ 联通。选择点 $i$ 的代价为 $A_i$，求最小代价。</p>
+<p>设 $F[i][S]$ 表示集合 $S$ 的点被选择且当前选择节点 $i$ 的最小花费，则 $F[i][S]$ 有两种方式转移，一是枚举子集合并，二是集合内部松弛。</p>
+<p>第一种： $F[i][S]=\min{F[i][T]+F[i][S-T]-A[i]}$，其中 $T$ 是 $S$ 的一个子集。</p>
+<p>可以通过 <code>for (int x = S; x; x = (x - 1) &amp; S)</code> 的方式枚举 $S$ 的所有子集 $x$，复杂度 $O(3^m)$。</p>
+<p>由于外层还要枚举当前集合状态 $S$ 和当前点 $i$，因此总复杂度为 $n\cdot 6^m$。</p>
+<p>第二种：$F[i][S]=\min{F[j][S]+A[i]}$，其中点 $i,j$ 联通。</p>
+<p>在状压DP后，可以将所有更新过的点push进队列跑SPFA或其他最短路算法完成松弛。</p>
+<p>总复杂度 $O(n\cdot 6^m+2^m\cdot f)$，$f$ 为最短路复杂度。</p>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>最小斯坦树可以得到给定点集合所有子集的最小花费，可能会作为预处理使用。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><ul>
+<li><p><a href="https://skqliao.top/index.php/archives/9/" target="_blank" rel="noopener">【最小斯坦纳树】[WC 2008] BZOJ 2595 游览计划</a></p>
+</li>
+<li><p><a href="https://skqliao.top/index.php/archives/10/" target="_blank" rel="noopener">【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接</a></p>
+</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/斯坦纳树/">斯坦纳树</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
             
-            <li class="is-active"><a href="#" aria-current="page">BZOJ</a></li>
-        </ul>
-        </nav>
-    </div>
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
 </div>
 
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-06T06:47:20.000Z">2019-02-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
-                </div>
                 
                 
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 803 个字)
-                </span>
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
                 
                 
-            </div>
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/02/06/BZOJ-2229/">【最小割树】[ZJOI 2011] BZOJ 2229 最小割</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>$T$ 组数据，$Q$ 个询问。在无向图 $G$ 中，求有多少个点对 $(s,t)$ 使得它们之间的最小割不超过 $x$。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/06/BZOJ-2229/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
 
 
 
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-06T06:47:12.000Z">2019-02-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 537 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/02/06/BZOJ-4519/">【最小割树】[CQOI 2016] BZOJ 4519 不同的最小割</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>在无向图 $G$ 中，对于任意点对 $(i,j)$ 有最小割 $cut(i,j)$，求有多少个数值不同的最小割。</p>
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/02/06/Steiner-Tree-1/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Steiner Tree</span>
+            </a>
         </div>
         
         
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/06/BZOJ-4519/#more">阅读更多</a>
-                </div>
-            </div>
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/06/Gomory-Hu-Tree/">
+                <span class="level-item">最小割树学习笔记（Gomory-Hu Tree）</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
         
     </div>
 </div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-06T06:47:01.000Z">2019-02-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 605 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/02/06/BZOJ-4006/">【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>无向图中有 $n$ 个 $m$ 条边，边有权值 $W_i$，有 $p$ 个点有编号 $A_i$。现要求选择一些边，使得（有编号且）编号相同的点联通，求最小权值和。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/06/BZOJ-4006/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-06T06:46:48.000Z">2019-02-06</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 734 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2019/02/06/BZOJ-2595/">【最小斯坦纳树】[WC 2008] BZOJ 2595 游览计划</a>
-            
-        </h1>
-        <div class="content">
-            <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>在 $n\times m$ 的网格图上有 $k$ 个景点，图上选择任意一个点有费用 $a_{i,j}$。求选择若干个点使得这 $k​$ 个景点联通，最小化花费并输出方案。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2019/02/06/BZOJ-2595/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
 
 
 </div>
@@ -975,7 +881,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Skqliao&#39;s Blog" height="28">
+                    <img src="/images/logo.svg" alt="" height="28">
                 
                 </a>
                 <p class="is-size-7">
