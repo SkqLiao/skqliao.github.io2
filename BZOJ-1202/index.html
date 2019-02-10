@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>【差分约束】[HNOI2005] BZOJ 1202 狡猾的商人 - Skqliao&#39;s Blog</title>
+<title>【差分约束】[HNOI 2005] BZOJ 1202 狡猾的商人 - Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。 数据范围 $N\leq 100,M\leq 1000$。">
-<meta name="keywords" content="查分约束">
+    <meta name="description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。">
+<meta name="keywords" content="差分约束">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【差分约束】[HNOI2005] BZOJ 1202 狡猾的商人">
+<meta property="og:title" content="【差分约束】[HNOI 2005] BZOJ 1202 狡猾的商人">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1202/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。 数据范围 $N\leq 100,M\leq 1000$。">
+<meta property="og:description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-10T15:05:27.826Z">
+<meta property="og:updated_time" content="2019-02-10T15:10:59.114Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【差分约束】[HNOI2005] BZOJ 1202 狡猾的商人">
-<meta name="twitter:description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。 数据范围 $N\leq 100,M\leq 1000$。">
+<meta name="twitter:title" content="【差分约束】[HNOI 2005] BZOJ 1202 狡猾的商人">
+<meta name="twitter:description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。">
 
 
 
@@ -90,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="【差分约束】[HNOI2005] BZOJ 1202 狡猾的商人" height="28">
+                <img src="/images/logo.svg" alt="【差分约束】[HNOI 2005] BZOJ 1202 狡猾的商人" height="28">
             
             </a>
         </div>
@@ -143,11 +143,15 @@
             <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2019-02-10T15:03:07.000Z">2019-02-10</time>
                 
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                </div>
+                
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 404 个字)
+                    3 分钟 读完 (大约 403 个字)
                 </span>
                 
                 
@@ -156,13 +160,13 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                【差分约束】[HNOI2005] BZOJ 1202 狡猾的商人
+                【差分约束】[HNOI 2005] BZOJ 1202 狡猾的商人
             
         </h1>
         <div class="content">
             <p>给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。</p>
-<p>数据范围 $N\leq 100,M\leq 1000$。</p>
 <a id="more"></a>
+<h2 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h2><p>$N\leq 100,M\leq 1000$</p>
 <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1202" target="_blank" rel="noopener">BZOJ 1202</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>将等式写成前缀和的形式，用 $Sum[i]$ 表示 $\sum\limits_{j=1}^{i}{A_j}$ ，等式化为 $Sum[r] - Sum[l-1] = x$。</p>
 <p>可以将等式变形成两个不等式， $Sum[r] - Sum[l-1] \geq x$ 和 $Sum[l - 1] - Sum[r] \geq -x$ 。</p>
@@ -174,7 +178,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/查分约束/">查分约束</a>
+                    <a class="has-link-grey -link" href="/tags/差分约束/">差分约束</a>
                 </div>
             </div>
         </div>
@@ -187,6 +191,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/BZOJ-2330/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">【差分约束】[SCOI 2011] BZOJ 2330 糖果</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -267,7 +278,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        10
+                        11
                     </p>
                 </div>
             </div>
@@ -277,7 +288,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        7
+                        4
                     </p>
                 </div>
             </div>
@@ -402,7 +413,7 @@
                 <span class="level-item">BZOJ</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">4</span>
+                <span class="level-item tag">7</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/JZOJ/">
@@ -420,23 +431,7 @@
             <span class="level-end">
                 <span class="level-item tag">2</span>
             </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/网络流/">
-            <span class="level-start">
-                <span class="level-item">网络流</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/网络流/最小割/">
-            <span class="level-start">
-                <span class="level-item">最小割</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li></ul></li>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -448,7 +443,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/斯坦纳树/" style="font-size: 20px;">斯坦纳树</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 20px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/查分约束/" style="font-size: 10px;">查分约束</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a>
+        <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/差分约束/" style="font-size: 15px;">差分约束</a> <a href="/tags/斯坦纳树/" style="font-size: 20px;">斯坦纳树</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 20px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a>
     </div>
 </div>
 
@@ -466,10 +461,22 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T15:03:07.000Z">2019-02-10</time></div>
-                    <a href="/BZOJ-1202/" class="has-link-black-ter is-size-6">【差分约束】[HNOI2005] BZOJ 1202 狡猾的商人</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T15:09:34.000Z">2019-02-10</time></div>
+                    <a href="/BZOJ-2330/" class="has-link-black-ter is-size-6">【差分约束】[SCOI 2011] BZOJ 2330 糖果</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T15:03:07.000Z">2019-02-10</time></div>
+                    <a href="/BZOJ-1202/" class="has-link-black-ter is-size-6">【差分约束】[HNOI 2005] BZOJ 1202 狡猾的商人</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
                 </div>
             </div>
@@ -481,7 +488,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T14:58:35.000Z">2019-02-10</time></div>
                     <a href="/BZOJ-2127/" class="has-link-black-ter is-size-6">【最小割】[2010 集训队测验] BZOJ 2127 文理分科</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/网络流/">网络流</a> / <a class="has-link-grey -link" href="/categories/网络流/最小割/">最小割</a>
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
                 </div>
             </div>
@@ -511,18 +518,6 @@
             </div>
         </article>
         
-        <article class="media">
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:20.000Z">2019-02-06</time></div>
-                    <a href="/BZOJ-2229/" class="has-link-black-ter is-size-6">【最小割树】[ZJOI 2011] BZOJ 2229 最小割</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -541,7 +536,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -574,6 +569,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/差分约束/">
+                        <span class="tag">差分约束</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/斯坦纳树/">
                         <span class="tag">斯坦纳树</span>
                         <span class="tag is-grey">3</span>
@@ -597,13 +599,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小生成树/">
                         <span class="tag">最小生成树</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/查分约束/">
-                        <span class="tag">查分约束</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -648,10 +643,22 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T15:03:07.000Z">2019-02-10</time></div>
-                    <a href="/BZOJ-1202/" class="has-link-black-ter is-size-6">【差分约束】[HNOI2005] BZOJ 1202 狡猾的商人</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T15:09:34.000Z">2019-02-10</time></div>
+                    <a href="/BZOJ-2330/" class="has-link-black-ter is-size-6">【差分约束】[SCOI 2011] BZOJ 2330 糖果</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T15:03:07.000Z">2019-02-10</time></div>
+                    <a href="/BZOJ-1202/" class="has-link-black-ter is-size-6">【差分约束】[HNOI 2005] BZOJ 1202 狡猾的商人</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
                 </div>
             </div>
@@ -663,7 +670,7 @@
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T14:58:35.000Z">2019-02-10</time></div>
                     <a href="/BZOJ-2127/" class="has-link-black-ter is-size-6">【最小割】[2010 集训队测验] BZOJ 2127 文理分科</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/网络流/">网络流</a> / <a class="has-link-grey -link" href="/categories/网络流/最小割/">最小割</a>
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
                 </div>
             </div>
@@ -693,18 +700,6 @@
             </div>
         </article>
         
-        <article class="media">
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:20.000Z">2019-02-06</time></div>
-                    <a href="/BZOJ-2229/" class="has-link-black-ter is-size-6">【最小割树】[ZJOI 2011] BZOJ 2229 最小割</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
 
@@ -723,7 +718,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">10</span>
+                    <span class="level-item tag">11</span>
                 </span>
             </a>
         </li>
@@ -756,6 +751,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/差分约束/">
+                        <span class="tag">差分约束</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/斯坦纳树/">
                         <span class="tag">斯坦纳树</span>
                         <span class="tag is-grey">3</span>
@@ -779,13 +781,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小生成树/">
                         <span class="tag">最小生成树</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/查分约束/">
-                        <span class="tag">查分约束</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
