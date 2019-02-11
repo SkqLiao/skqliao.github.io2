@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Skqliao&#39;s Blog</title>
+<title>【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alo - Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="title: 【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alodate: 2019-02-11 09:14:16tags:  ST表 可持久化Triecategories: BZOJ   给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的">
-<meta name="keywords" content="OI">
+    <meta name="description" content="给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。 $1\leq n\leq 50000, A_i\leq 10^9$">
+<meta name="keywords" content="ST表,可持久化Trie">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Skqliao&#39;s Blog">
+<meta property="og:title" content="【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alo">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-3166/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="title: 【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alodate: 2019-02-11 09:14:16tags:  ST表 可持久化Triecategories: BZOJ   给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的">
+<meta property="og:description" content="给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。 $1\leq n\leq 50000, A_i\leq 10^9$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T01:40:14.574Z">
+<meta property="og:updated_time" content="2019-02-11T01:52:46.744Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Skqliao&#39;s Blog">
-<meta name="twitter:description" content="title: 【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alodate: 2019-02-11 09:14:16tags:  ST表 可持久化Triecategories: BZOJ   给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的">
+<meta name="twitter:title" content="【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alo">
+<meta name="twitter:description" content="给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。 $1\leq n\leq 50000, A_i\leq 10^9$">
 
 
 
@@ -90,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="" height="28">
+                <img src="/images/logo.svg" alt="【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alo" height="28">
             
             </a>
         </div>
@@ -141,13 +141,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-02-11T01:40:14.574Z">2019-02-11</time>
+                <time class="level-item has-text-grey" datetime="2019-02-11T01:14:16.000Z">2019-02-11</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 756 个字)
+                    5 分钟 读完 (大约 731 个字)
                 </span>
                 
                 
@@ -156,20 +160,12 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                
+                【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alo
             
         </h1>
         <div class="content">
-            <hr>
-<p>title: 【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alo<br>date: 2019-02-11 09:14:16<br>tags:</p>
-<ul>
-<li>ST表</li>
-<li>可持久化Trie<br>categories:</li>
-<li>BZOJ</li>
-</ul>
-<hr>
-<p>给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。</p>
-<p>$1\leq n\leq 50000, A_i\leq 10^9$。</p>
+            <p>给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。</p>
+<p>$1\leq n\leq 50000, A_i\leq 10^9$</p>
 <a id="more"></a>
 <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3166" target="_blank" rel="noopener">BZOJ 3166: [Heoi2013]Alo</a></p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>将问题反过来看，其实就是找到每一个数对应的区间，使得它在区间中是次大值，且区间长度最大。</p>
@@ -177,6 +173,15 @@
 <p>可以通过在ST表上二分的方法求出 $LL[i],RR[i]$，复杂度 $O(N\log{N})$。</p>
 <p>最后用可持久化Trie求每个区间与 $A[i]$ 的最大异或值，答案为这些值取max，这一步操作的复杂度为 $O(N\log{max(A_i)})$。</p>
 <h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">50000</span> + <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXM = <span class="hljs-number">40</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Trie</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> sz;</span><br><span class="line">    <span class="hljs-keyword">int</span> ch[<span class="hljs-number">2</span>];</span><br><span class="line">&#125; T[MAXN * MAXM];</span><br><span class="line"><span class="hljs-keyword">int</span> Rt[MAXN], cntT;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-keyword">int</span> pre, <span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> rt = ++cntT, tmp = rt;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">31</span>; i &gt;= <span class="hljs-number">0</span>; --i) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> c = (x &gt;&gt; i) &amp; <span class="hljs-number">1</span>;</span><br><span class="line">        T[rt].sz = T[pre].sz + <span class="hljs-number">1</span>;</span><br><span class="line">        T[rt].ch[c] = ++cntT;</span><br><span class="line">        T[rt].ch[c ^ <span class="hljs-number">1</span>] = T[pre].ch[c ^ <span class="hljs-number">1</span>];</span><br><span class="line">        rt = T[rt].ch[c];</span><br><span class="line">        pre = T[pre].ch[c];</span><br><span class="line">    &#125;</span><br><span class="line">    T[rt].sz = T[pre].sz + <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">31</span>; i &gt;= <span class="hljs-number">0</span>; --i) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> c = (x &gt;&gt; i) &amp; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (T[T[v].ch[c ^ <span class="hljs-number">1</span>]].sz - T[T[u].ch[c ^ <span class="hljs-number">1</span>]].sz) &#123;</span><br><span class="line">            ans += (<span class="hljs-number">1</span> &lt;&lt; i);</span><br><span class="line">            v = T[v].ch[c ^ <span class="hljs-number">1</span>], u = T[u].ch[c ^ <span class="hljs-number">1</span>];</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            v = T[v].ch[c], u = T[u].ch[c];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> N, A[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> L[MAXN], R[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> Stk[MAXN], top;</span><br><span class="line"><span class="hljs-keyword">int</span> LL[MAXN], RR[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">bSearch</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = top;</span><br><span class="line">    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (A[Stk[m]] &gt; A[x]) &#123;</span><br><span class="line">            ans = Stk[m];</span><br><span class="line">            l = m + <span class="hljs-number">1</span>;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            r = m - <span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> F[MAXN][MAXM];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">buildST</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        F[i][<span class="hljs-number">0</span>] = A[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> k = log2(n);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= k; ++j) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i + (<span class="hljs-number">1</span> &lt;&lt; j) - <span class="hljs-number">1</span> &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (F[i][j - <span class="hljs-number">1</span>] &gt; F[i + (<span class="hljs-number">1</span> &lt;&lt; (j - <span class="hljs-number">1</span>))][j - <span class="hljs-number">1</span>]) &#123;</span><br><span class="line">                F[i][j] = F[i][j - <span class="hljs-number">1</span>];</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                F[i][j] = F[i + (<span class="hljs-number">1</span> &lt;&lt; (j - <span class="hljs-number">1</span>))][j - <span class="hljs-number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">queryMax</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> k = log2(r - l + <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::max(F[l][k], F[r - (<span class="hljs-number">1</span> &lt;&lt; k) + <span class="hljs-number">1</span>][k]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getL</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> p = L[i], x = A[i];</span><br><span class="line">    <span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>, r = p - <span class="hljs-number">1</span>, ans = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (queryMax(m, p - <span class="hljs-number">1</span>) &gt; x) &#123;</span><br><span class="line">            ans = m;</span><br><span class="line">            l = m + <span class="hljs-number">1</span>;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            r = m - <span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getR</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> p = R[i], x = A[i];</span><br><span class="line">    <span class="hljs-keyword">int</span> l = p + <span class="hljs-number">1</span>, r = N + <span class="hljs-number">1</span>, ans = N + <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (queryMax(p + <span class="hljs-number">1</span>, m) &gt; x) &#123;</span><br><span class="line">            ans = m;</span><br><span class="line">            r = m - <span class="hljs-number">1</span>;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            l = m + <span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;N);</span><br><span class="line">    Rt[<span class="hljs-number">1</span>] = insert(Rt[<span class="hljs-number">0</span>], <span class="hljs-number">0</span>);</span><br><span class="line">    ++N;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;A[i]);</span><br><span class="line">        Rt[i] = insert(Rt[i - <span class="hljs-number">1</span>], A[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    A[<span class="hljs-number">1</span>] = A[N + <span class="hljs-number">1</span>] = INT_MAX;</span><br><span class="line">    Stk[top = <span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (A[Stk[top]] &lt;= A[i]) &#123;</span><br><span class="line">            --top;</span><br><span class="line">        &#125;</span><br><span class="line">        L[i] = Stk[top];</span><br><span class="line">        Stk[++top] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    Stk[top = <span class="hljs-number">1</span>] = N + <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = N; i &gt;= <span class="hljs-number">2</span>; --i) &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (A[Stk[top]] &lt;= A[i]) &#123;</span><br><span class="line">            --top;</span><br><span class="line">        &#125;</span><br><span class="line">        R[i] = Stk[top];</span><br><span class="line">        Stk[++top] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    buildST(N + <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        LL[i] = getL(i);</span><br><span class="line">        RR[i] = getR(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (L[i] == <span class="hljs-number">1</span> &amp;&amp; R[i] == N + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = <span class="hljs-built_in">std</span>::max(ans, query(Rt[LL[i]], Rt[R[i] - <span class="hljs-number">1</span>], A[i]));</span><br><span class="line">        ans = <span class="hljs-built_in">std</span>::max(ans, query(Rt[L[i]], Rt[RR[i] - <span class="hljs-number">1</span>], A[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/ST表/">ST表</a>, <a class="has-link-grey -link" href="/tags/可持久化Trie/">可持久化Trie</a>
+                </div>
+            </div>
         </div>
         
         
@@ -189,16 +194,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/BZOJ-1486/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/BZOJ-4819/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">【二分+SPFA】[HNOI 2009] BZOJ 1486 最小圈</span>
+                <span class="level-item">【分数规划+费用流】[SDOI 2017] BZOJ 4819 新生舞会</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/BZOJ-4819/">
-                <span class="level-item">【分数规划+费用流】[SDOI 2017] BZOJ 4819 新生舞会</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/BZOJ-2741/">
+                <span class="level-item">【可持久化Trie+分块】BZOJ 2741【FOTILE模拟赛】L</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -294,7 +299,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        20
                     </p>
                 </div>
             </div>
@@ -409,7 +414,7 @@
                 <span class="level-item">BZOJ</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">14</span>
+                <span class="level-item tag">15</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/JZOJ/">
@@ -439,7 +444,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/SPFA/" style="font-size: 13.33px;">SPFA</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分数规划/" style="font-size: 20px;">分数规划</a> <a href="/tags/前后缀/" style="font-size: 10px;">前后缀</a> <a href="/tags/可持久化Trie/" style="font-size: 13.33px;">可持久化Trie</a> <a href="/tags/字典树/" style="font-size: 10px;">字典树</a> <a href="/tags/差分约束/" style="font-size: 13.33px;">差分约束</a> <a href="/tags/斯坦纳树/" style="font-size: 16.67px;">斯坦纳树</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 16.67px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/费用流/" style="font-size: 10px;">费用流</a>
+        <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/SPFA/" style="font-size: 13.33px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分数规划/" style="font-size: 20px;">分数规划</a> <a href="/tags/前后缀/" style="font-size: 10px;">前后缀</a> <a href="/tags/可持久化Trie/" style="font-size: 16.67px;">可持久化Trie</a> <a href="/tags/字典树/" style="font-size: 10px;">字典树</a> <a href="/tags/差分约束/" style="font-size: 13.33px;">差分约束</a> <a href="/tags/斯坦纳树/" style="font-size: 16.67px;">斯坦纳树</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 16.67px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/费用流/" style="font-size: 10px;">费用流</a>
     </div>
 </div>
 
@@ -505,10 +510,10 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:40:14.574Z">2019-02-11</time></div>
-                    <a href="/BZOJ-3166/" class="has-link-black-ter is-size-6"></a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:39:35.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-4819/" class="has-link-black-ter is-size-6">【分数规划+费用流】[SDOI 2017] BZOJ 4819 新生舞会</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
                 </div>
             </div>
@@ -565,6 +570,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/ST表/">
+                        <span class="tag">ST表</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Trie/">
                         <span class="tag">Trie</span>
                         <span class="tag is-grey">1</span>
@@ -602,7 +614,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/可持久化Trie/">
                         <span class="tag">可持久化Trie</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -757,10 +769,10 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:40:14.574Z">2019-02-11</time></div>
-                    <a href="/BZOJ-3166/" class="has-link-black-ter is-size-6"></a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:39:35.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-4819/" class="has-link-black-ter is-size-6">【分数规划+费用流】[SDOI 2017] BZOJ 4819 新生舞会</a>
                     <p class="is-size-7 is-uppercase">
-                        
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
                 </div>
             </div>
@@ -817,6 +829,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/ST表/">
+                        <span class="tag">ST表</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Trie/">
                         <span class="tag">Trie</span>
                         <span class="tag is-grey">1</span>
@@ -854,7 +873,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/可持久化Trie/">
                         <span class="tag">可持久化Trie</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
