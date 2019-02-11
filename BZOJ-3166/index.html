@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。 $1\leq n\leq 50000, A_i\leq 10^9$">
-<meta name="keywords" content="ST表,可持久化Trie">
+    <meta name="description" content="给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。 $1\leq N\leq 50000, A_i\leq 10^9$">
+<meta name="keywords" content="可持久化Trie,ST表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alo">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-3166/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。 $1\leq n\leq 50000, A_i\leq 10^9$">
+<meta property="og:description" content="给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。 $1\leq N\leq 50000, A_i\leq 10^9$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T02:00:50.745Z">
+<meta property="og:updated_time" content="2019-02-11T02:03:01.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alo">
-<meta name="twitter:description" content="给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。 $1\leq n\leq 50000, A_i\leq 10^9$">
+<meta name="twitter:description" content="给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。 $1\leq N\leq 50000, A_i\leq 10^9$">
 
 
 
@@ -148,12 +148,6 @@
                 </div>
                 
                 
-                <span class="level-item has-text-grey">
-                    
-                    
-                    5 分钟 读完 (大约 731 个字)
-                </span>
-                
                 
             </div>
         </div>
@@ -165,7 +159,7 @@
         </h1>
         <div class="content">
             <p>给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。</p>
-<p>$1\leq n\leq 50000, A_i\leq 10^9$</p>
+<p>$1\leq N\leq 50000, A_i\leq 10^9$</p>
 <a id="more"></a>
 <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3166" target="_blank" rel="noopener">BZOJ 3166: [Heoi2013]Alo</a></p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>将问题反过来看，其实就是找到每一个数对应的区间，使得它在区间中是次大值，且区间长度最大。</p>
