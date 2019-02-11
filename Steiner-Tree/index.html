@@ -2,23 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>【分数规划+树形DP】[JSOI 2016] BZOJ 4753 最佳团体 - Skqliao&#39;s Blog</title>
+<title>斯坦纳树学习笔记（Steiner Tree） - Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="每个点有一个父亲，它能被选择当且仅当它父亲被选择，0号节点默认被选择。每个点有收益 $X[i]$，代价 $Y[i]$。选择恰好 $K$ 个点（不算0号），使得其对应的 $\sum{X[i]}/\sum{Y[i]}$ 最大。 $N\leq 2500$">
-<meta name="keywords" content="分数规划,树形DP">
+    <meta name="description" content="总论斯坦纳树可以理解为一棵使得指定点集合联通的树，而最小斯坦纳树在联通的基础上要求边权和最小。（是不是有点类似于最小生成树？） 通常通过状压DP+最短路松弛的方式来解决此类问题。">
+<meta name="keywords" content="斯坦纳树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【分数规划+树形DP】[JSOI 2016] BZOJ 4753 最佳团体">
-<meta property="og:url" content="https://skqliao.github.io/BZOJ-4753/index.html">
+<meta property="og:title" content="斯坦纳树学习笔记（Steiner Tree）">
+<meta property="og:url" content="https://skqliao.github.io/Steiner-Tree/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="每个点有一个父亲，它能被选择当且仅当它父亲被选择，0号节点默认被选择。每个点有收益 $X[i]$，代价 $Y[i]$。选择恰好 $K$ 个点（不算0号），使得其对应的 $\sum{X[i]}/\sum{Y[i]}$ 最大。 $N\leq 2500$">
+<meta property="og:description" content="总论斯坦纳树可以理解为一棵使得指定点集合联通的树，而最小斯坦纳树在联通的基础上要求边权和最小。（是不是有点类似于最小生成树？） 通常通过状压DP+最短路松弛的方式来解决此类问题。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T01:52:00.505Z">
+<meta property="og:updated_time" content="2019-02-06T07:16:18.168Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【分数规划+树形DP】[JSOI 2016] BZOJ 4753 最佳团体">
-<meta name="twitter:description" content="每个点有一个父亲，它能被选择当且仅当它父亲被选择，0号节点默认被选择。每个点有收益 $X[i]$，代价 $Y[i]$。选择恰好 $K$ 个点（不算0号），使得其对应的 $\sum{X[i]}/\sum{Y[i]}$ 最大。 $N\leq 2500$">
+<meta name="twitter:title" content="斯坦纳树学习笔记（Steiner Tree）">
+<meta name="twitter:description" content="总论斯坦纳树可以理解为一棵使得指定点集合联通的树，而最小斯坦纳树在联通的基础上要求边权和最小。（是不是有点类似于最小生成树？） 通常通过状压DP+最短路松弛的方式来解决此类问题。">
 
 
 
@@ -90,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="【分数规划+树形DP】[JSOI 2016] BZOJ 4753 最佳团体" height="28">
+                <img src="/images/logo.svg" alt="斯坦纳树学习笔记（Steiner Tree）" height="28">
             
             </a>
         </div>
@@ -141,23 +141,23 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                【分数规划+树形DP】[JSOI 2016] BZOJ 4753 最佳团体
+                斯坦纳树学习笔记（Steiner Tree）
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
                 <i class="fa fa-calendar"></i>&nbsp;
-                <time class="level-item has-text-grey" datetime="2019-02-11T01:44:03.000Z">2019-02-11</time>
+                <time class="level-item has-text-grey" datetime="2019-02-06T07:03:06.000Z">2019-02-06</time>
                 
                 <i class="fa fa-folder"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
                 </div>
                 
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/分数规划/">分数规划</a>,<a class="has-link-grey -link" href="/tags/树形DP/">树形DP</a>
+                <a class="has-link-grey -link" href="/tags/斯坦纳树/">斯坦纳树</a>
                 </div>
                 
                 
@@ -165,21 +165,33 @@
         </div>
         
         <div class="content">
-            <p>每个点有一个父亲，它能被选择当且仅当它父亲被选择，0号节点默认被选择。每个点有收益 $X[i]$，代价 $Y[i]$。选择恰好 $K$ 个点（不算0号），使得其对应的 $\sum{X[i]}/\sum{Y[i]}$ 最大。</p>
-<p>$N\leq 2500$</p>
+            <h2 id="总论"><a href="#总论" class="headerlink" title="总论"></a>总论</h2><p>斯坦纳树可以理解为一棵使得指定点集合联通的树，而最小斯坦纳树在联通的基础上要求边权和最小。（是不是有点类似于最小生成树？）</p>
+<p>通常通过状压DP+最短路松弛的方式来解决此类问题。</p>
 <a id="more"></a>
-<h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4753" target="_blank" rel="noopener">BZOJ 4753</a></p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>通过分数规划，二分答案来避免除法。</p>
-<p>选择关系是一棵树，被选择的点处于一个联通分量。树形背包，转移时父亲被强制选择。</p>
-<p>复杂度 $O(NK\log{X[i]})$</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">2500</span> + <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> eps = <span class="hljs-number">1e-4</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> N, K;</span><br><span class="line"><span class="hljs-keyword">int</span> A[MAXN], B[MAXN], P[MAXN];</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; G[MAXN];</span><br><span class="line"><span class="hljs-keyword">double</span> F[MAXN][MAXN], Tmp[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> Sz[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">double</span> m)</span> </span>&#123;</span><br><span class="line">    F[x][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">    F[x][<span class="hljs-number">1</span>] = B[x] - A[x] * m;</span><br><span class="line">    Sz[x] = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> i = <span class="hljs-number">0</span>; i &lt; G[x].size(); ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> &amp;v = G[x][i];</span><br><span class="line">        dfs(v, m);</span><br><span class="line">        <span class="hljs-built_in">memset</span>(Tmp, <span class="hljs-number">0xc2</span>, <span class="hljs-keyword">sizeof</span> Tmp);</span><br><span class="line">        Tmp[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= Sz[x]; ++j) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt;= Sz[v] &amp;&amp; j + k &lt;= K; ++k) &#123;</span><br><span class="line">                Tmp[j + k] = <span class="hljs-built_in">std</span>::max(Tmp[j + k], F[x][j] + F[v][k]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Sz[x] += Sz[v];</span><br><span class="line">        <span class="hljs-built_in">memcpy</span>(F[x], Tmp, <span class="hljs-keyword">sizeof</span> Tmp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-keyword">double</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(F, <span class="hljs-number">0xc2</span>, <span class="hljs-keyword">sizeof</span> F);</span><br><span class="line">    dfs(<span class="hljs-number">0</span>, m);</span><br><span class="line">    <span class="hljs-keyword">return</span> F[<span class="hljs-number">0</span>][K] &gt;= <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;K, &amp;N);</span><br><span class="line">    ++K;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;A[i], &amp;B[i], &amp;P[i]);</span><br><span class="line">        G[P[i]].push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">double</span> l = <span class="hljs-number">0</span>, r = <span class="hljs-number">1e4</span>, ans;</span><br><span class="line">    <span class="hljs-keyword">while</span> (r - l &gt; eps) &#123;</span><br><span class="line">        <span class="hljs-keyword">double</span> m = (l + r) / <span class="hljs-number">2</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (check(m)) &#123;</span><br><span class="line">            l = ans = m;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            r = m;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%.3lf\n"</span>, ans);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>具体过程不妨从一个简单问题出发。</p>
+<p>无向图 $G$ 上有 $n$ 个点，选择若干个点使得它们包含点集合 $S={a_1,a_2,\cdots,a_m}$，且 $S$ 联通。选择点 $i$ 的代价为 $A_i$，求最小代价。</p>
+<p>设 $F[i][S]$ 表示集合 $S$ 的点被选择且当前选择节点 $i$ 的最小花费，则 $F[i][S]$ 有两种方式转移，一是枚举子集合并，二是集合内部松弛。</p>
+<p>第一种： $F[i][S]=\min{F[i][T]+F[i][S-T]-A[i]}$，其中 $T$ 是 $S$ 的一个子集。</p>
+<p>可以通过 <code>for (int x = S; x; x = (x - 1) &amp; S)</code> 的方式枚举 $S$ 的所有子集 $x$，复杂度 $O(3^m)$。</p>
+<p>由于外层还要枚举当前集合状态 $S$ 和当前点 $i$，因此总复杂度为 $n\cdot 6^m$。</p>
+<p>第二种：$F[i][S]=\min{F[j][S]+A[i]}$，其中点 $i,j$ 联通。</p>
+<p>在状压DP后，可以将所有更新过的点push进队列跑SPFA或其他最短路算法完成松弛。</p>
+<p>总复杂度 $O(n\cdot 6^m+2^m\cdot f)$，$f$ 为最短路复杂度。</p>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>最小斯坦树可以得到给定点集合所有子集的最小花费，可能会作为预处理使用。</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><ul>
+<li><p><a href="https://skqliao.top/index.php/archives/9/" target="_blank" rel="noopener">【最小斯坦纳树】[WC 2008] BZOJ 2595 游览计划</a></p>
+</li>
+<li><p><a href="https://skqliao.top/index.php/archives/10/" target="_blank" rel="noopener">【最小斯坦纳树+状压DP】[JLOI 2015] BZOJ 4006 管道连接</a></p>
+</li>
+</ul>
+
         </div>
         
         <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/分数规划/">分数规划</a>, <a class="has-link-grey -link" href="/tags/树形DP/">树形DP</a>
+                    <a class="has-link-grey -link" href="/tags/斯坦纳树/">斯坦纳树</a>
                 </div>
             </div>
         </div>
@@ -194,16 +206,16 @@
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/BZOJ-5281/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/BZOJ-4260/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">【分数规划+背包】[USACO2018 OPEN] BZOJ 5281 Talent Show</span>
+                <span class="level-item">BZOJ 4260 Codechef REBXOR</span>
             </a>
         </div>
         
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/BZOJ-3597/">
-                <span class="level-item">【分数规划+SPFA】[SCOI 2014] BZOJ 3597 方伯伯运椰子</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/Gomory-Hu-Tree/">
+                <span class="level-item">最小割树学习笔记（Gomory-Hu Tree）</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -224,7 +236,7 @@
     var gitalk = new Gitalk({
         clientID: '00ffd542091791901071',
         clientSecret: '35a959ef118c0232962eb29e0b072e9d9aae8e85',
-        id: '285907d4c1312a34de9b349e52b40ff0',
+        id: 'a8b2636f55b3a9e667ad54b2c62c8420',
         repo: 'skqliao.github.io',
         owner: 'SkqLiao',
         admin: "SkqLiao"
@@ -279,7 +291,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        19
+                        7
                     </p>
                 </div>
             </div>
@@ -299,7 +311,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        20
+                        10
                     </p>
                 </div>
             </div>
@@ -414,7 +426,7 @@
                 <span class="level-item">BZOJ</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">15</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/JZOJ/">
@@ -430,7 +442,7 @@
                 <span class="level-item">学习笔记</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">2</span>
             </span>
         </a></li>
             </ul>
@@ -444,7 +456,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/SPFA/" style="font-size: 13.33px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分数规划/" style="font-size: 20px;">分数规划</a> <a href="/tags/前后缀/" style="font-size: 10px;">前后缀</a> <a href="/tags/可持久化Trie/" style="font-size: 16.67px;">可持久化Trie</a> <a href="/tags/字典树/" style="font-size: 10px;">字典树</a> <a href="/tags/差分约束/" style="font-size: 13.33px;">差分约束</a> <a href="/tags/斯坦纳树/" style="font-size: 13.33px;">斯坦纳树</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 16.67px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/费用流/" style="font-size: 10px;">费用流</a>
+        <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/前后缀/" style="font-size: 10px;">前后缀</a> <a href="/tags/可持久化Trie/" style="font-size: 20px;">可持久化Trie</a> <a href="/tags/字典树/" style="font-size: 10px;">字典树</a> <a href="/tags/斯坦纳树/" style="font-size: 10px;">斯坦纳树</a> <a href="/tags/最小割树/" style="font-size: 10px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a>
     </div>
 </div>
 
@@ -462,8 +474,20 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:59:09.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-3166/" class="has-link-black-ter is-size-6">【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alo</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:07:24.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2741/" class="has-link-black-ter is-size-6">BZOJ 2741【FOTILE模拟赛】L</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:05:56.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-3261/" class="has-link-black-ter is-size-6">BZOJ 3261 最大异或和</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -474,8 +498,8 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:44:34.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-5281/" class="has-link-black-ter is-size-6">【分数规划+背包】[USACO2018 OPEN] BZOJ 5281 Talent Show</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:03:25.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-4260/" class="has-link-black-ter is-size-6">BZOJ 4260 Codechef REBXOR</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -486,10 +510,10 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:44:03.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-4753/" class="has-link-black-ter is-size-6">【分数规划+树形DP】[JSOI 2016] BZOJ 4753 最佳团体</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:03:06.000Z">2019-02-06</time></div>
+                    <a href="/Steiner-Tree/" class="has-link-black-ter is-size-6">斯坦纳树学习笔记（Steiner Tree）</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                        <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
                     </p>
                 </div>
             </div>
@@ -498,22 +522,10 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:41:55.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-3597/" class="has-link-black-ter is-size-6">【分数规划+SPFA】[SCOI 2014] BZOJ 3597 方伯伯运椰子</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:02:28.000Z">2019-02-06</time></div>
+                    <a href="/Gomory-Hu-Tree/" class="has-link-black-ter is-size-6">最小割树学习笔记（Gomory-Hu Tree）</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:40:59.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-1486/" class="has-link-black-ter is-size-6">【二分+SPFA】[HNOI 2009] BZOJ 1486 最小圈</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                        <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
                     </p>
                 </div>
             </div>
@@ -537,7 +549,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -563,29 +575,8 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/SPFA/">
-                        <span class="tag">SPFA</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/ST表/">
-                        <span class="tag">ST表</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/Trie/">
                         <span class="tag">Trie</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/二分/">
-                        <span class="tag">二分</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -594,13 +585,6 @@
                     <a class="tags has-addons" href="/tags/分块/">
                         <span class="tag">分块</span>
                         <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/分数规划/">
-                        <span class="tag">分数规划</span>
-                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -614,7 +598,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/可持久化Trie/">
                         <span class="tag">可持久化Trie</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -626,22 +610,8 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/差分约束/">
-                        <span class="tag">差分约束</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/斯坦纳树/">
                         <span class="tag">斯坦纳树</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/最小割/">
-                        <span class="tag">最小割</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -649,7 +619,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小割树/">
                         <span class="tag">最小割树</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -661,36 +631,8 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/树形DP/">
-                        <span class="tag">树形DP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/状压DP/">
-                        <span class="tag">状压DP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/背包/">
-                        <span class="tag">背包</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/费用流/">
-                        <span class="tag">费用流</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -721,8 +663,20 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:59:09.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-3166/" class="has-link-black-ter is-size-6">【ST表+可持久化Trie】[HEOI 2013] BZOJ 3166 Alo</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:07:24.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2741/" class="has-link-black-ter is-size-6">BZOJ 2741【FOTILE模拟赛】L</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:05:56.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-3261/" class="has-link-black-ter is-size-6">BZOJ 3261 最大异或和</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -733,8 +687,8 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:44:34.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-5281/" class="has-link-black-ter is-size-6">【分数规划+背包】[USACO2018 OPEN] BZOJ 5281 Talent Show</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:03:25.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-4260/" class="has-link-black-ter is-size-6">BZOJ 4260 Codechef REBXOR</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -745,10 +699,10 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:44:03.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-4753/" class="has-link-black-ter is-size-6">【分数规划+树形DP】[JSOI 2016] BZOJ 4753 最佳团体</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:03:06.000Z">2019-02-06</time></div>
+                    <a href="/Steiner-Tree/" class="has-link-black-ter is-size-6">斯坦纳树学习笔记（Steiner Tree）</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                        <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
                     </p>
                 </div>
             </div>
@@ -757,22 +711,10 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:41:55.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-3597/" class="has-link-black-ter is-size-6">【分数规划+SPFA】[SCOI 2014] BZOJ 3597 方伯伯运椰子</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:02:28.000Z">2019-02-06</time></div>
+                    <a href="/Gomory-Hu-Tree/" class="has-link-black-ter is-size-6">最小割树学习笔记（Gomory-Hu Tree）</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:40:59.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-1486/" class="has-link-black-ter is-size-6">【二分+SPFA】[HNOI 2009] BZOJ 1486 最小圈</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                        <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
                     </p>
                 </div>
             </div>
@@ -796,7 +738,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">19</span>
+                    <span class="level-item tag">7</span>
                 </span>
             </a>
         </li>
@@ -822,29 +764,8 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/SPFA/">
-                        <span class="tag">SPFA</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/ST表/">
-                        <span class="tag">ST表</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/Trie/">
                         <span class="tag">Trie</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/二分/">
-                        <span class="tag">二分</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -853,13 +774,6 @@
                     <a class="tags has-addons" href="/tags/分块/">
                         <span class="tag">分块</span>
                         <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/分数规划/">
-                        <span class="tag">分数规划</span>
-                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -873,7 +787,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/可持久化Trie/">
                         <span class="tag">可持久化Trie</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -885,22 +799,8 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/差分约束/">
-                        <span class="tag">差分约束</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/斯坦纳树/">
                         <span class="tag">斯坦纳树</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/最小割/">
-                        <span class="tag">最小割</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -908,7 +808,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小割树/">
                         <span class="tag">最小割树</span>
-                        <span class="tag is-grey">3</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -920,36 +820,8 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/树形DP/">
-                        <span class="tag">树形DP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/状压DP/">
-                        <span class="tag">状压DP</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/背包/">
-                        <span class="tag">背包</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/费用流/">
-                        <span class="tag">费用流</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
