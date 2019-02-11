@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
 <meta property="og:description" content="维护序列 $A[1…N]$ ，共 $M$ 次操作，分为三种：  $A[l,r]$ 所有数加 $x$ $A[l,r]$ 所有数乘 $x$ $A[l,r]$ 求和  答案对 $P$ 取模。 $N,M\leq 100000,1\leq P\leq 1000000000$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T10:33:58.093Z">
+<meta property="og:updated_time" content="2019-02-11T11:23:10.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「AHOI 2009」BZOJ 1798 维护序列">
 <meta name="twitter:description" content="维护序列 $A[1…N]$ ，共 $M$ 次操作，分为三种：  $A[l,r]$ 所有数加 $x$ $A[l,r]$ 所有数乘 $x$ $A[l,r]$ 求和  答案对 $P$ 取模。 $N,M\leq 100000,1\leq P\leq 1000000000$">
@@ -173,7 +173,6 @@
 <p>答案对 $P$ 取模。</p>
 <p>$N,M\leq 100000,1\leq P\leq 1000000000$</p>
 <a id="more"></a>
-<h2 id="题库链接"><a href="#题库链接" class="headerlink" title="题库链接"></a>题库链接</h2><p><a href="https://www.luogu.org/problemnew/show/P2023" target="_blank" rel="noopener">[AHOI2009]维护序列</a> </p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>线段树模板，注意lazy标签先处理乘法。</p>
 <h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Copyright 2018, Skqliao</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rep(i, l, r) for (int i = (l), _##i##_ = (r); i &lt; _##i##_; ++i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rof(i, l, r) for (int i = (l) - 1, _##i##_ = (r); i &gt;= _##i##_; --i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ALL(x) (x).begin(), (x).end()</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SZ(x) static_cast<span class="hljs-meta-string">&lt;int&gt;((x).size())</span></span></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> io &#123;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">char</span> <span class="hljs-title">gc</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> getchar();</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt; <span class="hljs-title">inline</span> <span class="hljs-title">T</span> <span class="hljs-title">gt</span>() &#123;</span></span><br><span class="line">    <span class="hljs-keyword">static</span> T x;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span> &gt;&gt; x;</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pt</span><span class="hljs-params">(T x, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> c = <span class="hljs-string">'\n'</span>)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; x &lt;&lt; c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">flush</span><span class="hljs-params">()</span> </span>&#123;&#125;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXSIZE = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">22</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">char</span> <span class="hljs-title">gc</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> In[MAXSIZE], *at = In, *en = In;</span><br><span class="line">    <span class="hljs-keyword">if</span> (at == en) &#123;</span><br><span class="line">        en = (at = In) + fread(In, <span class="hljs-number">1</span>, MAXSIZE, <span class="hljs-built_in">stdin</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> at == en ? EOF : *at++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt; <span class="hljs-title">inline</span> <span class="hljs-title">T</span> <span class="hljs-title">gt</span>() &#123;</span></span><br><span class="line">    <span class="hljs-keyword">char</span> c;</span><br><span class="line">    <span class="hljs-keyword">while</span> (c = gc(), !<span class="hljs-built_in">isdigit</span>(c) &amp;&amp; c != <span class="hljs-string">'-'</span>) &#123;&#125;</span><br><span class="line">    <span class="hljs-keyword">bool</span> f = c == <span class="hljs-string">'-'</span>;</span><br><span class="line">    T x = f ? <span class="hljs-number">0</span> : c - <span class="hljs-string">'0'</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (c = gc(); <span class="hljs-built_in">isdigit</span>(c); c = gc()) &#123;</span><br><span class="line">        x = x * <span class="hljs-number">10</span> + c - <span class="hljs-string">'0'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> f ? -x : x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">char</span> Out[MAXSIZE], *cur = Out, *end = Out + MAXSIZE - <span class="hljs-number">100</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">flush</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    fwrite(Out, <span class="hljs-number">1</span>, cur - Out, <span class="hljs-built_in">stdout</span>);</span><br><span class="line">    cur = Out;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pt</span><span class="hljs-params">(T x, <span class="hljs-keyword">char</span> c = <span class="hljs-string">'\n'</span>)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> S[<span class="hljs-number">20</span>], *top;</span><br><span class="line">    top = S;</span><br><span class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        *cur++ = <span class="hljs-string">'-'</span>, x = -x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">do</span> &#123;</span><br><span class="line">        *++top = x % <span class="hljs-number">10</span>, x /= <span class="hljs-number">10</span>;</span><br><span class="line">    &#125; <span class="hljs-keyword">while</span> (x);</span><br><span class="line">    <span class="hljs-keyword">while</span> (top != S) &#123;</span><br><span class="line">        *cur++ = *top-- + <span class="hljs-string">'0'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    *cur++ = c;</span><br><span class="line">    <span class="hljs-keyword">if</span> (cur &gt;= end) &#123;</span><br><span class="line">        flush();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></span><br><span class="line">&#125;  <span class="hljs-comment">// namespace io</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">100000</span> + <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Segment</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> sum, add, mul;</span><br><span class="line">&#125; T[MAXN &lt;&lt; <span class="hljs-number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> LT rt &lt;&lt; 1, l, m</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> RT rt &lt;&lt; 1 | 1, m + 1, r</span></span><br><span class="line"></span><br><span class="line">ll P;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>, <span class="hljs-title">class</span> <span class="hljs-title">G</span>&gt; <span class="hljs-title">void</span> <span class="hljs-title">inc</span>(<span class="hljs-title">T</span> &amp;<span class="hljs-title">x</span>, <span class="hljs-title">G</span> <span class="hljs-title">y</span>) &#123;</span></span><br><span class="line">    (x += y) %= P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">template</span>&lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>, <span class="hljs-title">class</span> <span class="hljs-title">G</span>&gt; <span class="hljs-title">void</span> <span class="hljs-title">inu</span>(<span class="hljs-title">T</span> &amp;<span class="hljs-title">x</span>, <span class="hljs-title">G</span> <span class="hljs-title">y</span>) &#123;</span></span><br><span class="line">    (x *= y) %= P;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pushUp</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rt)</span> </span>&#123;</span><br><span class="line">    inc(T[rt].sum = <span class="hljs-number">0</span>, T[rt &lt;&lt; <span class="hljs-number">1</span>].sum + T[rt &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>].sum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pushDown</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rt, <span class="hljs-keyword">int</span> L)</span> </span>&#123;</span><br><span class="line">    Segment &amp;ls = T[rt &lt;&lt; <span class="hljs-number">1</span>], &amp;rs = T[rt &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span>];</span><br><span class="line">    <span class="hljs-keyword">int</span> &amp;add = T[rt].add, &amp;mul = T[rt].mul;</span><br><span class="line">    <span class="hljs-keyword">if</span> (mul != <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        inu(ls.sum, mul);</span><br><span class="line">        inu(rs.sum, mul);</span><br><span class="line">        inu(ls.add, mul);</span><br><span class="line">        inu(rs.add, mul);</span><br><span class="line">        inu(ls.mul, mul);</span><br><span class="line">        inu(rs.mul, mul);</span><br><span class="line">        mul = <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (add != <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        inc(ls.sum, add * (L - (L &gt;&gt; <span class="hljs-number">1</span>)));</span><br><span class="line">        inc(rs.sum, add * (L &gt;&gt; <span class="hljs-number">1</span>));</span><br><span class="line">        inc(ls.add, add);</span><br><span class="line">        inc(rs.add, add);</span><br><span class="line">        add = <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rt, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    T[rt].add = <span class="hljs-number">0</span>, T[rt].mul = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (l == r) &#123;</span><br><span class="line">        inc(T[rt].sum = <span class="hljs-number">0</span>, io::gt&lt;ll&gt;());</span><br><span class="line">        <span class="hljs-keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">    build(LT);</span><br><span class="line">    build(RT);</span><br><span class="line">    pushUp(rt);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mul</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rt, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, ll x)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (a &lt;= l &amp;&amp; r &lt;= b) &#123;</span><br><span class="line">        inu(T[rt].sum, x);</span><br><span class="line">        inu(T[rt].add, x);</span><br><span class="line">        inu(T[rt].mul, x);</span><br><span class="line">        <span class="hljs-keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    pushDown(rt, r - l + <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (a &lt;= m) &#123;</span><br><span class="line">        mul(LT, a, b, x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (m &lt; b) &#123;</span><br><span class="line">        mul(RT, a, b, x);</span><br><span class="line">    &#125;</span><br><span class="line">    pushUp(rt);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rt, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, ll x)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (a &lt;= l &amp;&amp; r &lt;= b) &#123;</span><br><span class="line">        inc(T[rt].sum, x * (r - l + <span class="hljs-number">1</span>));</span><br><span class="line">        inc(T[rt].add, x);</span><br><span class="line">        <span class="hljs-keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    pushDown(rt, r - l + <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (a &lt;= m) &#123;</span><br><span class="line">        add(LT, a, b, x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (m &lt; b) &#123;</span><br><span class="line">        add(RT, a, b, x);</span><br><span class="line">    &#125;</span><br><span class="line">    pushUp(rt);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function">ll <span class="hljs-title">querySum</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rt, <span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (a &lt;= l &amp;&amp; r &lt;= b) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> T[rt].sum;</span><br><span class="line">    &#125;</span><br><span class="line">    pushDown(rt, r - l + <span class="hljs-number">1</span>);</span><br><span class="line">    <span class="hljs-keyword">int</span> m = (l + r) &gt;&gt; <span class="hljs-number">1</span>;</span><br><span class="line">    ll res = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">if</span> (a &lt;= m) &#123;</span><br><span class="line">        inc(res, querySum(LT, a, b));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">if</span> (m &lt; b) &#123;</span><br><span class="line">        inc(res, querySum(RT, a, b));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> N = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">    P = io::gt&lt;ll&gt;();</span><br><span class="line">    build(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, N);</span><br><span class="line">    <span class="hljs-keyword">int</span> M = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">    <span class="hljs-keyword">while</span> (M--) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> opt = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span> l = io::gt&lt;<span class="hljs-keyword">int</span>&gt;(), r = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span> (opt == <span class="hljs-number">1</span>) &#123;</span><br><span class="line">            mul(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, N, l, r, io::gt&lt;ll&gt;() % P);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (opt == <span class="hljs-number">2</span>) &#123;</span><br><span class="line">            add(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, N, l, r, io::gt&lt;ll&gt;() % P);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            io::pt(querySum(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, N, l, r));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    io::flush();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -283,7 +282,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        26
+                        45
                     </p>
                 </div>
             </div>
@@ -303,7 +302,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        32
                     </p>
                 </div>
             </div>
@@ -418,7 +417,7 @@
                 <span class="level-item">BZOJ</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">21</span>
+                <span class="level-item tag">38</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/JZOJ/">
@@ -448,7 +447,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/SPFA/" style="font-size: 16.67px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分数规划/" style="font-size: 20px;">分数规划</a> <a href="/tags/前后缀/" style="font-size: 10px;">前后缀</a> <a href="/tags/可持久化Trie/" style="font-size: 16.67px;">可持久化Trie</a> <a href="/tags/字典树/" style="font-size: 10px;">字典树</a> <a href="/tags/差分约束/" style="font-size: 13.33px;">差分约束</a> <a href="/tags/斯坦纳树/" style="font-size: 16.67px;">斯坦纳树</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 16.67px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/树形DP/" style="font-size: 13.33px;">树形DP</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/线段树/" style="font-size: 13.33px;">线段树</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/费用流/" style="font-size: 16.67px;">费用流</a>
+        <a href="/tags/DFS/" style="font-size: 12.5px;">DFS</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/SPFA/" style="font-size: 15px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 12.5px;">ST表</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/set/" style="font-size: 10px;">set</a> <a href="/tags/二分/" style="font-size: 15px;">二分</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分数规划/" style="font-size: 17.5px;">分数规划</a> <a href="/tags/前后缀/" style="font-size: 10px;">前后缀</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/可持久化Trie/" style="font-size: 15px;">可持久化Trie</a> <a href="/tags/启发式合并/" style="font-size: 10px;">启发式合并</a> <a href="/tags/字典树/" style="font-size: 12.5px;">字典树</a> <a href="/tags/差分约束/" style="font-size: 12.5px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 15px;">平衡树</a> <a href="/tags/斯坦纳树/" style="font-size: 15px;">斯坦纳树</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 15px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/树上差分/" style="font-size: 10px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 15px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 12.5px;">树状数组</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/约数个数定理/" style="font-size: 10px;">约数个数定理</a> <a href="/tags/线段树/" style="font-size: 20px;">线段树</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/费用流/" style="font-size: 15px;">费用流</a> <a href="/tags/轻重链剖分/" style="font-size: 17.5px;">轻重链剖分</a>
     </div>
 </div>
 
@@ -466,13 +465,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:34:28.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-5293/" class="has-link-black-ter is-size-6">「BJOI 2018」BZOJ 5293 求和</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:19:27.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-1036/" class="has-link-black-ter is-size-6">「ZJOI 2008」BZOJ 1036 树的统计</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/LCA/">LCA</a>
+                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a> , <a class="has-link-grey -link" href="/tags/轻重链剖分/">轻重链剖分</a>
                     </p>
                 </div>
             </div>
@@ -481,13 +480,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:33:02.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-1798/" class="has-link-black-ter is-size-6">「AHOI 2009」BZOJ 1798 维护序列</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:17:52.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2028/" class="has-link-black-ter is-size-6">「SHOI 2009」BZOJ 2028 会场预约</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a>
+                        <a class="has-link-grey -link" href="/tags/set/">set</a> , <a class="has-link-grey -link" href="/tags/二分/">二分</a>
                     </p>
                 </div>
             </div>
@@ -496,13 +495,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:30:14.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-5148/" class="has-link-black-ter is-size-6">「BJWC 2018」BZOJ 5148 kakuro</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:15:14.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2243/" class="has-link-black-ter is-size-6">「SDOI 2011」BZOJ 2243 染色</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/费用流/">费用流</a>
+                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a> , <a class="has-link-grey -link" href="/tags/轻重链剖分/">轻重链剖分</a>
                     </p>
                 </div>
             </div>
@@ -511,13 +510,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:22.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-2465/" class="has-link-black-ter is-size-6">「中山市选 2009」BZOJ 2465 小球</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:12:45.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-1878/" class="has-link-black-ter is-size-6">「SDOI 2009」BZOJ 1878 HH的项链</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/贪心/">贪心</a> , <a class="has-link-grey -link" href="/tags/费用流/">费用流</a>
+                        <a class="has-link-grey -link" href="/tags/树状数组/">树状数组</a>
                     </p>
                 </div>
             </div>
@@ -526,13 +525,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:14.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-2466/" class="has-link-black-ter is-size-6">「中山市选 2009」BZOJ 2466 树</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:10:10.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2753/" class="has-link-black-ter is-size-6">「SCOI 2012」BZOJ 2753 滑雪与时间胶囊</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/树形DP/">树形DP</a>
+                        <a class="has-link-grey -link" href="/tags/最小生成树/">最小生成树</a>
                     </p>
                 </div>
             </div>
@@ -556,7 +555,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">26</span>
+                    <span class="level-item tag">45</span>
                 </span>
             </a>
         </li>
@@ -573,6 +572,13 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DFS/">
+                        <span class="tag">DFS</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LCA/">
@@ -598,7 +604,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ST表/">
                         <span class="tag">ST表</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -610,9 +616,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/set/">
+                        <span class="tag">set</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/二分/">
                         <span class="tag">二分</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -638,6 +651,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/动态规划/">
+                        <span class="tag">动态规划</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/可持久化Trie/">
                         <span class="tag">可持久化Trie</span>
                         <span class="tag is-grey">3</span>
@@ -645,9 +665,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/启发式合并/">
+                        <span class="tag">启发式合并</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/字典树/">
                         <span class="tag">字典树</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -655,6 +682,13 @@
                     <a class="tags has-addons" href="/tags/差分约束/">
                         <span class="tag">差分约束</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/平衡树/">
+                        <span class="tag">平衡树</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -682,6 +716,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小生成树/">
                         <span class="tag">最小生成树</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树上差分/">
+                        <span class="tag">树上差分</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -689,6 +730,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形DP/">
                         <span class="tag">树形DP</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树状数组/">
+                        <span class="tag">树状数组</span>
                         <span class="tag is-grey">2</span>
                     </a>
                 </div>
@@ -701,15 +749,29 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/约数个数定理/">
+                        <span class="tag">约数个数定理</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/背包/">
                         <span class="tag">背包</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/莫队/">
+                        <span class="tag">莫队</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -725,6 +787,13 @@
                     <a class="tags has-addons" href="/tags/费用流/">
                         <span class="tag">费用流</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/轻重链剖分/">
+                        <span class="tag">轻重链剖分</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -754,13 +823,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:34:28.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-5293/" class="has-link-black-ter is-size-6">「BJOI 2018」BZOJ 5293 求和</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:19:27.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-1036/" class="has-link-black-ter is-size-6">「ZJOI 2008」BZOJ 1036 树的统计</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/LCA/">LCA</a>
+                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a> , <a class="has-link-grey -link" href="/tags/轻重链剖分/">轻重链剖分</a>
                     </p>
                 </div>
             </div>
@@ -769,13 +838,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:33:02.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-1798/" class="has-link-black-ter is-size-6">「AHOI 2009」BZOJ 1798 维护序列</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:17:52.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2028/" class="has-link-black-ter is-size-6">「SHOI 2009」BZOJ 2028 会场预约</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a>
+                        <a class="has-link-grey -link" href="/tags/set/">set</a> , <a class="has-link-grey -link" href="/tags/二分/">二分</a>
                     </p>
                 </div>
             </div>
@@ -784,13 +853,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:30:14.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-5148/" class="has-link-black-ter is-size-6">「BJWC 2018」BZOJ 5148 kakuro</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:15:14.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2243/" class="has-link-black-ter is-size-6">「SDOI 2011」BZOJ 2243 染色</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/费用流/">费用流</a>
+                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a> , <a class="has-link-grey -link" href="/tags/轻重链剖分/">轻重链剖分</a>
                     </p>
                 </div>
             </div>
@@ -799,13 +868,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:22.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-2465/" class="has-link-black-ter is-size-6">「中山市选 2009」BZOJ 2465 小球</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:12:45.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-1878/" class="has-link-black-ter is-size-6">「SDOI 2009」BZOJ 1878 HH的项链</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/贪心/">贪心</a> , <a class="has-link-grey -link" href="/tags/费用流/">费用流</a>
+                        <a class="has-link-grey -link" href="/tags/树状数组/">树状数组</a>
                     </p>
                 </div>
             </div>
@@ -814,13 +883,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:14.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-2466/" class="has-link-black-ter is-size-6">「中山市选 2009」BZOJ 2466 树</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:10:10.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2753/" class="has-link-black-ter is-size-6">「SCOI 2012」BZOJ 2753 滑雪与时间胶囊</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/树形DP/">树形DP</a>
+                        <a class="has-link-grey -link" href="/tags/最小生成树/">最小生成树</a>
                     </p>
                 </div>
             </div>
@@ -844,7 +913,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">26</span>
+                    <span class="level-item tag">45</span>
                 </span>
             </a>
         </li>
@@ -861,6 +930,13 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DFS/">
+                        <span class="tag">DFS</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LCA/">
@@ -886,7 +962,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ST表/">
                         <span class="tag">ST表</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -898,9 +974,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/set/">
+                        <span class="tag">set</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/二分/">
                         <span class="tag">二分</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -926,6 +1009,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/动态规划/">
+                        <span class="tag">动态规划</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/可持久化Trie/">
                         <span class="tag">可持久化Trie</span>
                         <span class="tag is-grey">3</span>
@@ -933,9 +1023,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/启发式合并/">
+                        <span class="tag">启发式合并</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/字典树/">
                         <span class="tag">字典树</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -943,6 +1040,13 @@
                     <a class="tags has-addons" href="/tags/差分约束/">
                         <span class="tag">差分约束</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/平衡树/">
+                        <span class="tag">平衡树</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -970,6 +1074,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小生成树/">
                         <span class="tag">最小生成树</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树上差分/">
+                        <span class="tag">树上差分</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -977,6 +1088,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形DP/">
                         <span class="tag">树形DP</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树状数组/">
+                        <span class="tag">树状数组</span>
                         <span class="tag is-grey">2</span>
                     </a>
                 </div>
@@ -989,15 +1107,29 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/约数个数定理/">
+                        <span class="tag">约数个数定理</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/背包/">
                         <span class="tag">背包</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/莫队/">
+                        <span class="tag">莫队</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1013,6 +1145,13 @@
                     <a class="tags has-addons" href="/tags/费用流/">
                         <span class="tag">费用流</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/轻重链剖分/">
+                        <span class="tag">轻重链剖分</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 

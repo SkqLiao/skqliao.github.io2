@@ -141,12 +141,12 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/BZOJ-2229/">「ZJOI 2011」BZOJ 2229 最小割</a>
+                <a class="has-link-black-ter" href="/BZOJ-1798/">「AHOI 2009」BZOJ 1798 维护序列</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:20.000Z">2019-02-06</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:33:02.000Z">2019-02-11</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
@@ -156,7 +156,7 @@
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/最小割树/">最小割树</a>
+                <a class="has-link-grey -link" href="/tags/线段树/">线段树</a>
                 </div>
                 
                 
@@ -164,15 +164,21 @@
         </div>
         
         <div class="content">
-            <p>$T$ 组数据，$Q$ 个询问。在无向图 $G$ 中，求有多少个点对 $(s,t)$ 使得它们之间的最小割不超过 $x$。</p>
-<p>$T\leq 10,n\leq 150,m\leq 3000,q\leq 30$</p>
+            <p>维护序列 $A[1…N]$ ，共 $M$ 次操作，分为三种：</p>
+<ul>
+<li>$A[l,r]$ 所有数加 $x$</li>
+<li>$A[l,r]$ 所有数乘 $x$</li>
+<li>$A[l,r]$ 求和</li>
+</ul>
+<p>答案对 $P$ 取模。</p>
+<p>$N,M\leq 100000,1\leq P\leq 1000000000$</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/BZOJ-2229/#more">查看全文</a>
+                <a class="button is-size-7 is-light" href="/BZOJ-1798/#more">查看全文</a>
                 </div>
             </div>
         </div>
@@ -191,12 +197,12 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/BZOJ-4519/">「CQOI 2016」BZOJ 4519 不同的最小割</a>
+                <a class="has-link-black-ter" href="/BZOJ-5148/">「BJWC 2018」BZOJ 5148 kakuro</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:12.000Z">2019-02-06</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:30:14.000Z">2019-02-11</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
@@ -206,7 +212,7 @@
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/最小割树/">最小割树</a>
+                <a class="has-link-grey -link" href="/tags/费用流/">费用流</a>
                 </div>
                 
                 
@@ -214,15 +220,32 @@
         </div>
         
         <div class="content">
-            <h2 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h2><p>在无向图 $G$ 中，对于任意点对 $(i,j)$ 有最小割 $cut(i,j)$，求有多少个数值不同的最小割。</p>
-<p>$N\leq 850,M\leq 8500$</p>
+            <p>kakuro是一个神奇的数独游戏，大致规则如下：</p>
+<ul>
+<li>$N\times M​$ 的网格图中，由一些格子为空格需要填数，一些格子填线索，一些格子什么都不填</li>
+<li>线索有两个方向，分别为右和下，线索的值表示该方向连续空格所填数之和</li>
+<li>对于任意一个空格，其左边与上边的一定存在一个格子为线</li>
+<li>参考下图</li>
+</ul>
+<p><img src="https://cdn.luogu.org/upload/pic/17946.png" alt="img"></p>
+<p>游戏规则：</p>
+<ul>
+<li><p>空格中填入正整数。</p>
+</li>
+<li><p>被斜线分开的方格中，右上角的数字等于其右侧邻接之连续方格中数字之和，左下角的数字等于其下方邻接之连续方格中数字之和。</p>
+</li>
+</ul>
+<p>Apia 给了Rimbaud 一个Kakuro 谜题。心不灵手不巧的Rimbaud 根本不会做Kakuro，所以只在空格里面填上了一些随机的数字，称这个为一个局面，即包含了谜题一开始给出的线索和后面填入的数字。</p>
+<p>现在Rimbaud 希望能修改这个局面使得她的答案是一个合法解。这个局面中有些数字(<strong>包括一开始的给出线索和后面填入的数字</strong>) 是可以修改的。每个数字都有个特定的代价，将这个数字加 $1$ 或者减 $1$ 都得付出这个数字对应的代价。注意对于一组合法解，必须满足游戏规则，也就是<strong>空格中填的数字必须是正整数并且满足和的条件，但是不要求不重复</strong>。</p>
+<p>Rimbaud 希望用最少的代价让这个局面变得合法，如果不可能那么输出<code>-1</code> 。</p>
+<p>$3 \leq n,m \leq 30$，保证初始局面中的每个数字不超过 $10^6$ ，保证每个数字的代价不超过 $10^6$ 。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/BZOJ-4519/#more">查看全文</a>
+                <a class="button is-size-7 is-light" href="/BZOJ-5148/#more">查看全文</a>
                 </div>
             </div>
         </div>
@@ -241,12 +264,12 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/BZOJ-4006/">「JLOI 2015」BZOJ 4006 管道连接</a>
+                <a class="has-link-black-ter" href="/BZOJ-2465/">「中山市选 2009」BZOJ 2465 小球</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:47:01.000Z">2019-02-06</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:22.000Z">2019-02-11</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
@@ -256,7 +279,7 @@
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/斯坦纳树/">斯坦纳树</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/状压DP/">状压DP</a>
+                <a class="has-link-grey -link" href="/tags/贪心/">贪心</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/费用流/">费用流</a>
                 </div>
                 
                 
@@ -264,15 +287,15 @@
         </div>
         
         <div class="content">
-            <p>无向图中有 $n$ 个 $m$ 条边，边有权值 $W_i$，有 $p$ 个点有编号 $A_i$。现要求选择一些边，使得（有编号且）编号相同的点联通，求最小权值和。</p>
-<p>$n\leq 1000,m\leq 3000,p\leq 10$</p>
+            <p>$n$ 个球放进 $m$ 个瓶子里，每个球有分数$A_i$，每个瓶子有容积 $B_i$，且瓶中球的分数都不能超过 $C_i$，求可放入球的最大数量以及在该条件下的最大分数和。</p>
+<p>$1\leq n\leq 200,0\leq m\leq 200,1 \leq p\leq 10^6, 0\leq c\leq 200, 1\leq q\leq 10^6$</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/BZOJ-4006/#more">查看全文</a>
+                <a class="button is-size-7 is-light" href="/BZOJ-2465/#more">查看全文</a>
                 </div>
             </div>
         </div>
@@ -291,12 +314,12 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/BZOJ-2595/">「WC 2008」BZOJ 2595 游览计划</a>
+                <a class="has-link-black-ter" href="/BZOJ-2466/">「中山市选 2009」BZOJ 2466 树</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:46:48.000Z">2019-02-06</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:14.000Z">2019-02-11</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
@@ -306,7 +329,7 @@
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/斯坦纳树/">斯坦纳树</a>
+                <a class="has-link-grey -link" href="/tags/树形DP/">树形DP</a>
                 </div>
                 
                 
@@ -314,15 +337,15 @@
         </div>
         
         <div class="content">
-            <p>在 $n\times m$ 的网格图上有 $k$ 个景点，图上选择任意一个点有费用 $a_{i,j}$。求选择若干个点使得这 $k​$ 个景点联通，最小化花费并输出方案。</p>
-<p>$n,m,k\leq 10$</p>
+            <p>树 $T$ 上的每个节点都一盏熄灭的灯，已知按下某个节点的开关会改变它与它相连的所有节点的灯的状态，求将所有灯变亮的最少操作次数。</p>
+<p>$1\leq n\leq 100$。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/BZOJ-2595/#more">查看全文</a>
+                <a class="button is-size-7 is-light" href="/BZOJ-2466/#more">查看全文</a>
                 </div>
             </div>
         </div>
@@ -341,22 +364,22 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/51nod-1601/">51nod 1601 完全图的最小生成树计数</a>
+                <a class="has-link-black-ter" href="/BZOJ-2464/">「中山市选 2009」 BZOJ 2464 小明的游戏</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:45:08.000Z">2019-02-06</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:08.000Z">2019-02-11</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/51nod/">51nod</a>
+                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                 </div>
                 
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/Pruefer/">Pruefer</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/Trie/">Trie</a>
+                <a class="has-link-grey -link" href="/tags/SPFA/">SPFA</a>
                 </div>
                 
                 
@@ -364,15 +387,15 @@
         </div>
         
         <div class="content">
-            <p>有 $n$ 个点，每个点有点权 $a_i$，点 $u,v$ 之间的边边权为 $a_u \oplus a_v$。求该完全图的最小生成树的权值与方案数。</p>
-<p>$n\leq 10^5,0\leq a_i&lt; 2^{30}$</p>
+            <p>在一个 $N\times M$ 的01网格图中，每次可以向相邻的格子移动，移动到同一类型的格子的花费为 $0$，否则为 $1$，求起点到终点的最小花费。</p>
+<p>$1\leq n, m\leq 500$</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/51nod-1601/#more">查看全文</a>
+                <a class="button is-size-7 is-light" href="/BZOJ-2464/#more">查看全文</a>
                 </div>
             </div>
         </div>
@@ -391,22 +414,22 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/JZOJ-5060/">JZOJ 5060 公路建设</a>
+                <a class="has-link-black-ter" href="/BZOJ-3166/">「HEOI 2013」BZOJ 3166 Alo</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T06:18:19.000Z">2019-02-06</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:59:09.000Z">2019-02-11</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/JZOJ/">JZOJ</a>
+                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                 </div>
                 
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/最小生成树/">最小生成树</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/线段树/">线段树</a>
+                <a class="has-link-grey -link" href="/tags/ST表/">ST表</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/可持久化Trie/">可持久化Trie</a>
                 </div>
                 
                 
@@ -414,15 +437,215 @@
         </div>
         
         <div class="content">
-            <p>有 $n$ 个点， $m$ 条边， $q$ 个询问。每次给定一个区间 $[l_i,r_i]$，求这些边构成的图在保证联通块个数最小的情况下所需最小花费。</p>
-<p>$n\leq 100,m\leq 100000,q\leq 15000$</p>
+            <p>给定长为 $N$ 的序列 $A[1 \cdots N]$，定义 $F[i,j]$ 为$A[i \cdots j]$ 的次大值与区间内另一个数异或的最大值。求 $A$ 所有子区间的 $F$ 最大值。</p>
+<p>$1\leq N\leq 50000, A_i\leq 10^9$</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/JZOJ-5060/#more">查看全文</a>
+                <a class="button is-size-7 is-light" href="/BZOJ-3166/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/BZOJ-5281/">「USACO2018 OPEN」BZOJ 5281 Talent Show</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:44:34.000Z">2019-02-11</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/分数规划/">分数规划</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/背包/">背包</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>$N$ 个点各有权值 $W_i$ 和 $T_i$，在其中选择任意多个点，在满足 $\sum{W_i} \geq A$ 的条件下求 $\sum{T_i}/\sum{W_i}$ 的最大值。</p>
+<p>$1\leq N\leq 250,1\leq W\leq 1000,1\leq W_i\leq 10^6,1\leq T_i\leq 10^3$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/BZOJ-5281/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/BZOJ-4753/">「JSOI 2016」BZOJ 4753 最佳团体</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:44:03.000Z">2019-02-11</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/分数规划/">分数规划</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/树形DP/">树形DP</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>每个点有一个父亲，它能被选择当且仅当它父亲被选择，0号节点默认被选择。每个点有收益 $X[i]$，代价 $Y[i]$。选择恰好 $K$ 个点（不算0号），使得其对应的 $\sum{X[i]}/\sum{Y[i]}$ 最大。</p>
+<p>$N\leq 2500$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/BZOJ-4753/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/BZOJ-3597/">「SCOI 2014」BZOJ 3597 方伯伯运椰子</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:41:55.000Z">2019-02-11</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/SPFA/">SPFA</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/分数规划/">分数规划</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>在有向无环图 $G$ 中，每条边的流量与容量相等。现可以修改每条边的容量，使得新的边依然满足流量与容量相等，且总流量不变。已知扩展/缩小每条边容量的单位花费，以及流量通过该边的单位花费。记原总花费 $X$，现在总花费 $Y$（包括修改容量和流量的花费），修改了 $K$ 条边的容量，则收益为 $w=(X-Y)/K$，求$w$的最大值。</p>
+<p>$N\leq 5000$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/BZOJ-3597/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/BZOJ-1486/">「HNOI 2009」BZOJ 1486 最小圈</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:40:59.000Z">2019-02-11</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/SPFA/">SPFA</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/二分/">二分</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>在有向图 $G$ 中，定义环 $a$ 的权值 $w_a=\sum{W[i]}/num$，其中 $W[i]$ 为 $a$ 上边的权值， $num$ 为 $a$ 上的节点数。求图中 $w$ 的最小值。</p>
+<p>$n\leq 1000,m\leq 5000,|W[i]|\leq 5000$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/BZOJ-1486/#more">查看全文</a>
                 </div>
             </div>
         </div>
@@ -442,7 +665,7 @@
         <div class="pagination-previous">
             <a class="is-flex-grow has-text-black-ter" href="/page/2/">上一页</a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
+        <div class="pagination-next">
             <a class="is-flex-grow has-text-black-ter" href="/page/4/">下一页</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
@@ -452,6 +675,10 @@
             <li><a class="pagination-link has-text-black-ter" href="/page/2/">2</a></li>
             
             <li><a class="pagination-link is-current" href="/page/3/">3</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/4/">4</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/5/">5</a></li>
             
         </ul>
     </nav>
@@ -501,7 +728,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        26
+                        45
                     </p>
                 </div>
             </div>
@@ -521,7 +748,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        22
+                        32
                     </p>
                 </div>
             </div>
@@ -636,7 +863,7 @@
                 <span class="level-item">BZOJ</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">21</span>
+                <span class="level-item tag">38</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/JZOJ/">
@@ -666,7 +893,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/SPFA/" style="font-size: 16.67px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 10px;">ST表</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分数规划/" style="font-size: 20px;">分数规划</a> <a href="/tags/前后缀/" style="font-size: 10px;">前后缀</a> <a href="/tags/可持久化Trie/" style="font-size: 16.67px;">可持久化Trie</a> <a href="/tags/字典树/" style="font-size: 10px;">字典树</a> <a href="/tags/差分约束/" style="font-size: 13.33px;">差分约束</a> <a href="/tags/斯坦纳树/" style="font-size: 16.67px;">斯坦纳树</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 16.67px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/树形DP/" style="font-size: 13.33px;">树形DP</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/线段树/" style="font-size: 13.33px;">线段树</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/费用流/" style="font-size: 16.67px;">费用流</a>
+        <a href="/tags/DFS/" style="font-size: 12.5px;">DFS</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/SPFA/" style="font-size: 15px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 12.5px;">ST表</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/set/" style="font-size: 10px;">set</a> <a href="/tags/二分/" style="font-size: 15px;">二分</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分数规划/" style="font-size: 17.5px;">分数规划</a> <a href="/tags/前后缀/" style="font-size: 10px;">前后缀</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/可持久化Trie/" style="font-size: 15px;">可持久化Trie</a> <a href="/tags/启发式合并/" style="font-size: 10px;">启发式合并</a> <a href="/tags/字典树/" style="font-size: 12.5px;">字典树</a> <a href="/tags/差分约束/" style="font-size: 12.5px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 15px;">平衡树</a> <a href="/tags/斯坦纳树/" style="font-size: 15px;">斯坦纳树</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 15px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/树上差分/" style="font-size: 10px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 15px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 12.5px;">树状数组</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/约数个数定理/" style="font-size: 10px;">约数个数定理</a> <a href="/tags/线段树/" style="font-size: 20px;">线段树</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/费用流/" style="font-size: 15px;">费用流</a> <a href="/tags/轻重链剖分/" style="font-size: 17.5px;">轻重链剖分</a>
     </div>
 </div>
 
@@ -684,13 +911,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:34:28.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-5293/" class="has-link-black-ter is-size-6">「BJOI 2018」BZOJ 5293 求和</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:19:27.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-1036/" class="has-link-black-ter is-size-6">「ZJOI 2008」BZOJ 1036 树的统计</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/LCA/">LCA</a>
+                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a> , <a class="has-link-grey -link" href="/tags/轻重链剖分/">轻重链剖分</a>
                     </p>
                 </div>
             </div>
@@ -699,13 +926,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:33:02.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-1798/" class="has-link-black-ter is-size-6">「AHOI 2009」BZOJ 1798 维护序列</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:17:52.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2028/" class="has-link-black-ter is-size-6">「SHOI 2009」BZOJ 2028 会场预约</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a>
+                        <a class="has-link-grey -link" href="/tags/set/">set</a> , <a class="has-link-grey -link" href="/tags/二分/">二分</a>
                     </p>
                 </div>
             </div>
@@ -714,13 +941,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:30:14.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-5148/" class="has-link-black-ter is-size-6">「BJWC 2018」BZOJ 5148 kakuro</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:15:14.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2243/" class="has-link-black-ter is-size-6">「SDOI 2011」BZOJ 2243 染色</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/费用流/">费用流</a>
+                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a> , <a class="has-link-grey -link" href="/tags/轻重链剖分/">轻重链剖分</a>
                     </p>
                 </div>
             </div>
@@ -729,13 +956,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:22.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-2465/" class="has-link-black-ter is-size-6">「中山市选 2009」BZOJ 2465 小球</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:12:45.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-1878/" class="has-link-black-ter is-size-6">「SDOI 2009」BZOJ 1878 HH的项链</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/贪心/">贪心</a> , <a class="has-link-grey -link" href="/tags/费用流/">费用流</a>
+                        <a class="has-link-grey -link" href="/tags/树状数组/">树状数组</a>
                     </p>
                 </div>
             </div>
@@ -744,13 +971,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:14.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-2466/" class="has-link-black-ter is-size-6">「中山市选 2009」BZOJ 2466 树</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:10:10.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2753/" class="has-link-black-ter is-size-6">「SCOI 2012」BZOJ 2753 滑雪与时间胶囊</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/树形DP/">树形DP</a>
+                        <a class="has-link-grey -link" href="/tags/最小生成树/">最小生成树</a>
                     </p>
                 </div>
             </div>
@@ -774,7 +1001,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">26</span>
+                    <span class="level-item tag">45</span>
                 </span>
             </a>
         </li>
@@ -791,6 +1018,13 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DFS/">
+                        <span class="tag">DFS</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LCA/">
@@ -816,7 +1050,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ST表/">
                         <span class="tag">ST表</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -828,9 +1062,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/set/">
+                        <span class="tag">set</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/二分/">
                         <span class="tag">二分</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -856,6 +1097,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/动态规划/">
+                        <span class="tag">动态规划</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/可持久化Trie/">
                         <span class="tag">可持久化Trie</span>
                         <span class="tag is-grey">3</span>
@@ -863,9 +1111,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/启发式合并/">
+                        <span class="tag">启发式合并</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/字典树/">
                         <span class="tag">字典树</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -873,6 +1128,13 @@
                     <a class="tags has-addons" href="/tags/差分约束/">
                         <span class="tag">差分约束</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/平衡树/">
+                        <span class="tag">平衡树</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -900,6 +1162,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小生成树/">
                         <span class="tag">最小生成树</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树上差分/">
+                        <span class="tag">树上差分</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -907,6 +1176,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形DP/">
                         <span class="tag">树形DP</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树状数组/">
+                        <span class="tag">树状数组</span>
                         <span class="tag is-grey">2</span>
                     </a>
                 </div>
@@ -919,15 +1195,29 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/约数个数定理/">
+                        <span class="tag">约数个数定理</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/背包/">
                         <span class="tag">背包</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/莫队/">
+                        <span class="tag">莫队</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -943,6 +1233,13 @@
                     <a class="tags has-addons" href="/tags/费用流/">
                         <span class="tag">费用流</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/轻重链剖分/">
+                        <span class="tag">轻重链剖分</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -972,13 +1269,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:34:28.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-5293/" class="has-link-black-ter is-size-6">「BJOI 2018」BZOJ 5293 求和</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:19:27.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-1036/" class="has-link-black-ter is-size-6">「ZJOI 2008」BZOJ 1036 树的统计</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/LCA/">LCA</a>
+                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a> , <a class="has-link-grey -link" href="/tags/轻重链剖分/">轻重链剖分</a>
                     </p>
                 </div>
             </div>
@@ -987,13 +1284,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:33:02.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-1798/" class="has-link-black-ter is-size-6">「AHOI 2009」BZOJ 1798 维护序列</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:17:52.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2028/" class="has-link-black-ter is-size-6">「SHOI 2009」BZOJ 2028 会场预约</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a>
+                        <a class="has-link-grey -link" href="/tags/set/">set</a> , <a class="has-link-grey -link" href="/tags/二分/">二分</a>
                     </p>
                 </div>
             </div>
@@ -1002,13 +1299,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:30:14.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-5148/" class="has-link-black-ter is-size-6">「BJWC 2018」BZOJ 5148 kakuro</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:15:14.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2243/" class="has-link-black-ter is-size-6">「SDOI 2011」BZOJ 2243 染色</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/费用流/">费用流</a>
+                        <a class="has-link-grey -link" href="/tags/线段树/">线段树</a> , <a class="has-link-grey -link" href="/tags/轻重链剖分/">轻重链剖分</a>
                     </p>
                 </div>
             </div>
@@ -1017,13 +1314,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:22.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-2465/" class="has-link-black-ter is-size-6">「中山市选 2009」BZOJ 2465 小球</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:12:45.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-1878/" class="has-link-black-ter is-size-6">「SDOI 2009」BZOJ 1878 HH的项链</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/贪心/">贪心</a> , <a class="has-link-grey -link" href="/tags/费用流/">费用流</a>
+                        <a class="has-link-grey -link" href="/tags/树状数组/">树状数组</a>
                     </p>
                 </div>
             </div>
@@ -1032,13 +1329,13 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:14.000Z">2019-02-11</time></div>
-                    <a href="/BZOJ-2466/" class="has-link-black-ter is-size-6">「中山市选 2009」BZOJ 2466 树</a>
+                    <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T11:10:10.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-2753/" class="has-link-black-ter is-size-6">「SCOI 2012」BZOJ 2753 滑雪与时间胶囊</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
-                        <a class="has-link-grey -link" href="/tags/树形DP/">树形DP</a>
+                        <a class="has-link-grey -link" href="/tags/最小生成树/">最小生成树</a>
                     </p>
                 </div>
             </div>
@@ -1062,7 +1359,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">26</span>
+                    <span class="level-item tag">45</span>
                 </span>
             </a>
         </li>
@@ -1079,6 +1376,13 @@
                 标签
             </h3>
             <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/DFS/">
+                        <span class="tag">DFS</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LCA/">
@@ -1104,7 +1408,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ST表/">
                         <span class="tag">ST表</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1116,9 +1420,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/set/">
+                        <span class="tag">set</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/二分/">
                         <span class="tag">二分</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1144,6 +1455,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/动态规划/">
+                        <span class="tag">动态规划</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/可持久化Trie/">
                         <span class="tag">可持久化Trie</span>
                         <span class="tag is-grey">3</span>
@@ -1151,9 +1469,16 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/启发式合并/">
+                        <span class="tag">启发式合并</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/字典树/">
                         <span class="tag">字典树</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1161,6 +1486,13 @@
                     <a class="tags has-addons" href="/tags/差分约束/">
                         <span class="tag">差分约束</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/平衡树/">
+                        <span class="tag">平衡树</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1188,6 +1520,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小生成树/">
                         <span class="tag">最小生成树</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树上差分/">
+                        <span class="tag">树上差分</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1195,6 +1534,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形DP/">
                         <span class="tag">树形DP</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树状数组/">
+                        <span class="tag">树状数组</span>
                         <span class="tag is-grey">2</span>
                     </a>
                 </div>
@@ -1207,15 +1553,29 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/约数个数定理/">
+                        <span class="tag">约数个数定理</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/背包/">
                         <span class="tag">背包</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/莫队/">
+                        <span class="tag">莫队</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1231,6 +1591,13 @@
                     <a class="tags has-addons" href="/tags/费用流/">
                         <span class="tag">费用流</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/轻重链剖分/">
+                        <span class="tag">轻重链剖分</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
