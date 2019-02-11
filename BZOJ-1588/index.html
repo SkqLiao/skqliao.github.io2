@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="给定长为 $N$ 的序列 $A$，最小化 $total = A_1+\sum\limits_{i=2}^{N}{|A_i-A_j|}(j &amp;lt; i)$ 。 $N\leq 32767, A_i\leq 1000000$。">
+    <meta name="description" content="给定长为 $N$ 的序列 $A$，最小化 $total = A_1+\sum\limits_{i=2}^{N}{|A_i-A_j|}(j &amp;lt; i)$ 。 $N\leq 32767, A_i\leq 1000000$">
 <meta name="keywords" content="平衡树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「HNOI 2002」BZOJ 1588 营业额统计">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1588/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="给定长为 $N$ 的序列 $A$，最小化 $total = A_1+\sum\limits_{i=2}^{N}{|A_i-A_j|}(j &amp;lt; i)$ 。 $N\leq 32767, A_i\leq 1000000$。">
+<meta property="og:description" content="给定长为 $N$ 的序列 $A$，最小化 $total = A_1+\sum\limits_{i=2}^{N}{|A_i-A_j|}(j &amp;lt; i)$ 。 $N\leq 32767, A_i\leq 1000000$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T10:55:31.252Z">
+<meta property="og:updated_time" content="2019-02-11T11:30:11.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「HNOI 2002」BZOJ 1588 营业额统计">
-<meta name="twitter:description" content="给定长为 $N$ 的序列 $A$，最小化 $total = A_1+\sum\limits_{i=2}^{N}{|A_i-A_j|}(j &amp;lt; i)$ 。 $N\leq 32767, A_i\leq 1000000$。">
+<meta name="twitter:description" content="给定长为 $N$ 的序列 $A$，最小化 $total = A_1+\sum\limits_{i=2}^{N}{|A_i-A_j|}(j &amp;lt; i)$ 。 $N\leq 32767, A_i\leq 1000000$">
 
 
 
@@ -165,7 +165,7 @@
         
         <div class="content">
             <p>给定长为 $N$ 的序列 $A$，最小化 $total = A_1+\sum\limits_{i=2}^{N}{|A_i-A_j|}(j &lt; i)$ 。</p>
-<p>$N\leq 32767, A_i\leq 1000000$。</p>
+<p>$N\leq 32767, A_i\leq 1000000$</p>
 <a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>用一棵可以查询前驱后继的Treap/Splay等数据结构维护。</p>
 <p>每次查询 $A_i$ 的前驱后继，取与 $A_i$ 的差较小的值计入 $total$，然后将 $A_i$ 插入。</p>

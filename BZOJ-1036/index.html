@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="一棵有 $N$ 个节点的树，每个节点有初始权值 $W_i$ 。共有 $M$ 次操作，分别为：  查询节点 $(u,v)$ 间所有节点的权值和 查询节点 $(u,v)$ 间所有节点的最大权值 修改 $W_u$ 为 $x$   $1\leq N\leq30000，0\leq M\leq 200000$，中途操作中保证每个节点的权值 $w$ 在$-30000$到$30000$之间。">
+    <meta name="description" content="一棵有 $N$ 个节点的树，每个节点有初始权值 $W_i$ 。共有 $M$ 次操作，分别为：  查询节点 $(u,v)$ 间所有节点的权值和 查询节点 $(u,v)$ 间所有节点的最大权值 修改 $W_u$ 为 $x$   $1\leq N\leq30000,0\leq M\leq 200000$，中途操作中保证每个节点的权值 $w$ 在$-30000$到$30000$之间。">
 <meta name="keywords" content="轻重链剖分,线段树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「ZJOI 2008」BZOJ 1036 树的统计">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1036/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="一棵有 $N$ 个节点的树，每个节点有初始权值 $W_i$ 。共有 $M$ 次操作，分别为：  查询节点 $(u,v)$ 间所有节点的权值和 查询节点 $(u,v)$ 间所有节点的最大权值 修改 $W_u$ 为 $x$   $1\leq N\leq30000，0\leq M\leq 200000$，中途操作中保证每个节点的权值 $w$ 在$-30000$到$30000$之间。">
+<meta property="og:description" content="一棵有 $N$ 个节点的树，每个节点有初始权值 $W_i$ 。共有 $M$ 次操作，分别为：  查询节点 $(u,v)$ 间所有节点的权值和 查询节点 $(u,v)$ 间所有节点的最大权值 修改 $W_u$ 为 $x$   $1\leq N\leq30000,0\leq M\leq 200000$，中途操作中保证每个节点的权值 $w$ 在$-30000$到$30000$之间。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T11:22:00.562Z">
+<meta property="og:updated_time" content="2019-02-11T11:28:47.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「ZJOI 2008」BZOJ 1036 树的统计">
-<meta name="twitter:description" content="一棵有 $N$ 个节点的树，每个节点有初始权值 $W_i$ 。共有 $M$ 次操作，分别为：  查询节点 $(u,v)$ 间所有节点的权值和 查询节点 $(u,v)$ 间所有节点的最大权值 修改 $W_u$ 为 $x$   $1\leq N\leq30000，0\leq M\leq 200000$，中途操作中保证每个节点的权值 $w$ 在$-30000$到$30000$之间。">
+<meta name="twitter:description" content="一棵有 $N$ 个节点的树，每个节点有初始权值 $W_i$ 。共有 $M$ 次操作，分别为：  查询节点 $(u,v)$ 间所有节点的权值和 查询节点 $(u,v)$ 间所有节点的最大权值 修改 $W_u$ 为 $x$   $1\leq N\leq30000,0\leq M\leq 200000$，中途操作中保证每个节点的权值 $w$ 在$-30000$到$30000$之间。">
 
 
 
@@ -170,7 +170,7 @@
 <li>查询节点 $(u,v)$ 间所有节点的最大权值</li>
 <li>修改 $W_u$ 为 $x$ </li>
 </ul>
-<p>$1\leq N\leq30000，0\leq M\leq 200000$，中途操作中保证每个节点的权值 $w$ 在$-30000$到$30000$之间。</p>
+<p>$1\leq N\leq30000,0\leq M\leq 200000$，中途操作中保证每个节点的权值 $w$ 在$-30000$到$30000$之间。</p>
 <a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>又是一道树链剖分模板题…</p>
 <p>树剖后，线段树维护区间最大值和区间和。</p>

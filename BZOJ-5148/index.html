@@ -7,20 +7,18 @@
 
 
 
-    <meta name="description" content="kakuro是一个神奇的数独游戏，大致规则如下：  $N\times M​$ 的网格图中，由一些格子为空格需要填数，一些格子填线索，一些格子什么都不填 线索有两个方向，分别为右和下，线索的值表示该方向连续空格所填数之和 对于任意一个空格，其左边与上边的一定存在一个格子为线 参考下图   游戏规则：  空格中填入正整数。  被斜线分开的方格中，右上角的数字等于其右侧邻接之连续方格中数字之和，左下角的">
+    <meta name="description" content="kakuro是一个神奇的数独游戏，大致规则如下：  $N\times M​$ 的网格图中，由一些格子为空格需要填数，一些格子填线索，一些格子什么都不填 线索有两个方向，分别为右和下，线索的值表示该方向连续空格所填数之和 对于任意一个空格，其左边与上边的一定存在一个格子为线  游戏规则：  空格中填入正整数。  被斜线分开的方格中，右上角的数字等于其右侧邻接之连续方格中数字之和，左下角的数字等于其下">
 <meta name="keywords" content="费用流">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「BJWC 2018」BZOJ 5148 kakuro">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-5148/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="kakuro是一个神奇的数独游戏，大致规则如下：  $N\times M​$ 的网格图中，由一些格子为空格需要填数，一些格子填线索，一些格子什么都不填 线索有两个方向，分别为右和下，线索的值表示该方向连续空格所填数之和 对于任意一个空格，其左边与上边的一定存在一个格子为线 参考下图   游戏规则：  空格中填入正整数。  被斜线分开的方格中，右上角的数字等于其右侧邻接之连续方格中数字之和，左下角的">
+<meta property="og:description" content="kakuro是一个神奇的数独游戏，大致规则如下：  $N\times M​$ 的网格图中，由一些格子为空格需要填数，一些格子填线索，一些格子什么都不填 线索有两个方向，分别为右和下，线索的值表示该方向连续空格所填数之和 对于任意一个空格，其左边与上边的一定存在一个格子为线  游戏规则：  空格中填入正整数。  被斜线分开的方格中，右上角的数字等于其右侧邻接之连续方格中数字之和，左下角的数字等于其下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://cdn.luogu.org/upload/pic/17946.png">
-<meta property="og:updated_time" content="2019-02-11T10:32:10.558Z">
+<meta property="og:updated_time" content="2019-02-11T11:33:13.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「BJWC 2018」BZOJ 5148 kakuro">
-<meta name="twitter:description" content="kakuro是一个神奇的数独游戏，大致规则如下：  $N\times M​$ 的网格图中，由一些格子为空格需要填数，一些格子填线索，一些格子什么都不填 线索有两个方向，分别为右和下，线索的值表示该方向连续空格所填数之和 对于任意一个空格，其左边与上边的一定存在一个格子为线 参考下图   游戏规则：  空格中填入正整数。  被斜线分开的方格中，右上角的数字等于其右侧邻接之连续方格中数字之和，左下角的">
-<meta name="twitter:image" content="https://cdn.luogu.org/upload/pic/17946.png">
+<meta name="twitter:description" content="kakuro是一个神奇的数独游戏，大致规则如下：  $N\times M​$ 的网格图中，由一些格子为空格需要填数，一些格子填线索，一些格子什么都不填 线索有两个方向，分别为右和下，线索的值表示该方向连续空格所填数之和 对于任意一个空格，其左边与上边的一定存在一个格子为线  游戏规则：  空格中填入正整数。  被斜线分开的方格中，右上角的数字等于其右侧邻接之连续方格中数字之和，左下角的数字等于其下">
 
 
 
@@ -171,9 +169,7 @@
 <li>$N\times M​$ 的网格图中，由一些格子为空格需要填数，一些格子填线索，一些格子什么都不填</li>
 <li>线索有两个方向，分别为右和下，线索的值表示该方向连续空格所填数之和</li>
 <li>对于任意一个空格，其左边与上边的一定存在一个格子为线</li>
-<li>参考下图</li>
 </ul>
-<p><img src="https://cdn.luogu.org/upload/pic/17946.png" alt="img"></p>
 <p>游戏规则：</p>
 <ul>
 <li><p>空格中填入正整数。</p>

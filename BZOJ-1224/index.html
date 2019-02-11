@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="从 $[1,M]$ 中选取 $N$ 个不同整数 $A_i$，使得 $\sum{\frac{1}{A_i}} = \frac{p}{q}$ 。求有多少种不同选法。 $1\leq p,q\leq 100$，$1\leq N\leq10$，$1\leq M\leq 50$  结果不超过 $10^5$">
+    <meta name="description" content="从 $[1,M]$ 中选取 $N$ 个不同整数 $A_i$，使得 $\sum{\frac{1}{A_i}} = \frac{p}{q}$ 。求有多少种不同选法。 $1\leq p,q\leq 100$，$1\leq N\leq10$，$1\leq M\leq 50$，结果不超过 $10^5$。">
 <meta name="keywords" content="DFS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「HNOI 2002」BZOJ 1224 彩票">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1224/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="从 $[1,M]$ 中选取 $N$ 个不同整数 $A_i$，使得 $\sum{\frac{1}{A_i}} = \frac{p}{q}$ 。求有多少种不同选法。 $1\leq p,q\leq 100$，$1\leq N\leq10$，$1\leq M\leq 50$  结果不超过 $10^5$">
+<meta property="og:description" content="从 $[1,M]$ 中选取 $N$ 个不同整数 $A_i$，使得 $\sum{\frac{1}{A_i}} = \frac{p}{q}$ 。求有多少种不同选法。 $1\leq p,q\leq 100$，$1\leq N\leq10$，$1\leq M\leq 50$，结果不超过 $10^5$。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T10:54:09.924Z">
+<meta property="og:updated_time" content="2019-02-11T11:30:29.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「HNOI 2002」BZOJ 1224 彩票">
-<meta name="twitter:description" content="从 $[1,M]$ 中选取 $N$ 个不同整数 $A_i$，使得 $\sum{\frac{1}{A_i}} = \frac{p}{q}$ 。求有多少种不同选法。 $1\leq p,q\leq 100$，$1\leq N\leq10$，$1\leq M\leq 50$  结果不超过 $10^5$">
+<meta name="twitter:description" content="从 $[1,M]$ 中选取 $N$ 个不同整数 $A_i$，使得 $\sum{\frac{1}{A_i}} = \frac{p}{q}$ 。求有多少种不同选法。 $1\leq p,q\leq 100$，$1\leq N\leq10$，$1\leq M\leq 50$，结果不超过 $10^5$。">
 
 
 
@@ -160,8 +160,7 @@
         
         <div class="content">
             <p>从 $[1,M]$ 中选取 $N$ 个不同整数 $A_i$，使得 $\sum{\frac{1}{A_i}} = \frac{p}{q}$ 。求有多少种不同选法。</p>
-<p>$1\leq p,q\leq 100$，$1\leq N\leq10$，$1\leq M\leq 50$ </p>
-<p>结果不超过 $10^5$ </p>
+<p>$1\leq p,q\leq 100$，$1\leq N\leq10$，$1\leq M\leq 50$，结果不超过 $10^5$。 </p>
 <a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>看到这个数据范围，$N\leq 10$，比较显然是一个搜索+剪枝。</p>
 <p>那么如何剪枝？</p>

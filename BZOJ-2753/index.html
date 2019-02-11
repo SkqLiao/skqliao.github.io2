@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
 <meta property="og:description" content="有 $N$ 个点，每个点存在权值 $H_i$ 。有 $M$ 条边 $(u, v, w)$ ，如果 $H_u &amp;lt; H_v$ ，那么这条边就是 $u\rightarrow v$ ，反之是 $v \rightarrow u$ 的。如果 $H_u = H_v$ ，那么这是一条无向边。 求以 $1$ 为根节点的生成树的最大节点个数，以及在节点数最大的情况下的最小权值和。 $1\leq N\leq 10">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T11:14:44.249Z">
+<meta property="og:updated_time" content="2019-02-11T11:29:16.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「SCOI 2012」BZOJ 2753 滑雪与时间胶囊">
 <meta name="twitter:description" content="有 $N$ 个点，每个点存在权值 $H_i$ 。有 $M$ 条边 $(u, v, w)$ ，如果 $H_u &amp;lt; H_v$ ，那么这条边就是 $u\rightarrow v$ ，反之是 $v \rightarrow u$ 的。如果 $H_u = H_v$ ，那么这是一条无向边。 求以 $1$ 为根节点的生成树的最大节点个数，以及在节点数最大的情况下的最小权值和。 $1\leq N\leq 10">
@@ -166,7 +166,7 @@
         <div class="content">
             <p>有 $N$ 个点，每个点存在权值 $H_i$ 。有 $M$ 条边 $(u, v, w)$ ，如果 $H_u &lt; H_v$ ，那么这条边就是 $u\rightarrow v$ ，反之是 $v \rightarrow u$ 的。如果 $H_u = H_v$ ，那么这是一条无向边。</p>
 <p>求以 $1$ 为根节点的生成树的最大节点个数，以及在节点数最大的情况下的最小权值和。</p>
-<p>$1\leq N\leq 10^5$，$1\leq M\leq 10^ 6$， $1\leq H_i\leq 10^9$</p>
+<p>$1\leq N\leq 10^5,1\leq M\leq 10^ 6,1\leq H_i\leq 10^9$</p>
 <a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="最小树形图"><a href="#最小树形图" class="headerlink" title="最小树形图"></a>最小树形图</h3><p>如果不看数据范围，这是一个裸的最小树形图（无向边拆成两条有向边）。</p>
 <p>先用<code>bfs</code>跑一遍可以得到节点 $1$ 可以到达的所有点，即第一问。复杂度 $O(N)$。</p>

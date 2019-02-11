@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
 <meta property="og:description" content="有两个正整数集合 $A,B$ ，起初都是它们都是空集。 现按顺序插入 $N$ 个数 $A[1…N]$，每个数属于 $A$ 或 $B$ 。 如果插入的数 $x$ 属于集合 $A$ ，当集合 $B$ 不为空时，删去 $B$ 中 与 $x$ 差绝对值最小的数 $y$ 。如果存在 $b = x+a,c=x-a$ ，则优先删去 $c$ 。该操作的代价为两数差的绝对值。当集合 $B$ 为空时，将 $x$ 直接">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T10:58:42.597Z">
+<meta property="og:updated_time" content="2019-02-11T11:29:53.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「HNOI 2004」BZOJ 1208 宠物收养所">
 <meta name="twitter:description" content="有两个正整数集合 $A,B$ ，起初都是它们都是空集。 现按顺序插入 $N$ 个数 $A[1…N]$，每个数属于 $A$ 或 $B$ 。 如果插入的数 $x$ 属于集合 $A$ ，当集合 $B$ 不为空时，删去 $B$ 中 与 $x$ 差绝对值最小的数 $y$ 。如果存在 $b = x+a,c=x-a$ ，则优先删去 $c$ 。该操作的代价为两数差的绝对值。当集合 $B$ 为空时，将 $x$ 直接">
@@ -169,7 +169,7 @@
 <p>如果插入的数 $x$ 属于集合 $A$ ，当集合 $B$ 不为空时，删去 $B$ 中 与 $x$ 差绝对值最小的数 $y$ 。如果存在 $b = x+a,c=x-a$ ，则优先删去 $c$ 。该操作的代价为两数差的绝对值。当集合 $B$ 为空时，将 $x$ 直接插入集合 $A$ 中，没有代价。</p>
 <p>如果插入的数属于集合 $B$ ，操作同理。</p>
 <p>求插入完 $N$ 个数后的代价，答案对 $1000000$ 取模。</p>
-<p>$N\leq 80000,0&lt; A_i&lt; 2^{31}$ 。</p>
+<p>$N\leq 80000,0&lt; A_i&lt; 2^{31}$ </p>
 <a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>根据题意可得，在任何时候集合 $A,B$ 至少有一个为空，因此只需要维护一个集合。</p>
 <p>通过Treap等数据结构维护当前有数的集合。每次插入 $x$ 后，查询集合中 $x$ 的前驱后继，取较小值删去，并计算代价。</p>

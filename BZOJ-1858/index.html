@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
 <meta property="og:description" content="在一个01序列中，有五种变换操作和询问操作：  0 a b 把$[a, b]$区间内的所有数全变成$0$  1 a b 把$[a, b]$区间内的所有数全变成$1$  2 a b 把$[a,b]$区间内的所有数全部取反，也就是说把所有的$0$变成$1$，把所有的$1$变成$0$  3 a b 询问$[a, b]$区间内总共有多少个$1$  4 a b 询问$[a, b]$区间内最多有多少个连续的$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T11:12:12.876Z">
+<meta property="og:updated_time" content="2019-02-11T11:29:28.539Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「SCOI 2010」BZOJ 1858 序列操作">
 <meta name="twitter:description" content="在一个01序列中，有五种变换操作和询问操作：  0 a b 把$[a, b]$区间内的所有数全变成$0$  1 a b 把$[a, b]$区间内的所有数全变成$1$  2 a b 把$[a,b]$区间内的所有数全部取反，也就是说把所有的$0$变成$1$，把所有的$1$变成$0$  3 a b 询问$[a, b]$区间内总共有多少个$1$  4 a b 询问$[a, b]$区间内最多有多少个连续的$">
@@ -178,6 +178,7 @@
 </li>
 </ul>
 <p>$1\leq  n, m\leq 100000$</p>
+<a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>这种区间操作、区间查询，且满足区间加法的题，再看一下 $1e5$ 的数据范围，很显然是用线段树来维护。</p>
 <p>维护区间中 $1$ 的数目（即区间和），左右连续 $0,1$ 的长度，最长的连续的 $0,1$ 的长度，当然还有取反和重置 $0/1$ 的标记。</p>
 <p>那么合并的时候，连续的 $0,1$ 有两种合并方式：继承左右，或者左右合并（即左区间的右+右区间的左，这两段拼起来是连续的）。</p>

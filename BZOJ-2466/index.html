@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="树 $T$ 上的每个节点都一盏熄灭的灯，已知按下某个节点的开关会改变它与它相连的所有节点的灯的状态，求将所有灯变亮的最少操作次数。 $1\leq n\leq 100$。">
+    <meta name="description" content="树 $T$ 上的每个节点都一盏熄灭的灯，已知按下某个节点的开关会改变它与它相连的所有节点的灯的状态，求将所有灯变亮的最少操作次数。 $1\leq n\leq 100$">
 <meta name="keywords" content="树形DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「中山市选 2009」BZOJ 2466 树">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-2466/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="树 $T$ 上的每个节点都一盏熄灭的灯，已知按下某个节点的开关会改变它与它相连的所有节点的灯的状态，求将所有灯变亮的最少操作次数。 $1\leq n\leq 100$。">
+<meta property="og:description" content="树 $T$ 上的每个节点都一盏熄灭的灯，已知按下某个节点的开关会改变它与它相连的所有节点的灯的状态，求将所有灯变亮的最少操作次数。 $1\leq n\leq 100$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T11:23:35.862Z">
+<meta property="og:updated_time" content="2019-02-11T11:33:28.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「中山市选 2009」BZOJ 2466 树">
-<meta name="twitter:description" content="树 $T$ 上的每个节点都一盏熄灭的灯，已知按下某个节点的开关会改变它与它相连的所有节点的灯的状态，求将所有灯变亮的最少操作次数。 $1\leq n\leq 100$。">
+<meta name="twitter:description" content="树 $T$ 上的每个节点都一盏熄灭的灯，已知按下某个节点的开关会改变它与它相连的所有节点的灯的状态，求将所有灯变亮的最少操作次数。 $1\leq n\leq 100$">
 
 
 
@@ -165,7 +165,7 @@
         
         <div class="content">
             <p>树 $T$ 上的每个节点都一盏熄灭的灯，已知按下某个节点的开关会改变它与它相连的所有节点的灯的状态，求将所有灯变亮的最少操作次数。</p>
-<p>$1\leq n\leq 100$。</p>
+<p>$1\leq n\leq 100$</p>
 <a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>发现每个操作都是独立的，也就是说至多每个开关按一次。</p>
 <p>再根据按开关会改变所有与它相连的灯的状态，想到一定是自叶子到根进行操作，那么就树形DP。</p>
