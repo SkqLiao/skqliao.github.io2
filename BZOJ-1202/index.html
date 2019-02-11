@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。">
+    <meta name="description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。 $N\leq 100,M\leq 1000$">
 <meta name="keywords" content="差分约束">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【差分约束】[HNOI 2005] BZOJ 1202 狡猾的商人">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1202/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。">
+<meta property="og:description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。 $N\leq 100,M\leq 1000$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-10T15:10:59.114Z">
+<meta property="og:updated_time" content="2019-02-11T01:49:04.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【差分约束】[HNOI 2005] BZOJ 1202 狡猾的商人">
-<meta name="twitter:description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。">
+<meta name="twitter:description" content="给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。 $N\leq 100,M\leq 1000$">
 
 
 
@@ -151,7 +151,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 403 个字)
+                    3 分钟 读完 (大约 399 个字)
                 </span>
                 
                 
@@ -165,10 +165,10 @@
         </h1>
         <div class="content">
             <p>给定 $M$ 组关于 $l, r, x$ 的等式，意为 $\sum\limits_{i=l}^{r}{A_i}=x$，判断是否可以构造出 $A[1\cdots N]$ 满足这些等式。</p>
+<p>$N\leq 100,M\leq 1000$</p>
 <a id="more"></a>
-<h2 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h2><p>$N\leq 100,M\leq 1000$</p>
 <h2 id="题目链接"><a href="#题目链接" class="headerlink" title="题目链接"></a>题目链接</h2><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1202" target="_blank" rel="noopener">BZOJ 1202</a></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>将等式写成前缀和的形式，用 $Sum[i]$ 表示 $\sum\limits_{j=1}^{i}{A_j}$ ，等式化为 $Sum[r] - Sum[l-1] = x$。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>将等式写成前缀和的形式，用 $Sum[i]$ 表示 $\sum\limits_{j=1}^{i}{A_j}$ ，等式化为 $Sum[r] - Sum[l-1] = x$。</p>
 <p>可以将等式变形成两个不等式， $Sum[r] - Sum[l-1] \geq x$ 和 $Sum[l - 1] - Sum[r] \geq -x$ 。</p>
 <p>那么原问题就转化为差分约束系统求解模型。连接边 $(l - 1, r, x)$ 和 $(r, l - 1, -x)$ ，SPFA判断是否存在负环，复杂度 $O(NM)$ 。</p>
 <h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">100</span> + <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXM = <span class="hljs-number">1000</span> + <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> N, M;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> v, w, nxt;</span><br><span class="line">&#125; E[MAXM * <span class="hljs-number">3</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> H[MAXN], cntE;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">    E[++cntE] = (Edge) &#123;v, w, H[u]&#125;;</span><br><span class="line">    H[u] = cntE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; Que;</span><br><span class="line"><span class="hljs-keyword">int</span> Dis[MAXN], Cnt[MAXN], Inq[MAXN];</span><br><span class="line"><span class="hljs-keyword">bool</span> Vis[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">spfa</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">while</span> (!Que.empty()) &#123;</span><br><span class="line">        Que.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Dis, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> Dis);</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Inq, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> Inq);</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Cnt, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> Cnt);</span><br><span class="line">    Que.push(N + <span class="hljs-number">1</span>);</span><br><span class="line">    Dis[N + <span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (!Que.empty()) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = Que.front(); Que.pop();</span><br><span class="line">        Inq[x] = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = H[x]; i; i = E[i].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> &amp;v = E[i].v;</span><br><span class="line">            <span class="hljs-keyword">if</span> (Dis[v] &gt; Dis[x] + E[i].w) &#123;</span><br><span class="line">                Dis[v] = Dis[x] + E[i].w;</span><br><span class="line">                Cnt[v] = Cnt[x] + <span class="hljs-number">1</span>;</span><br><span class="line">                <span class="hljs-keyword">if</span> (Cnt[v] &gt; n) &#123;</span><br><span class="line">                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="hljs-keyword">if</span> (!Inq[v]) &#123;</span><br><span class="line">                    Inq[v] = <span class="hljs-number">1</span>;</span><br><span class="line">                    Que.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    cntE = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(H, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> H);</span><br><span class="line">    n = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Vis, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> Vis);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> T, u, v, w;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="hljs-keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;N, &amp;M);</span><br><span class="line">        init();</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= M; ++i) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">            <span class="hljs-keyword">if</span> (!Vis[u - <span class="hljs-number">1</span>]) &#123;</span><br><span class="line">                Vis[u - <span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;</span><br><span class="line">                ++n;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!Vis[v]) &#123;</span><br><span class="line">                Vis[v] = <span class="hljs-number">1</span>;</span><br><span class="line">                ++n;</span><br><span class="line">            &#125;</span><br><span class="line">            addEdge(u - <span class="hljs-number">1</span>, v, -w);</span><br><span class="line">            addEdge(v, u - <span class="hljs-number">1</span>, w);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">            addEdge(N + <span class="hljs-number">1</span>, i, <span class="hljs-number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (spfa()) &#123;</span><br><span class="line">            <span class="hljs-built_in">puts</span>(<span class="hljs-string">"true"</span>);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-built_in">puts</span>(<span class="hljs-string">"false"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -278,7 +278,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        11
+                        20
                     </p>
                 </div>
             </div>
@@ -298,7 +298,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        9
+                        19
                     </p>
                 </div>
             </div>
@@ -413,7 +413,7 @@
                 <span class="level-item">BZOJ</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">7</span>
+                <span class="level-item tag">14</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/JZOJ/">
@@ -443,7 +443,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/差分约束/" style="font-size: 15px;">差分约束</a> <a href="/tags/斯坦纳树/" style="font-size: 20px;">斯坦纳树</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 20px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a>
+        <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/SPFA/" style="font-size: 13.33px;">SPFA</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/二分/" style="font-size: 10px;">二分</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分数规划/" style="font-size: 20px;">分数规划</a> <a href="/tags/前后缀/" style="font-size: 10px;">前后缀</a> <a href="/tags/可持久化Trie/" style="font-size: 13.33px;">可持久化Trie</a> <a href="/tags/字典树/" style="font-size: 10px;">字典树</a> <a href="/tags/差分约束/" style="font-size: 13.33px;">差分约束</a> <a href="/tags/斯坦纳树/" style="font-size: 16.67px;">斯坦纳树</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 16.67px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/树形DP/" style="font-size: 10px;">树形DP</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/线段树/" style="font-size: 10px;">线段树</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/费用流/" style="font-size: 10px;">费用流</a>
     </div>
 </div>
 
@@ -461,8 +461,8 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T15:09:34.000Z">2019-02-10</time></div>
-                    <a href="/BZOJ-2330/" class="has-link-black-ter is-size-6">【差分约束】[SCOI 2011] BZOJ 2330 糖果</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:44:34.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-5281/" class="has-link-black-ter is-size-6">【分数规划+背包】[USACO2018 OPEN] BZOJ 5281 Talent Show</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -473,8 +473,8 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T15:03:07.000Z">2019-02-10</time></div>
-                    <a href="/BZOJ-1202/" class="has-link-black-ter is-size-6">【差分约束】[HNOI 2005] BZOJ 1202 狡猾的商人</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:44:03.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-4753/" class="has-link-black-ter is-size-6">【分数规划+树形DP】[JSOI 2016] BZOJ 4753 最佳团体</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -485,8 +485,8 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T14:58:35.000Z">2019-02-10</time></div>
-                    <a href="/BZOJ-2127/" class="has-link-black-ter is-size-6">【最小割】[2010 集训队测验] BZOJ 2127 文理分科</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:41:55.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-3597/" class="has-link-black-ter is-size-6">【分数规划+SPFA】[SCOI 2014] BZOJ 3597 方伯伯运椰子</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -497,10 +497,10 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:03:06.000Z">2019-02-06</time></div>
-                    <a href="/Steiner-Tree/" class="has-link-black-ter is-size-6">斯坦纳树学习笔记（Steiner Tree）</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:40:59.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-1486/" class="has-link-black-ter is-size-6">【二分+SPFA】[HNOI 2009] BZOJ 1486 最小圈</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
                 </div>
             </div>
@@ -509,10 +509,10 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:02:28.000Z">2019-02-06</time></div>
-                    <a href="/Gomory-Hu-Tree/" class="has-link-black-ter is-size-6">最小割树学习笔记（Gomory-Hu Tree）</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:40:14.574Z">2019-02-11</time></div>
+                    <a href="/BZOJ-3166/" class="has-link-black-ter is-size-6"></a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
+                        
                     </p>
                 </div>
             </div>
@@ -536,7 +536,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">11</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -562,8 +562,57 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/SPFA/">
+                        <span class="tag">SPFA</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Trie/">
                         <span class="tag">Trie</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二分/">
+                        <span class="tag">二分</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分块/">
+                        <span class="tag">分块</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分数规划/">
+                        <span class="tag">分数规划</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/前后缀/">
+                        <span class="tag">前后缀</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/可持久化Trie/">
+                        <span class="tag">可持久化Trie</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/字典树/">
+                        <span class="tag">字典树</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -604,6 +653,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/树形DP/">
+                        <span class="tag">树形DP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/状压DP/">
                         <span class="tag">状压DP</span>
                         <span class="tag is-grey">1</span>
@@ -613,6 +669,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/背包/">
+                        <span class="tag">背包</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/费用流/">
+                        <span class="tag">费用流</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -643,8 +713,8 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T15:09:34.000Z">2019-02-10</time></div>
-                    <a href="/BZOJ-2330/" class="has-link-black-ter is-size-6">【差分约束】[SCOI 2011] BZOJ 2330 糖果</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:44:34.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-5281/" class="has-link-black-ter is-size-6">【分数规划+背包】[USACO2018 OPEN] BZOJ 5281 Talent Show</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -655,8 +725,8 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T15:03:07.000Z">2019-02-10</time></div>
-                    <a href="/BZOJ-1202/" class="has-link-black-ter is-size-6">【差分约束】[HNOI 2005] BZOJ 1202 狡猾的商人</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:44:03.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-4753/" class="has-link-black-ter is-size-6">【分数规划+树形DP】[JSOI 2016] BZOJ 4753 最佳团体</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -667,8 +737,8 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T14:58:35.000Z">2019-02-10</time></div>
-                    <a href="/BZOJ-2127/" class="has-link-black-ter is-size-6">【最小割】[2010 集训队测验] BZOJ 2127 文理分科</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:41:55.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-3597/" class="has-link-black-ter is-size-6">【分数规划+SPFA】[SCOI 2014] BZOJ 3597 方伯伯运椰子</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
@@ -679,10 +749,10 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:03:06.000Z">2019-02-06</time></div>
-                    <a href="/Steiner-Tree/" class="has-link-black-ter is-size-6">斯坦纳树学习笔记（Steiner Tree）</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:40:59.000Z">2019-02-11</time></div>
+                    <a href="/BZOJ-1486/" class="has-link-black-ter is-size-6">【二分+SPFA】[HNOI 2009] BZOJ 1486 最小圈</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                     </p>
                 </div>
             </div>
@@ -691,10 +761,10 @@
         <article class="media">
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-06T07:02:28.000Z">2019-02-06</time></div>
-                    <a href="/Gomory-Hu-Tree/" class="has-link-black-ter is-size-6">最小割树学习笔记（Gomory-Hu Tree）</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:40:14.574Z">2019-02-11</time></div>
+                    <a href="/BZOJ-3166/" class="has-link-black-ter is-size-6"></a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/学习笔记/">学习笔记</a>
+                        
                     </p>
                 </div>
             </div>
@@ -718,7 +788,7 @@
                     <span class="level-item">二月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">11</span>
+                    <span class="level-item tag">20</span>
                 </span>
             </a>
         </li>
@@ -744,8 +814,57 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/SPFA/">
+                        <span class="tag">SPFA</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/Trie/">
                         <span class="tag">Trie</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二分/">
+                        <span class="tag">二分</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分块/">
+                        <span class="tag">分块</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分数规划/">
+                        <span class="tag">分数规划</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/前后缀/">
+                        <span class="tag">前后缀</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/可持久化Trie/">
+                        <span class="tag">可持久化Trie</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/字典树/">
+                        <span class="tag">字典树</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -786,6 +905,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/树形DP/">
+                        <span class="tag">树形DP</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/状压DP/">
                         <span class="tag">状压DP</span>
                         <span class="tag is-grey">1</span>
@@ -795,6 +921,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/背包/">
+                        <span class="tag">背包</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/费用流/">
+                        <span class="tag">费用流</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
