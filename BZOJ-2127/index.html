@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j},D_{i,j}$（都选$0$ 或 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。 $n,m\leq 100,A,B,C,D,E,F_{i,j}\leq 5">
+    <meta name="description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。 $n,m\leq 100,A,B,C,D,E,F_{i,j">
 <meta name="keywords" content="最小割">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「2010 集训队测验」BZOJ 2127 文理分科">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-2127/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j},D_{i,j}$（都选$0$ 或 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。 $n,m\leq 100,A,B,C,D,E,F_{i,j}\leq 5">
+<meta property="og:description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。 $n,m\leq 100,A,B,C,D,E,F_{i,j">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T15:18:55.885Z">
+<meta property="og:updated_time" content="2019-02-12T09:37:52.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「2010 集训队测验」BZOJ 2127 文理分科">
-<meta name="twitter:description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j},D_{i,j}$（都选$0$ 或 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。 $n,m\leq 100,A,B,C,D,E,F_{i,j}\leq 5">
+<meta name="twitter:description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。 $n,m\leq 100,A,B,C,D,E,F_{i,j">
 
 
 
@@ -164,7 +164,7 @@
         </div>
         
         <div class="content">
-            <p>在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j},D_{i,j}$（都选$0$ 或 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。</p>
+            <p>在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。</p>
 <p>$n,m\leq 100,A,B,C,D,E,F_{i,j}\leq 5000$</p>
 <a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>这是集训队论文《浅谈一类最小割问题》中的例题，也是网络流建模之二元关系的一道典型题目。</p>

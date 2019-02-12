@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果一个格子和与它四相邻的格子选择相同，则额外获得收益 $C_{i,j},D_{i,j}$（都选$0$ 或 $1$）。求总收益的最大值。 $n,m\leq 100,A_{i,j},B_{i,j},C_{i,j},D_{i,j}\leq 500$">
+    <meta name="description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0$ 或 $1$，分别获得收益 $A_{i,j}$ 与 $B_{i,j}$。如果一个格子和与它四相邻的格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$）。求总收益的最大值。 $n,m\leq 100,A_{i,j},B_{i,j},C_{i,j},D_{i,j}\leq 500$">
 <meta name="keywords" content="最小割">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「湖南省队训练 2013」BZOJ 3894 文理分科">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-3894/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果一个格子和与它四相邻的格子选择相同，则额外获得收益 $C_{i,j},D_{i,j}$（都选$0$ 或 $1$）。求总收益的最大值。 $n,m\leq 100,A_{i,j},B_{i,j},C_{i,j},D_{i,j}\leq 500$">
+<meta property="og:description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0$ 或 $1$，分别获得收益 $A_{i,j}$ 与 $B_{i,j}$。如果一个格子和与它四相邻的格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$）。求总收益的最大值。 $n,m\leq 100,A_{i,j},B_{i,j},C_{i,j},D_{i,j}\leq 500$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T15:18:33.481Z">
+<meta property="og:updated_time" content="2019-02-12T09:38:35.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「湖南省队训练 2013」BZOJ 3894 文理分科">
-<meta name="twitter:description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果一个格子和与它四相邻的格子选择相同，则额外获得收益 $C_{i,j},D_{i,j}$（都选$0$ 或 $1$）。求总收益的最大值。 $n,m\leq 100,A_{i,j},B_{i,j},C_{i,j},D_{i,j}\leq 500$">
+<meta name="twitter:description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0$ 或 $1$，分别获得收益 $A_{i,j}$ 与 $B_{i,j}$。如果一个格子和与它四相邻的格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$）。求总收益的最大值。 $n,m\leq 100,A_{i,j},B_{i,j},C_{i,j},D_{i,j}\leq 500$">
 
 
 
@@ -164,7 +164,7 @@
         </div>
         
         <div class="content">
-            <p>在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果一个格子和与它四相邻的格子选择相同，则额外获得收益 $C_{i,j},D_{i,j}$（都选$0$ 或 $1$）。求总收益的最大值。</p>
+            <p>在 $n\times m$ 的矩阵中，每个格子可以选择 $0$ 或 $1$，分别获得收益 $A_{i,j}$ 与 $B_{i,j}$。如果一个格子和与它四相邻的格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$）。求总收益的最大值。</p>
 <p>$n,m\leq 100,A_{i,j},B_{i,j},C_{i,j},D_{i,j}\leq 500$</p>
 <a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>还是二元关系的题目，相比于happiness要复杂一些。</p>
