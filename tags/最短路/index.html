@@ -2,23 +2,22 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>「2010 集训队测验」BZOJ 2127 文理分科 - Skqliao&#39;s Blog</title>
+<title>标签: 最短路 - Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。 $n,m\leq 100,A,B,C,D,E,F_{i,j">
-<meta name="keywords" content="二元关系">
-<meta property="og:type" content="article">
-<meta property="og:title" content="「2010 集训队测验」BZOJ 2127 文理分科">
-<meta property="og:url" content="https://skqliao.github.io/BZOJ-2127/index.html">
+    <meta name="description" content="An Oier&apos;s Blog">
+<meta name="keywords" content="OI">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Skqliao&#39;s Blog">
+<meta property="og:url" content="https://skqliao.github.io/tags/最短路/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。 $n,m\leq 100,A,B,C,D,E,F_{i,j">
+<meta property="og:description" content="An Oier&apos;s Blog">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-12T10:48:29.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「2010 集训队测验」BZOJ 2127 文理分科">
-<meta name="twitter:description" content="在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。 $n,m\leq 100,A,B,C,D,E,F_{i,j">
+<meta name="twitter:title" content="Skqliao&#39;s Blog">
+<meta name="twitter:description" content="An Oier&apos;s Blog">
 
 
 
@@ -136,17 +135,28 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">最短路</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                「2010 集训队测验」BZOJ 2127 文理分科
+                <a class="has-link-black-ter" href="/BZOJ-1001/">「ICPC-Beijing 2006」BZOJ 1001 狼抓兔子</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-10T14:58:35.000Z">2019-02-10</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-13T10:23:03.000Z">2019-02-13</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
@@ -156,7 +166,7 @@
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/二元关系/">二元关系</a>
+                <a class="has-link-grey -link" href="/tags/对偶图/">对偶图</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/最短路/">最短路</a>
                 </div>
                 
                 
@@ -164,83 +174,27 @@
         </div>
         
         <div class="content">
-            <p>在 $n\times m$ 的矩阵中，每个格子可以选择 $0/1$，分别获得收益 $A_{i,j},B_{i,j}$。如果上下两个格子选择相同，则额外获得收益 $C_{i,j}$ 与 $D_{i,j}$（都选 $0$ 或都选 $1$），如果左右两个格子选择相同，则额外获得收益 $E_{i,j}$ 与 $F_{i,j}$。求总收益的最大值。</p>
-<p>$n,m\leq 100,A,B,C,D,E,F_{i,j}\leq 5000$</p>
-<a id="more"></a>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>这是集训队论文《浅谈一类最小割问题》中的例题，也是网络流建模之二元关系的一道典型题目。</p>
-<p>根据相关建图模型，对于每个点 $x$，分别与 $S,T$ 连边，割去 $(S,x)$表示选择文科，割去 $(x,T)$ 表示选择理科。</p>
-<p>由于只能求最小割，因此可以先累计所有收益再减去最小割得到最大值。</p>
-<p>由于每个点与相邻的点之间的选择会影响结果，因此 $x$ 与相邻的点连边。</p>
-<p>对于任意两个相邻点 $x,y$，子图有边 $(S,x),(S,y),(x,y),(y,x),(x,T),(y,T)$。</p>
-<p>割去 $(S,x),(S,y)$ 表示都选文，割去 $(x,T),(y,T)$ 表示都选理，割去 $(S,x),(x,y),(y,T)$ 表示 $x$ 选文，$y$选理，剩下一种情况同理第三种。</p>
-<p>假设 $x,y$ 选文的收益分别为 $a_x,a_y$，选理的收益为 $b_x,b_y$，都选文/理的收益为 $c,d$，则边权应满足：</p>
-<p>$$<br>(S,x)+(S,y)=b_x+b_y+d\<br>(x,T)+(y,T)=a_x+a_y+c\<br>(S,x)+(x,y)+(y,T)=a_y+b_x+c+d\<br>(S,y)+(y,x)+(x,T)=a_x+b_y+c+d\<br>$$<br>得到一组解：</p>
-<p>$$<br>(x,y)=(y,x)=\frac{c+d}{2}\<br>(S,x)=a_x+\frac{c}{2}\<br>(S,y)=a_y+\frac{c}{2}\<br>(x,T)=b_x+\frac{d}{2}\<br>(y,T)=b_y+\frac{d}{2}\<br>$$</p>
-<p>由此建图求最大流即可。</p>
-<p>Tips：将两点间所有边的边权整合成一条边会大大提高运行速度。</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> * @Author: Skqliao</span></span><br><span class="line"><span class="hljs-comment"> * @Date: 2019-02-10 20:45:11</span></span><br><span class="line"><span class="hljs-comment"> * @LastEditTime: 2019-02-10 21:37:48</span></span><br><span class="line"><span class="hljs-comment"> * @Source: 2010 集训队测试题</span></span><br><span class="line"><span class="hljs-comment"> * @Problem: 2127: happiness</span></span><br><span class="line"><span class="hljs-comment"> * @Url: https://lydsy.com/JudgeOnline/problem.php?id=2127</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> mxf &#123;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">100</span> * <span class="hljs-number">100</span> + <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXM = MAXN * <span class="hljs-number">4</span>;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> v, f, nxt;</span><br><span class="line">&#125; E[MAXM &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> S, T;</span><br><span class="line"><span class="hljs-keyword">int</span> H[MAXN], cntE;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> f, <span class="hljs-keyword">bool</span> directed = <span class="hljs-number">1</span>)</span> </span>&#123;</span><br><span class="line">    E[++cntE] = (Edge)&#123;v, f, H[u]&#125;;</span><br><span class="line">    H[u] = cntE;</span><br><span class="line">    <span class="hljs-keyword">if</span> (directed) f = <span class="hljs-number">0</span>;</span><br><span class="line">    E[++cntE] = (Edge)&#123;u, f, H[v]&#125;;</span><br><span class="line">    H[v] = cntE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">int</span> Dis[MAXN], Cur[MAXN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">bfs</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; Que;</span><br><span class="line">    <span class="hljs-keyword">while</span> (!Que.empty()) Que.pop();</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Dis, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> Dis);</span><br><span class="line">    <span class="hljs-built_in">memcpy</span>(Cur, H, <span class="hljs-keyword">sizeof</span> H);</span><br><span class="line">    Dis[S] = <span class="hljs-number">0</span>;</span><br><span class="line">    Que.push(S);</span><br><span class="line">    <span class="hljs-keyword">while</span> (!Que.empty()) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = Que.front();</span><br><span class="line">        Que.pop();</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = H[x]; ~i; i = E[i].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> &amp;v = E[i].v;</span><br><span class="line">            <span class="hljs-keyword">if</span> (Dis[v] == <span class="hljs-number">-1</span> &amp;&amp; E[i].f) &#123;</span><br><span class="line">                Dis[v] = Dis[x] + <span class="hljs-number">1</span>;</span><br><span class="line">                Que.push(v);</span><br><span class="line">                <span class="hljs-keyword">if</span> (v == T) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> maxf)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (x == T) <span class="hljs-keyword">return</span> maxf;</span><br><span class="line">    <span class="hljs-keyword">int</span> left = maxf;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> &amp;i = Cur[x]; ~i; i = E[i].nxt) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> &amp;v = E[i].v;</span><br><span class="line">        <span class="hljs-keyword">if</span> (Dis[v] == Dis[x] + <span class="hljs-number">1</span> &amp;&amp; E[i].f) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> flow = dfs(v, <span class="hljs-built_in">std</span>::min(E[i].f, left));</span><br><span class="line">            <span class="hljs-keyword">if</span> (flow) &#123;</span><br><span class="line">                left -= flow;</span><br><span class="line">                E[i].f -= flow;</span><br><span class="line">                E[i ^ <span class="hljs-number">1</span>].f += flow;</span><br><span class="line">                <span class="hljs-keyword">if</span> (!left) <span class="hljs-keyword">return</span> maxf;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span></span><br><span class="line">                Dis[v] = <span class="hljs-number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> maxf - left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dinic</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> flow = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (bfs()) &#123;</span><br><span class="line">        flow += dfs(S, INT_MAX);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> flow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">int</span> tot)</span> </span>&#123;</span><br><span class="line">    cntE = <span class="hljs-number">-1</span>;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(H, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> H);</span><br><span class="line">    S = tot + <span class="hljs-number">1</span>, T = tot + <span class="hljs-number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;  <span class="hljs-comment">// namespace mxf</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">using</span> mxf::addEdge;</span><br><span class="line"><span class="hljs-keyword">using</span> mxf::S;</span><br><span class="line"><span class="hljs-keyword">using</span> mxf::T;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">100</span> + <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> N, M;</span><br><span class="line"><span class="hljs-keyword">int</span> Id[MAXN][MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> A[MAXN][MAXN], B[MAXN][MAXN], C[MAXN][MAXN], D[MAXN][MAXN], E[MAXN][MAXN], F[MAXN][MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> ans;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;N, &amp;M);</span><br><span class="line">    mxf::init(N * M);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= M; ++j) &#123;</span><br><span class="line">            Id[i][j] = (i - <span class="hljs-number">1</span>) * M + j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= M; ++j) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;A[i][j]);</span><br><span class="line">            ans += A[i][j];</span><br><span class="line">            A[i][j] *= <span class="hljs-number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= M; ++j) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;B[i][j]);</span><br><span class="line">            ans += B[i][j];</span><br><span class="line">            B[i][j] *= <span class="hljs-number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= M; ++j) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;C[i][j]);</span><br><span class="line">            ans += C[i][j];</span><br><span class="line">            A[i][j] += C[i][j];</span><br><span class="line">            A[i + <span class="hljs-number">1</span>][j] += C[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= M; ++j) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;D[i][j]);</span><br><span class="line">            ans += D[i][j];</span><br><span class="line">            B[i][j] += D[i][j];</span><br><span class="line">            B[i + <span class="hljs-number">1</span>][j] += D[i][j];</span><br><span class="line">            addEdge(Id[i][j], Id[i + <span class="hljs-number">1</span>][j], C[i][j] + D[i][j], <span class="hljs-number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; M; ++j) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;E[i][j]);</span><br><span class="line">            ans += E[i][j];</span><br><span class="line">            A[i][j] += E[i][j];</span><br><span class="line">            A[i][j + <span class="hljs-number">1</span>] += E[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt; M; ++j) &#123;</span><br><span class="line">            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;F[i][j]);</span><br><span class="line">            ans += F[i][j];</span><br><span class="line">            B[i][j] += F[i][j];</span><br><span class="line">            B[i][j + <span class="hljs-number">1</span>] += F[i][j];</span><br><span class="line">            addEdge(Id[i][j], Id[i][j + <span class="hljs-number">1</span>], E[i][j] + F[i][j], <span class="hljs-number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= M; ++j) &#123;</span><br><span class="line">            addEdge(S, Id[i][j], A[i][j]);</span><br><span class="line">            addEdge(Id[i][j], T, B[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, ans - mxf::dinic() / <span class="hljs-number">2</span>);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+            <p>在 $(n-1)\times (m-1)$ 的网格图中，对于任意点 $(x,y)$ 都有 $(x,y)\rightarrow (x+1,y)$ /  $(x,y)\rightarrow (x,y+1)$ / $(x,y)\rightarrow (x+1,y+1)$ 这三种边。起点 $S$ 位于 $(1,1)$，终点 $T$ 位于 $(n,m)$。求 $S-T$ 最小割。</p>
+<p>$n,m\leq 1000$</p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/二元关系/">二元关系</a>
+                <a class="button is-size-7 is-light" href="/BZOJ-1001/#more">查看全文</a>
                 </div>
             </div>
         </div>
         
         
-        
-    </div>
-</div>
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/BZOJ-1202/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">「HNOI 2005」BZOJ 1202 狡猾的商人</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/Steiner-Tree/">
-                <span class="level-item">斯坦纳树学习笔记（Steiner Tree）</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
     </div>
 </div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
-<script>
-    var gitalk = new Gitalk({
-        clientID: '00ffd542091791901071',
-        clientSecret: '35a959ef118c0232962eb29e0b072e9d9aae8e85',
-        id: '8bf653e9ab73ae221a6574f55daafd32',
-        repo: 'skqliao.github.io',
-        owner: 'SkqLiao',
-        admin: "SkqLiao"
-    })
-    gitalk.render('comment-container')
-</script>
 
-    </div>
-</div>
+
 </div>
                 
 
