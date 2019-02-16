@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。 $n\leq 100,m\leq 20$ 分析点数极少，因此我们可以通过 $n^2$ 次最短路，预处理出来第 $[l,r]$ 天的每天的最小花费 $C[l][r]">
+    <meta name="description" content="一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。 $n\leq 100,m\leq 20$">
 <meta name="keywords" content="最短路,DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「ZJOI 2006」BZOJ 1003 物流运输">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1003/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。 $n\leq 100,m\leq 20$ 分析点数极少，因此我们可以通过 $n^2$ 次最短路，预处理出来第 $[l,r]$ 天的每天的最小花费 $C[l][r]">
+<meta property="og:description" content="一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。 $n\leq 100,m\leq 20$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-16T12:16:18.458Z">
+<meta property="og:updated_time" content="2019-02-16T12:21:24.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「ZJOI 2006」BZOJ 1003 物流运输">
-<meta name="twitter:description" content="一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。 $n\leq 100,m\leq 20$ 分析点数极少，因此我们可以通过 $n^2$ 次最短路，预处理出来第 $[l,r]$ 天的每天的最小花费 $C[l][r]">
+<meta name="twitter:description" content="一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。 $n\leq 100,m\leq 20$">
 
 
 
@@ -168,6 +168,7 @@
         <div class="content">
             <p>一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。</p>
 <p>$n\leq 100,m\leq 20$</p>
+<a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>点数极少，因此我们可以通过 $n^2$ 次最短路，预处理出来第 $[l,r]$ 天的每天的最小花费 $C[l][r]$（保证该花费对应的路径在第 $[l,r]$ 天都是合法的）。</p>
 <p>然后DP， $F[i]$ 表示前 $i$ 天最小的总花费。枚举上一次更换的时间 $j$，则 $F[i]=\min{F[j-1]+(j-i+1)\cdot C[j][i]+K\cdot[j\not = 1]}(1\leq j\leq i)$。</p>
 <p>复杂度 $O(n^2m\log{m})$。</p>
