@@ -2,23 +2,22 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>「ZJOI 2006」BZOJ 1003 物流运输 - Skqliao&#39;s Blog</title>
+<title>标签: BFS - Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。 $n\leq 100,m\leq 20$">
-<meta name="keywords" content="最短路,DP">
-<meta property="og:type" content="article">
-<meta property="og:title" content="「ZJOI 2006」BZOJ 1003 物流运输">
-<meta property="og:url" content="https://skqliao.github.io/BZOJ-1003/index.html">
+    <meta name="description" content="An Oier&apos;s Blog">
+<meta name="keywords" content="OI">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Skqliao&#39;s Blog">
+<meta property="og:url" content="https://skqliao.github.io/tags/BFS/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。 $n\leq 100,m\leq 20$">
+<meta property="og:description" content="An Oier&apos;s Blog">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-16T12:21:24.452Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「ZJOI 2006」BZOJ 1003 物流运输">
-<meta name="twitter:description" content="一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。 $n\leq 100,m\leq 20$">
+<meta name="twitter:title" content="Skqliao&#39;s Blog">
+<meta name="twitter:description" content="An Oier&apos;s Blog">
 
 
 
@@ -138,17 +137,28 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/tags">标签</a></li>
+            <li class="is-active"><a href="#" aria-current="page">BFS</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    <div class="card">
     
     <div class="card-content article ">
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                「ZJOI 2006」BZOJ 1003 物流运输
+                <a class="has-link-black-ter" href="/BZOJ-1054/">「HAOI 2008」BZOJ 1054 移动玩具</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-16T12:14:11.000Z">2019-02-16</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-21T07:17:16.000Z">2019-02-21</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
@@ -158,7 +168,7 @@
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/DP/">DP</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/最短路/">最短路</a>
+                <a class="has-link-grey -link" href="/tags/BFS/">BFS</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/哈希/">哈希</a>
                 </div>
                 
                 
@@ -166,74 +176,26 @@
         </div>
         
         <div class="content">
-            <p>一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。</p>
-<p>$n\leq 100,m\leq 20$</p>
-<a id="more"></a>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>点数极少，因此我们可以通过 $n^2$ 次最短路，预处理出来第 $[l,r]$ 天的每天的最小花费 $C[l][r]$（保证该花费对应的路径在第 $[l,r]$ 天都是合法的）。</p>
-<p>然后DP， $F[i]$ 表示前 $i$ 天最小的总花费。枚举上一次更换的时间 $j$，则 $F[i]=\min{F[j-1]+(j-i+1)\cdot C[j][i]+K\cdot[j\not = 1]}(1\leq j\leq i)$。</p>
-<p>复杂度 $O(n^2m\log{m})$。</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> * @Author: Skqliao</span></span><br><span class="line"><span class="hljs-comment"> * @Date: 2019-02-16 18:54:21</span></span><br><span class="line"><span class="hljs-comment"> * @LastEditTime: 2019-02-16 20:02:16</span></span><br><span class="line"><span class="hljs-comment"> * @Source: ZJOI 2006</span></span><br><span class="line"><span class="hljs-comment"> * @Problem: 1003: [ZJOI2006]物流运输</span></span><br><span class="line"><span class="hljs-comment"> * @Url: https://lydsy.com/JudgeOnline/problem.php?id=1003</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">100</span> + <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> N, M, K, P, D;</span><br><span class="line"><span class="hljs-keyword">int</span> W[MAXN][MAXN];</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> v, w, nxt;</span><br><span class="line">&#125; E[MAXN * MAXN &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> H[MAXN], cntE;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> w)</span> </span>&#123;</span><br><span class="line">    E[++cntE] = (Edge) &#123;v, w, H[u]&#125;;</span><br><span class="line">    H[u] = cntE;</span><br><span class="line">    E[++cntE] = (Edge) &#123;u, w, H[v]&#125;;</span><br><span class="line">    H[v] = cntE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">std</span>::pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::priority_queue&lt;pii, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;pii&gt;, <span class="hljs-built_in">std</span>::greater&lt;pii&gt; &gt; Pq;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> Dis[MAXN];</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> Vis[MAXN];</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Vis, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> Vis);</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Dis, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> Dis);</span><br><span class="line">    Dis[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;</span><br><span class="line">    Pq.push(<span class="hljs-built_in">std</span>::make_pair(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>));</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = l; i &lt;= r; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= M; ++j) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (W[i][j]) Vis[j] = <span class="hljs-number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">while</span> (!Pq.empty()) &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (!Pq.empty() &amp;&amp; Pq.top().first &gt; Dis[Pq.top().second]) Pq.pop();</span><br><span class="line">        <span class="hljs-keyword">if</span> (Pq.empty()) <span class="hljs-keyword">break</span>;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = Pq.top().second; Pq.pop();</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = H[x]; i; i = E[i].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> &amp;v = E[i].v;</span><br><span class="line">            <span class="hljs-keyword">if</span> (Vis[v] || Dis[v] &lt; Dis[x] + E[i].w) <span class="hljs-keyword">continue</span>;</span><br><span class="line">            Dis[v] = Dis[x] + E[i].w;</span><br><span class="line">            Pq.push(<span class="hljs-built_in">std</span>::make_pair(Dis[v], v));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> Dis[M];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> F[MAXN], G[MAXN][MAXN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> u, v, w;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d"</span>, &amp;N, &amp;M, &amp;K, &amp;P);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= P; ++i) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">        addEdge(u, v, w);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;D);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= D; ++i) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = v; j &lt;= w; ++j) W[j][u] = <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i; j &lt;= N; ++j) &#123;</span><br><span class="line">            G[i][j] = dijkstra(i, j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        F[i] = INT_MAX;</span><br><span class="line">        <span class="hljs-keyword">if</span> (G[<span class="hljs-number">1</span>][i] != <span class="hljs-number">0x3f3f3f3f</span>)</span><br><span class="line">            F[i] = i * G[<span class="hljs-number">1</span>][i];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; j &lt;= i; ++j) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (G[j][i] != <span class="hljs-number">0x3f3f3f3f</span>)</span><br><span class="line">                F[i] = <span class="hljs-built_in">std</span>::min(F[i], F[j - <span class="hljs-number">1</span>] + G[j][i] * (i - j + <span class="hljs-number">1</span>) + K);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, F[N]);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <p>给定两个 $4\times 4$ 的01矩阵，每次可以交换一对相邻的 $0,1$，求前一个矩阵转移到后一个矩阵的最少步数。</p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/DP/">DP</a>, <a class="has-link-grey -link" href="/tags/最短路/">最短路</a>
+                <a class="button is-size-7 is-light" href="/BZOJ-1054/#more">查看全文</a>
                 </div>
             </div>
         </div>
         
         
-        
-    </div>
-</div>
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/BZOJ-1002/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">「FJOI 2007」BZOJ 1002 轮状病毒</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/BZOJ-1001/">
-                <span class="level-item">「ICPC-Beijing 2006」BZOJ 1001 狼抓兔子</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
     </div>
 </div>
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
-<script>
-    var gitalk = new Gitalk({
-        clientID: '00ffd542091791901071',
-        clientSecret: '35a959ef118c0232962eb29e0b072e9d9aae8e85',
-        id: '8b2a43ec8fc2a603a77f5f9fe7e2cb9a',
-        repo: 'skqliao.github.io',
-        owner: 'SkqLiao',
-        admin: "SkqLiao"
-    })
-    gitalk.render('comment-container')
-</script>
 
-    </div>
-</div>
+
 </div>
                 
 
