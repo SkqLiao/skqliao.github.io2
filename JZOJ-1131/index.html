@@ -2,22 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 字典树 - Skqliao&#39;s Blog</title>
+<title>「CEOI 2004」JZOJ 1131 锯木场选址 - Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="An Oier&apos;s Blog">
-<meta name="keywords" content="OI">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Skqliao&#39;s Blog">
-<meta property="og:url" content="https://skqliao.github.io/tags/字典树/index.html">
+    <meta name="description" content="数轴从左到右有 $n + 1$ 点，每个点有 $A_i$ 个人，相邻两点距离为 $B_i$。一个人移动 $1$ 的花费为 $1$。第 $n + 1$ 个点为集合点，现可以在前 $n$ 个点中再选择两个点作为集合点，如此一共有三个集合点。所有人必须向右移动到某一个集合点中，求所有人移动花费总和的最小值。 $n\leq 20000$">
+<meta name="keywords" content="DP,斜率优化,单调队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「CEOI 2004」JZOJ 1131 锯木场选址">
+<meta property="og:url" content="https://skqliao.github.io/JZOJ-1131/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="An Oier&apos;s Blog">
+<meta property="og:description" content="数轴从左到右有 $n + 1$ 点，每个点有 $A_i$ 个人，相邻两点距离为 $B_i$。一个人移动 $1$ 的花费为 $1$。第 $n + 1$ 个点为集合点，现可以在前 $n$ 个点中再选择两个点作为集合点，如此一共有三个集合点。所有人必须向右移动到某一个集合点中，求所有人移动花费总和的最小值。 $n\leq 20000$">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-23T09:00:03.054Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Skqliao&#39;s Blog">
-<meta name="twitter:description" content="An Oier&apos;s Blog">
+<meta name="twitter:title" content="「CEOI 2004」JZOJ 1131 锯木场选址">
+<meta name="twitter:description" content="数轴从左到右有 $n + 1$ 点，每个点有 $A_i$ 个人，相邻两点距离为 $B_i$。一个人移动 $1$ 的花费为 $1$。第 $n + 1$ 个点为集合点，现可以在前 $n$ 个点中再选择两个点作为集合点，如此一共有三个集合点。所有人必须向右移动到某一个集合点中，求所有人移动花费总和的最小值。 $n\leq 20000$">
 
 
 
@@ -137,84 +138,27 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">字典树</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/BZOJ-1212/">「HNOI 2004」BZOJ 1212 L语言</a>
+                「CEOI 2004」JZOJ 1131 锯木场选址
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:54:38.000Z">2019-02-11</time></div>&nbsp;&nbsp;
-                
-                
-                <i class="fa fa-tag"></i>&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/动态规划/">动态规划</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/字典树/">字典树</a>
-                </div>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>有 $N$ 个字符串作为字典，一个字符串能被该字典理解当且仅当它可以被拆成若干个字串，每个字串都是字典中的单词。</p>
-<p>现每次查询某个字符串 $S_i$ 能被该字典理解的最长前缀大小，查询 $M$ 次。</p>
-<p>$1\leq N,M\leq 20$，单词长度不超过 $10$ ，$S_i$ 的长度不超过 $1M$。</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/BZOJ-1212/#more">查看全文</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/BZOJ-4260/">BZOJ 4260 Codechef REBXOR</a>
-            
-        </h1>
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T01:03:25.000Z">2019-02-11</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-23T08:37:44.000Z">2019-02-23</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
+                <a class="has-link-grey -link" href="/categories/JZOJ/">JZOJ</a>
                 </div>
                 
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/前后缀/">前后缀</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/字典树/">字典树</a>
+                <a class="has-link-grey -link" href="/tags/DP/">DP</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/单调队列/">单调队列</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/斜率优化/">斜率优化</a>
                 </div>
                 
                 
@@ -222,27 +166,71 @@
         </div>
         
         <div class="content">
-            <p>对于长为 $N$ 的序列 $A[1\cdots N]$，求两个不相交区间的异或和之和的最大值。</p>
-<p>$2\leq N\leq 4\times 10^5,A[i]\leq 10^9$</p>
+            <p>数轴从左到右有 $n + 1$ 点，每个点有 $A_i$ 个人，相邻两点距离为 $B_i$。一个人移动 $1$ 的花费为 $1$。第 $n + 1$ 个点为集合点，现可以在前 $n$ 个点中再选择两个点作为集合点，如此一共有三个集合点。所有人必须向右移动到某一个集合点中，求所有人移动花费总和的最小值。</p>
+<p>$n\leq 20000$</p>
+<a id="more"></a>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>记 $D(i)$ 为点 $1$ 和点 $i$ 间的距离，$G(i,j)$ 为将点 $[i,j]$ 的人移动到 $j$ 的花费，则 $G(x,y)=\sum\limits_{x\leq i\leq y}{(D(y)-D(i))\cdot A(i)}$。</p>
+<p>若当前选择点 $i$ 为第二个集合点，点 $j(1\leq j &lt; i)$ 为第一个集合点，则总花费为 $\min\limits_{1\leq i &lt; j}(G(1,j)+G(j+1,i)+G(i+1,n+1))$。</p>
+<p>设 $X(i)=\sum\limits_{j=1}^{i}{A(j)\cdot D(j)}$，$Y(i)=\sum\limits_{j=1}^{i}{A(j)}$，则 $G(x,y)=D(y)(Y(y)-Y(x-1))-X(y)+X(x-1)$。</p>
+<p>若从点 $j$ 转移比从点 $k(1\leq j &lt; k &lt; i)$ 转移更优，则需要满足：$G(1,j)+G(j+1,i)+G(i+1,n+1) &lt; G(1,k)+G(k+1,i)+G(i+1,n+1)$，移项整理可得 $\frac{D(j)Y(j)-D(k)Y(k)}{Y(j)-Y(k)} &gt; D(i)$。</p>
+<p>$D(i)$ 单调递增，左式与 $i$ 无关，称之为 $j,k$ 点间的斜率。因此可以斜率优化DP。</p>
+<p>维护单调队列，求当前点 $i$ 时，队内元素 $q_1 &lt; q_2 &lt; \cdots q_m$ 满足相邻两点 $q_i,q_j$ 的斜率大于 $D(i)$，且斜率单调递增。</p>
+<p>复杂度 $O(n)$。</p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> * @Author: Skqliao</span></span><br><span class="line"><span class="hljs-comment"> * @Source: CEOI 2004</span></span><br><span class="line"><span class="hljs-comment"> * @Problem: 1131. 【CEOI2004】锯木场选址Two(踢我)</span></span><br><span class="line"><span class="hljs-comment"> * @Url: https://jzoj.net/senior/#main/show/1131</span></span><br><span class="line"><span class="hljs-comment"> * @Date: 2019-02-23 11:47:58</span></span><br><span class="line"><span class="hljs-comment"> * @LastEditTime: 2019-02-23 16:36:42</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">20000</span> + <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> N;</span><br><span class="line"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> A[MAXN], B[MAXN], D[MAXN], X[MAXN], Y[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> Que[MAXN], qh, qt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">cost</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123; <span class="hljs-keyword">return</span> D[r] * (Y[r] - Y[l - <span class="hljs-number">1</span>]) - (X[r] - X[l - <span class="hljs-number">1</span>]); &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">cal</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>&#123; <span class="hljs-keyword">return</span> (<span class="hljs-keyword">double</span>)(D[x] * Y[x] - D[y] * Y[y]) / (Y[x] - Y[y]); &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;N);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld%lld"</span>, &amp;A[i], &amp;B[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N + <span class="hljs-number">1</span>; ++i) &#123;</span><br><span class="line">        Y[i] = Y[i - <span class="hljs-number">1</span>] + A[i];</span><br><span class="line">        D[i] = D[i - <span class="hljs-number">1</span>] + B[i - <span class="hljs-number">1</span>];</span><br><span class="line">        X[i] = X[i - <span class="hljs-number">1</span>] + D[i] * A[i];</span><br><span class="line">    &#125;</span><br><span class="line">    Que[qt++] = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans = LLONG_MAX;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (qt - qh &gt; <span class="hljs-number">1</span> &amp;&amp; cal(Que[qh], Que[qh + <span class="hljs-number">1</span>]) &lt;= D[i]) ++qh;</span><br><span class="line">        ans = <span class="hljs-built_in">std</span>::min(ans, cost(<span class="hljs-number">1</span>, Que[qh]) + cost(Que[qh] + <span class="hljs-number">1</span>, i) + cost(i + <span class="hljs-number">1</span>, N + <span class="hljs-number">1</span>));</span><br><span class="line">        <span class="hljs-keyword">while</span> (qt - qh &gt; <span class="hljs-number">1</span> &amp;&amp; cal(Que[qt - <span class="hljs-number">2</span>], Que[qt - <span class="hljs-number">1</span>]) &gt;= cal(Que[qt - <span class="hljs-number">1</span>], i)) --qt;</span><br><span class="line">        Que[qt++] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/BZOJ-4260/#more">查看全文</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/DP/">DP</a>, <a class="has-link-grey -link" href="/tags/单调队列/">单调队列</a>, <a class="has-link-grey -link" href="/tags/斜率优化/">斜率优化</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/BZOJ-1010/">
+                <span class="level-item">「HNOI 2008」BZOJ 1010 玩具装箱toy</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '00ffd542091791901071',
+        clientSecret: '35a959ef118c0232962eb29e0b072e9d9aae8e85',
+        id: 'bb4b79220a08b6eea853c24c50d1ec88',
+        repo: 'skqliao.github.io',
+        owner: 'SkqLiao',
+        admin: "SkqLiao"
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
