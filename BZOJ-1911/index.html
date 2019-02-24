@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="将序列 $A[1 \cdots n]$划分成若干个不相交区间，区间 $[l,r]$ 的权值为 $ax^2+bx+c$，其中 $x=\sum\limits_{i=l}^{r}{A[i]}$。求最大权值和。 $n\leq 1000000,-5\leq a\leq -1, |b|,|c|\leq 10000000,A[i]\leq 100$ 分析令 $S_i=\sum\limits_{j=1}^{i}{">
+    <meta name="description" content="将序列 $A[1 \cdots n]$划分成若干个不相交区间，区间 $[l,r]$ 的权值为 $a\cdot x^2+b\cdot x+c$，其中 $x=\sum\limits_{i=l}^{r}{A[i]}$。求最大权值和。 $n\leq 1000000,-5\leq a\leq -1, |b|,|c|\leq 10000000,A[i]\leq 100$">
 <meta name="keywords" content="DP,斜率优化,单调队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「APIO 2010」BZOJ 1911 特别行动队">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1911/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="将序列 $A[1 \cdots n]$划分成若干个不相交区间，区间 $[l,r]$ 的权值为 $ax^2+bx+c$，其中 $x=\sum\limits_{i=l}^{r}{A[i]}$。求最大权值和。 $n\leq 1000000,-5\leq a\leq -1, |b|,|c|\leq 10000000,A[i]\leq 100$ 分析令 $S_i=\sum\limits_{j=1}^{i}{">
+<meta property="og:description" content="将序列 $A[1 \cdots n]$划分成若干个不相交区间，区间 $[l,r]$ 的权值为 $a\cdot x^2+b\cdot x+c$，其中 $x=\sum\limits_{i=l}^{r}{A[i]}$。求最大权值和。 $n\leq 1000000,-5\leq a\leq -1, |b|,|c|\leq 10000000,A[i]\leq 100$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-24T02:18:04.144Z">
+<meta property="og:updated_time" content="2019-02-24T02:43:51.705Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「APIO 2010」BZOJ 1911 特别行动队">
-<meta name="twitter:description" content="将序列 $A[1 \cdots n]$划分成若干个不相交区间，区间 $[l,r]$ 的权值为 $ax^2+bx+c$，其中 $x=\sum\limits_{i=l}^{r}{A[i]}$。求最大权值和。 $n\leq 1000000,-5\leq a\leq -1, |b|,|c|\leq 10000000,A[i]\leq 100$ 分析令 $S_i=\sum\limits_{j=1}^{i}{">
+<meta name="twitter:description" content="将序列 $A[1 \cdots n]$划分成若干个不相交区间，区间 $[l,r]$ 的权值为 $a\cdot x^2+b\cdot x+c$，其中 $x=\sum\limits_{i=l}^{r}{A[i]}$。求最大权值和。 $n\leq 1000000,-5\leq a\leq -1, |b|,|c|\leq 10000000,A[i]\leq 100$">
 
 
 
@@ -166,8 +166,9 @@
         </div>
         
         <div class="content">
-            <p>将序列 $A[1 \cdots n]$划分成若干个不相交区间，区间 $[l,r]$ 的权值为 $a<em>x^2+b</em>x+c$，其中 $x=\sum\limits_{i=l}^{r}{A[i]}$。求最大权值和。</p>
+            <p>将序列 $A[1 \cdots n]$划分成若干个不相交区间，区间 $[l,r]$ 的权值为 $a\cdot x^2+b\cdot x+c$，其中 $x=\sum\limits_{i=l}^{r}{A[i]}$。求最大权值和。</p>
 <p>$n\leq 1000000,-5\leq a\leq -1, |b|,|c|\leq 10000000,A[i]\leq 100$</p>
+<a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>令 $S_i=\sum\limits_{j=1}^{i}{A_i}$，$F_i$ 表示将前 $i$ 个数划分成若干区间的最大权值和。</p>
 <p>则 $F_i=\min\limits_{1\leq j &lt; i}{(F_j+a\cdot (S_i-S_j)^2+b\cdot (S_i-S_j) + c)}$。</p>
 <p>考虑 $i$ 从两个决策点 $j,k$ 转移，若 $j$ 更优，则需要满足：</p>
