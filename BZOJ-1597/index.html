@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="1597有 $n$ 个 $X_i\times Y_i$ 的矩形，购买矩形的花费为它的面积。允许一次性购买多个矩形，其花费为 $\max(X_i)\times \max(Y_i)$。求购买所有矩形的最小花费。 $n\leq 50000$">
+    <meta name="description" content="有 $n$ 个 $X_i\times Y_i$ 的矩形，购买矩形的花费为它的面积。允许一次性购买多个矩形，其花费为 $\max(X_i)\times \max(Y_i)$。求购买所有矩形的最小花费。 $n\leq 50000$">
 <meta name="keywords" content="斜率优化,DP,单调队列,单调栈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「USACO2008 MAR」BZOJ 1597 土地购买">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1597/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="1597有 $n$ 个 $X_i\times Y_i$ 的矩形，购买矩形的花费为它的面积。允许一次性购买多个矩形，其花费为 $\max(X_i)\times \max(Y_i)$。求购买所有矩形的最小花费。 $n\leq 50000$">
+<meta property="og:description" content="有 $n$ 个 $X_i\times Y_i$ 的矩形，购买矩形的花费为它的面积。允许一次性购买多个矩形，其花费为 $\max(X_i)\times \max(Y_i)$。求购买所有矩形的最小花费。 $n\leq 50000$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-25T14:36:05.429Z">
+<meta property="og:updated_time" content="2019-02-25T14:41:04.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「USACO2008 MAR」BZOJ 1597 土地购买">
-<meta name="twitter:description" content="1597有 $n$ 个 $X_i\times Y_i$ 的矩形，购买矩形的花费为它的面积。允许一次性购买多个矩形，其花费为 $\max(X_i)\times \max(Y_i)$。求购买所有矩形的最小花费。 $n\leq 50000$">
+<meta name="twitter:description" content="有 $n$ 个 $X_i\times Y_i$ 的矩形，购买矩形的花费为它的面积。允许一次性购买多个矩形，其花费为 $\max(X_i)\times \max(Y_i)$。求购买所有矩形的最小花费。 $n\leq 50000$">
 
 
 
@@ -166,7 +166,7 @@
         </div>
         
         <div class="content">
-            <h1 id="1597"><a href="#1597" class="headerlink" title="1597"></a>1597</h1><p>有 $n$ 个 $X_i\times Y_i$ 的矩形，购买矩形的花费为它的面积。允许一次性购买多个矩形，其花费为 $\max(X_i)\times \max(Y_i)$。求购买所有矩形的最小花费。</p>
+            <p>有 $n$ 个 $X_i\times Y_i$ 的矩形，购买矩形的花费为它的面积。允许一次性购买多个矩形，其花费为 $\max(X_i)\times \max(Y_i)$。求购买所有矩形的最小花费。</p>
 <p>$n\leq 50000$</p>
 <a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>若存在若干个矩形满足 $X_1\leq X_2\leq\cdots\leq X_m$ 且 $Y_1\cdots Y_i\leq Y_m$，则一定打包购买，花费为 $X_m\times Y_m$。那么剩下的矩形一定满足 $X_i\leq X_2\leq\cdots\leq X_p$ 且 $Y_1 &gt; Y_2 &gt; \cdots&gt; Y_p$。</p>
