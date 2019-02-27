@@ -7,18 +7,18 @@
 
 
 
-    <meta name="description" content="每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $(j-i)\cdot b_j$ （$j$ 为 $i$ 右边第一个塔的标号）。求最小总花费。 $n\leq 10^6,0 &amp;lt; a_i,b_i\leq 10^5$">
+    <meta name="description" content="每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $(j-i)\cdot b_i$ （$j$ 为 $i$ 右边第一个塔的标号）。求最小总花费。 $n\leq 10^6,0 &amp;lt; a_i,b_i\leq 10^5$">
 <meta name="keywords" content="DP,斜率优化,单调队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ 3437 小P的牧场">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-3437/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $(j-i)\cdot b_j$ （$j$ 为 $i$ 右边第一个塔的标号）。求最小总花费。 $n\leq 10^6,0 &amp;lt; a_i,b_i\leq 10^5$">
+<meta property="og:description" content="每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $(j-i)\cdot b_i$ （$j$ 为 $i$ 右边第一个塔的标号）。求最小总花费。 $n\leq 10^6,0 &amp;lt; a_i,b_i\leq 10^5$">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-27T12:41:26.817Z">
+<meta property="og:updated_time" content="2019-02-27T12:49:23.245Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ 3437 小P的牧场">
-<meta name="twitter:description" content="每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $(j-i)\cdot b_j$ （$j$ 为 $i$ 右边第一个塔的标号）。求最小总花费。 $n\leq 10^6,0 &amp;lt; a_i,b_i\leq 10^5$">
+<meta name="twitter:description" content="每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $(j-i)\cdot b_i$ （$j$ 为 $i$ 右边第一个塔的标号）。求最小总花费。 $n\leq 10^6,0 &amp;lt; a_i,b_i\leq 10^5$">
 
 
 
@@ -166,7 +166,7 @@
         </div>
         
         <div class="content">
-            <p>每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $(j-i)\cdot b_j$ （$j$ 为 $i$ 右边第一个塔的标号）。求最小总花费。</p>
+            <p>每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $(j-i)\cdot b_i$ （$j$ 为 $i$ 右边第一个塔的标号）。求最小总花费。</p>
 <p>$n\leq 10^6,0 &lt; a_i,b_i\leq 10^5$</p>
 <a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>设 $X_i=\sum\limits_{j=1}^{i-1}{B_j}$,$Y_i=\sum\limits_{j=1}^{i-1}{b_i\cdot i}$，则转移方程为 $f_i=a_i+\min\limits_{j &lt; i}{(f_j+X_{i-1}-X_j-Y_{i-1}+Y_j)}$</p>
