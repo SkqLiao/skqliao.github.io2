@@ -2,22 +2,23 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>标签: 贪心 - Skqliao&#39;s Blog</title>
+<title>BZOJ 3156 防御准备 - Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="An Oier&apos;s Blog">
-<meta name="keywords" content="OI">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Skqliao&#39;s Blog">
-<meta property="og:url" content="https://skqliao.github.io/tags/贪心/index.html">
+    <meta name="description" content="每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $j-i$ （$j$ 为 $i$ 右边第一个塔的标号）。点 $n$ 必须建塔，求最小总花费。 $n\leq 10^6,a_i\leq 10^9$">
+<meta name="keywords" content="斜率优化,DP,单调队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ 3156 防御准备">
+<meta property="og:url" content="https://skqliao.github.io/BZOJ-3156/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="An Oier&apos;s Blog">
+<meta property="og:description" content="每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $j-i$ （$j$ 为 $i$ 右边第一个塔的标号）。点 $n$ 必须建塔，求最小总花费。 $n\leq 10^6,a_i\leq 10^9$">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-27T12:13:20.217Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Skqliao&#39;s Blog">
-<meta name="twitter:description" content="An Oier&apos;s Blog">
+<meta name="twitter:title" content="BZOJ 3156 防御准备">
+<meta name="twitter:description" content="每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $j-i$ （$j$ 为 $i$ 右边第一个塔的标号）。点 $n$ 必须建塔，求最小总花费。 $n\leq 10^6,a_i\leq 10^9$">
 
 
 
@@ -137,28 +138,17 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/tags">标签</a></li>
-            <li class="is-active"><a href="#" aria-current="page">贪心</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
     
     <div class="card-content article ">
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/BZOJ-2465/">「中山市选 2009」BZOJ 2465 小球</a>
+                BZOJ 3156 防御准备
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-11T10:16:22.000Z">2019-02-11</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2019-02-27T12:11:58.000Z">2019-02-27</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
@@ -168,7 +158,7 @@
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/贪心/">贪心</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/费用流/">费用流</a>
+                <a class="has-link-grey -link" href="/tags/DP/">DP</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/单调队列/">单调队列</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/斜率优化/">斜率优化</a>
                 </div>
                 
                 
@@ -176,27 +166,68 @@
         </div>
         
         <div class="content">
-            <p>$n$ 个球放进 $m$ 个瓶子里，每个球有分数$A_i$，每个瓶子有容积 $B_i$，且瓶中球的分数都不能超过 $C_i$，求可放入球的最大数量以及在该条件下的最大分数和。</p>
-<p>$1\leq n\leq 200,0\leq m\leq 200,1 \leq p\leq 10^6, 0\leq c\leq 200, 1\leq q\leq 10^6$</p>
+            <p>每个点 $i$ 要么花费 $a_i$ 建塔，要么花费 $j-i$ （$j$ 为 $i$ 右边第一个塔的标号）。点 $n$ 必须建塔，求最小总花费。</p>
+<p>$n\leq 10^6,a_i\leq 10^9$</p>
+<a id="more"></a>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>将点左右翻转，点 $1$ 必须建塔，则转移方程为 $f_i=a_i+\min\limits_{j &lt; i}{(f_j+(i-j)\cdot (i-j-1)/2)}$</p>
+<p>若决策点 $j$ 优于决策点 $k(j &lt; k)$，需满足 $\frac{2(f_k-f_j)+k(k+1)-j(j+1)}{2(k-j)} &gt; i$。</p>
+<p>维护决策点队列斜率单调递增，且斜率 $&gt;i$。</p>
+<p>复杂度 $O(n)$。</p>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment"> * @Author: Skqliao</span></span><br><span class="line"><span class="hljs-comment"> * @Source: BZOJ</span></span><br><span class="line"><span class="hljs-comment"> * @Problem: 3156: 防御准备</span></span><br><span class="line"><span class="hljs-comment"> * @Url: https://lydsy.com/JudgeOnline/problem.php?id=3156</span></span><br><span class="line"><span class="hljs-comment"> * @Date: 2019-02-26 21:32:07</span></span><br><span class="line"><span class="hljs-comment"> * @LastEditTime: 2019-02-27 20:02:09</span></span><br><span class="line"><span class="hljs-comment"> */</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">1e6</span> + <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> N;</span><br><span class="line"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> A[MAXN], S[MAXN], F[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> Que[MAXN], qh, qt;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">slope</span><span class="hljs-params">(<span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">double</span>)(<span class="hljs-number">2</span> * (F[k] - F[j]) + (<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)k * (k + <span class="hljs-number">1</span>) - (<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)j * (j + <span class="hljs-number">1</span>)) / (<span class="hljs-number">2</span> * (k - j));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;N);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%lld"</span>, &amp;A[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">std</span>::reverse(A + <span class="hljs-number">1</span>, A + N + <span class="hljs-number">1</span>);</span><br><span class="line">    F[<span class="hljs-number">1</span>] = A[<span class="hljs-number">1</span>];</span><br><span class="line">    Que[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans = LLONG_MAX;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= N; ++i) &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (qh &lt; qt &amp;&amp; slope(Que[qh], Que[qh + <span class="hljs-number">1</span>]) &lt;= i) ++qh;</span><br><span class="line">        <span class="hljs-keyword">int</span> j = Que[qh];</span><br><span class="line">        F[i] = F[j] + (<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)(i - j) * (i - j - <span class="hljs-number">1</span>) / <span class="hljs-number">2</span> + A[i];</span><br><span class="line">        <span class="hljs-keyword">while</span> (qh &lt; qt &amp;&amp; slope(Que[qt - <span class="hljs-number">1</span>], Que[qt]) &gt;= slope(Que[qt], i)) --qt;</span><br><span class="line">        Que[++qt] = i;</span><br><span class="line">        ans = <span class="hljs-built_in">std</span>::min(ans, F[i] + (<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)(N - i) * (N - i + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, ans);</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
-        
-        <div class="level is-mobile">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/BZOJ-2465/#more">查看全文</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/DP/">DP</a>, <a class="has-link-grey -link" href="/tags/单调队列/">单调队列</a>, <a class="has-link-grey -link" href="/tags/斜率优化/">斜率优化</a>
                 </div>
             </div>
         </div>
+        
         
         
     </div>
 </div>
 
 
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/BZOJ-1597/">
+                <span class="level-item">「USACO2008 MAR」BZOJ 1597 土地购买</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '00ffd542091791901071',
+        clientSecret: '35a959ef118c0232962eb29e0b072e9d9aae8e85',
+        id: 'e7ea8673a90cf437d3af5bea5d2b5212',
+        repo: 'skqliao.github.io',
+        owner: 'SkqLiao',
+        admin: "SkqLiao"
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
