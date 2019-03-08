@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
 <meta property="og:description" content="已知 $N$ 个年份 $Y_i$ 的降雨量 $R_i$。 现有 $M$ 个询问。给定年份 $X,Y$ ，判断“X年是自Y年以来降雨量最多的”的正确性。 该语句正确的当且仅当 $R_X\leq R_Y$ 且对于所有 $Y&amp;lt;Z&amp;lt;X$，满足 $R_Z&amp;lt;R_X$ 。 如果判断语句正确，输出true；如果可能正确，输出maybe；如果一定错误输出false。 $1\leq N\leq 50">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-11T11:09:34.262Z">
+<meta property="og:updated_time" content="2019-03-08T03:33:03.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「SCOI 2007」BZOJ 1067 降雨量">
 <meta name="twitter:description" content="已知 $N$ 个年份 $Y_i$ 的降雨量 $R_i$。 现有 $M$ 个询问。给定年份 $X,Y$ ，判断“X年是自Y年以来降雨量最多的”的正确性。 该语句正确的当且仅当 $R_X\leq R_Y$ 且对于所有 $Y&amp;lt;Z&amp;lt;X$，满足 $R_Z&amp;lt;R_X$ 。 如果判断语句正确，输出true；如果可能正确，输出maybe；如果一定错误输出false。 $1\leq N\leq 50">
@@ -186,7 +186,7 @@
 <p>判断是否 $[X,Y]$ 中所有年份降水量已知，直接检查 $Y-X=P_Y-P_X$ 。（其中 $P_i$ 为 $i$ 在 $Y[1…N]$ 中的下标）</p>
 <p><strong>需要特别注意的一点，便是当 $P_Y=P_X+1$ 时， $[X+1,Y-1]\in \empty$ 。查询该区间时应该直接返回一个极小值或者单独判断。不然只有稳稳50分….</strong></p>
 <p>复杂度 $O((N+M)\log{N})$ 。</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Copyright 2018, Skqliao</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rep(i, l, r) for (int i = (l), _##i##_ = (r); i &lt; _##i##_; ++i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rof(i, l, r) for (int i = (l) - 1, _##i##_ = (r); i &gt;= _##i##_; --i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ALL(x) (x).begin(), (x).end()</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SZ(x) static_cast<span class="hljs-meta-string">&lt;int&gt;((x).size())</span></span></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> io &#123;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">char</span> <span class="hljs-title">gc</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> getchar();</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt; <span class="hljs-title">inline</span> <span class="hljs-title">T</span> <span class="hljs-title">gt</span>() &#123;</span></span><br><span class="line">    <span class="hljs-keyword">static</span> T x;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span> &gt;&gt; x;</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pt</span><span class="hljs-params">(T x, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> c = <span class="hljs-string">'\n'</span>)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; x &lt;&lt; c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">flush</span><span class="hljs-params">()</span> </span>&#123;&#125;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXSIZE = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">22</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">char</span> <span class="hljs-title">gc</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> In[MAXSIZE], *at = In, *en = In;</span><br><span class="line">    <span class="hljs-keyword">if</span> (at == en) &#123;</span><br><span class="line">        en = (at = In) + fread(In, <span class="hljs-number">1</span>, MAXSIZE, <span class="hljs-built_in">stdin</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> at == en ? EOF : *at++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt; <span class="hljs-title">inline</span> <span class="hljs-title">T</span> <span class="hljs-title">gt</span>() &#123;</span></span><br><span class="line">    <span class="hljs-keyword">char</span> c;</span><br><span class="line">    <span class="hljs-keyword">while</span> (c = gc(), !<span class="hljs-built_in">isdigit</span>(c) &amp;&amp; c != <span class="hljs-string">'-'</span>) &#123;&#125;</span><br><span class="line">    <span class="hljs-keyword">bool</span> f = c == <span class="hljs-string">'-'</span>;</span><br><span class="line">    T x = f ? <span class="hljs-number">0</span> : c - <span class="hljs-string">'0'</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (c = gc(); <span class="hljs-built_in">isdigit</span>(c); c = gc()) &#123;</span><br><span class="line">        x = x * <span class="hljs-number">10</span> + c - <span class="hljs-string">'0'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> f ? -x : x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">char</span> Out[MAXSIZE], *cur = Out, *end = Out + MAXSIZE - <span class="hljs-number">100</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">flush</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    fwrite(Out, <span class="hljs-number">1</span>, cur - Out, <span class="hljs-built_in">stdout</span>);</span><br><span class="line">    cur = Out;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pt</span><span class="hljs-params">(T x, <span class="hljs-keyword">char</span> c = <span class="hljs-string">'\n'</span>)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> S[<span class="hljs-number">20</span>], *top;</span><br><span class="line">    top = S;</span><br><span class="line">    <span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        *cur++ = <span class="hljs-string">'-'</span>, x = -x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">do</span> &#123;</span><br><span class="line">        *++top = x % <span class="hljs-number">10</span>, x /= <span class="hljs-number">10</span>;</span><br><span class="line">    &#125; <span class="hljs-keyword">while</span> (x);</span><br><span class="line">    <span class="hljs-keyword">while</span> (top != S) &#123;</span><br><span class="line">        *cur++ = *top-- + <span class="hljs-string">'0'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    *cur++ = c;</span><br><span class="line">    <span class="hljs-keyword">if</span> (cur &gt;= end) &#123;</span><br><span class="line">        flush();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></span><br><span class="line">&#125;  <span class="hljs-comment">// namespace io</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">50000</span> + <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> A[MAXN], B[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> F[MAXN][<span class="hljs-number">20</span>], Log[MAXN], Pow[<span class="hljs-number">20</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">buildST</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    rep(i, <span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        F[i][<span class="hljs-number">0</span>] = B[i];</span><br><span class="line">    &#125;</span><br><span class="line">    rep(i, <span class="hljs-number">2</span>, n + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        Log[i] = Log[i &gt;&gt; <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> k = log2(n);</span><br><span class="line">    Pow[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;</span><br><span class="line">    rep(i, <span class="hljs-number">1</span>, k + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        Pow[i] = Pow[i - <span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    rep(j, <span class="hljs-number">1</span>, k + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        rof(i, n + <span class="hljs-number">1</span>, <span class="hljs-number">1</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (i + Pow[j - <span class="hljs-number">1</span>] &lt;= n) &#123;</span><br><span class="line">                F[i][j] = <span class="hljs-built_in">std</span>::max(F[i][j - <span class="hljs-number">1</span>], F[i + Pow[j - <span class="hljs-number">1</span>]][j - <span class="hljs-number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">queryMax</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span>(l &gt; r) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> k = Log[r - l + <span class="hljs-number">1</span>];</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::max(F[l][k], F[r - Pow[k] + <span class="hljs-number">1</span>][k]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> N = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">    rep(i, <span class="hljs-number">1</span>, N + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        A[i] = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">        B[i] = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    buildST(N);</span><br><span class="line">    <span class="hljs-keyword">int</span> M = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">    <span class="hljs-keyword">while</span> (M--) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = io::gt&lt;<span class="hljs-keyword">int</span>&gt;(), y = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">        <span class="hljs-keyword">int</span> p1 = <span class="hljs-built_in">std</span>::lower_bound(A + <span class="hljs-number">1</span>, A + N + <span class="hljs-number">1</span>, x) - A;</span><br><span class="line">        <span class="hljs-keyword">int</span> p2 = <span class="hljs-built_in">std</span>::lower_bound(A + <span class="hljs-number">1</span>, A + N + <span class="hljs-number">1</span>, y) - A;</span><br><span class="line">        <span class="hljs-keyword">if</span> (A[p1] == x &amp;&amp; A[p2] == y &amp;&amp; p2 - p1 == y - x) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> mx = queryMax(p1 + <span class="hljs-number">1</span>, p2 - <span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">if</span> (B[p2] &lt;= B[p1] &amp;&amp; B[p2] &gt; mx) &#123;</span><br><span class="line">                <span class="hljs-built_in">puts</span>(<span class="hljs-string">"true"</span>);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-built_in">puts</span>(<span class="hljs-string">"false"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (A[p1] != x &amp;&amp; A[p2] != y) &#123;</span><br><span class="line">                <span class="hljs-built_in">puts</span>(<span class="hljs-string">"maybe"</span>);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A[p1] == x &amp;&amp; A[p2] != y) &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> mx = queryMax(p1 + <span class="hljs-number">1</span>, p2 - <span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">if</span> (mx &lt; B[p1]) &#123;</span><br><span class="line">                    <span class="hljs-built_in">puts</span>(<span class="hljs-string">"maybe"</span>);</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    <span class="hljs-built_in">puts</span>(<span class="hljs-string">"false"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A[p1] != x &amp;&amp; A[p2] == y) &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> mx = queryMax(p1, p2 - <span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">if</span> (mx &lt; B[p2]) &#123;</span><br><span class="line">                    <span class="hljs-built_in">puts</span>(<span class="hljs-string">"maybe"</span>);</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    <span class="hljs-built_in">puts</span>(<span class="hljs-string">"false"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> mx = queryMax(p1 + <span class="hljs-number">1</span>, p2 - <span class="hljs-number">1</span>);</span><br><span class="line">                <span class="hljs-keyword">if</span> (mx &lt; B[p2] &amp;&amp; B[p2] &lt;= B[p1]) &#123;</span><br><span class="line">                    <span class="hljs-built_in">puts</span>(<span class="hljs-string">"maybe"</span>);</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    <span class="hljs-built_in">puts</span>(<span class="hljs-string">"false"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Copyright 2018, Skqliao</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rep(i, l, r) for (int i = (l), _##i##_ = (r); i &lt; _##i##_; ++i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rof(i, l, r) for (int i = (l) - 1, _##i##_ = (r); i &gt;= _##i##_; --i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ALL(x) (x).begin(), (x).end()</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SZ(x) static_cast<span class="hljs-meta-string">&lt;int&gt;((x).size())</span></span></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> io &#123;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">char</span> <span class="hljs-title">gc</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line"><span class="hljs-keyword">return</span> getchar();</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt; <span class="hljs-title">inline</span> <span class="hljs-title">T</span> <span class="hljs-title">gt</span>() &#123;</span></span><br><span class="line"><span class="hljs-keyword">static</span> T x;</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span> &gt;&gt; x;</span><br><span class="line"><span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pt</span><span class="hljs-params">(T x, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> c = <span class="hljs-string">'\n'</span>)</span> </span>&#123;</span><br><span class="line"><span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; x &lt;&lt; c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">flush</span><span class="hljs-params">()</span> </span>&#123;&#125;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXSIZE = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">22</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">char</span> <span class="hljs-title">gc</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line"><span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> In[MAXSIZE], *at = In, *en = In;</span><br><span class="line"><span class="hljs-keyword">if</span> (at == en) &#123;</span><br><span class="line">    en = (at = In) + fread(In, <span class="hljs-number">1</span>, MAXSIZE, <span class="hljs-built_in">stdin</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">return</span> at == en ? EOF : *at++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt; <span class="hljs-title">inline</span> <span class="hljs-title">T</span> <span class="hljs-title">gt</span>() &#123;</span></span><br><span class="line"><span class="hljs-keyword">char</span> c;</span><br><span class="line"><span class="hljs-keyword">while</span> (c = gc(), !<span class="hljs-built_in">isdigit</span>(c) &amp;&amp; c != <span class="hljs-string">'-'</span>) &#123;&#125;</span><br><span class="line"><span class="hljs-keyword">bool</span> f = c == <span class="hljs-string">'-'</span>;</span><br><span class="line">T x = f ? <span class="hljs-number">0</span> : c - <span class="hljs-string">'0'</span>;</span><br><span class="line"><span class="hljs-keyword">for</span> (c = gc(); <span class="hljs-built_in">isdigit</span>(c); c = gc()) &#123;</span><br><span class="line">    x = x * <span class="hljs-number">10</span> + c - <span class="hljs-string">'0'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">return</span> f ? -x : x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">char</span> Out[MAXSIZE], *cur = Out, *end = Out + MAXSIZE - <span class="hljs-number">100</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">flush</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">fwrite(Out, <span class="hljs-number">1</span>, cur - Out, <span class="hljs-built_in">stdout</span>);</span><br><span class="line">cur = Out;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-keyword">typename</span> T&gt; <span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pt</span><span class="hljs-params">(T x, <span class="hljs-keyword">char</span> c = <span class="hljs-string">'\n'</span>)</span> </span>&#123;</span><br><span class="line"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> S[<span class="hljs-number">20</span>], *top;</span><br><span class="line">top = S;</span><br><span class="line"><span class="hljs-keyword">if</span> (x &lt; <span class="hljs-number">0</span>) &#123;</span><br><span class="line">    *cur++ = <span class="hljs-string">'-'</span>, x = -x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">do</span> &#123;</span><br><span class="line">    *++top = x % <span class="hljs-number">10</span>, x /= <span class="hljs-number">10</span>;</span><br><span class="line">&#125; <span class="hljs-keyword">while</span> (x);</span><br><span class="line"><span class="hljs-keyword">while</span> (top != S) &#123;</span><br><span class="line">    *cur++ = *top-- + <span class="hljs-string">'0'</span>;</span><br><span class="line">&#125;</span><br><span class="line">*cur++ = c;</span><br><span class="line"><span class="hljs-keyword">if</span> (cur &gt;= end) &#123;</span><br><span class="line">    flush();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></span><br><span class="line">&#125;  <span class="hljs-comment">// namespace io</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">50000</span> + <span class="hljs-number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> A[MAXN], B[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> F[MAXN][<span class="hljs-number">20</span>], Log[MAXN], Pow[<span class="hljs-number">20</span>];</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">buildST</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">rep(i, <span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">    F[i][<span class="hljs-number">0</span>] = B[i];</span><br><span class="line">&#125;</span><br><span class="line">rep(i, <span class="hljs-number">2</span>, n + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">    Log[i] = Log[i &gt;&gt; <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">int</span> k = log2(n);</span><br><span class="line">Pow[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;</span><br><span class="line">rep(i, <span class="hljs-number">1</span>, k + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">    Pow[i] = Pow[i - <span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">rep(j, <span class="hljs-number">1</span>, k + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">    rof(i, n + <span class="hljs-number">1</span>, <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (i + Pow[j - <span class="hljs-number">1</span>] &lt;= n) &#123;</span><br><span class="line">            F[i][j] = <span class="hljs-built_in">std</span>::max(F[i][j - <span class="hljs-number">1</span>], F[i + Pow[j - <span class="hljs-number">1</span>]][j - <span class="hljs-number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">queryMax</span><span class="hljs-params">(<span class="hljs-keyword">int</span> l, <span class="hljs-keyword">int</span> r)</span> </span>&#123;</span><br><span class="line"><span class="hljs-keyword">if</span>(l &gt; r) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">int</span> k = Log[r - l + <span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-keyword">return</span> <span class="hljs-built_in">std</span>::max(F[l][k], F[r - Pow[k] + <span class="hljs-number">1</span>][k]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line"><span class="hljs-keyword">int</span> N = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">rep(i, <span class="hljs-number">1</span>, N + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">    A[i] = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">    B[i] = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">&#125;</span><br><span class="line">buildST(N);</span><br><span class="line"><span class="hljs-keyword">int</span> M = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line"><span class="hljs-keyword">while</span> (M--) &#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> x = io::gt&lt;<span class="hljs-keyword">int</span>&gt;(), y = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">    <span class="hljs-keyword">int</span> p1 = <span class="hljs-built_in">std</span>::lower_bound(A + <span class="hljs-number">1</span>, A + N + <span class="hljs-number">1</span>, x) - A;</span><br><span class="line">    <span class="hljs-keyword">int</span> p2 = <span class="hljs-built_in">std</span>::lower_bound(A + <span class="hljs-number">1</span>, A + N + <span class="hljs-number">1</span>, y) - A;</span><br><span class="line">    <span class="hljs-keyword">if</span> (A[p1] == x &amp;&amp; A[p2] == y &amp;&amp; p2 - p1 == y - x) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> mx = queryMax(p1 + <span class="hljs-number">1</span>, p2 - <span class="hljs-number">1</span>);</span><br><span class="line">        <span class="hljs-keyword">if</span> (B[p2] &lt;= B[p1] &amp;&amp; B[p2] &gt; mx) &#123;</span><br><span class="line">            <span class="hljs-built_in">puts</span>(<span class="hljs-string">"true"</span>);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-built_in">puts</span>(<span class="hljs-string">"false"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (A[p1] != x &amp;&amp; A[p2] != y) &#123;</span><br><span class="line">            <span class="hljs-built_in">puts</span>(<span class="hljs-string">"maybe"</span>);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A[p1] == x &amp;&amp; A[p2] != y) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> mx = queryMax(p1 + <span class="hljs-number">1</span>, p2 - <span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">if</span> (mx &lt; B[p1]) &#123;</span><br><span class="line">                <span class="hljs-built_in">puts</span>(<span class="hljs-string">"maybe"</span>);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-built_in">puts</span>(<span class="hljs-string">"false"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (A[p1] != x &amp;&amp; A[p2] == y) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> mx = queryMax(p1, p2 - <span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">if</span> (mx &lt; B[p2]) &#123;</span><br><span class="line">                <span class="hljs-built_in">puts</span>(<span class="hljs-string">"maybe"</span>);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-built_in">puts</span>(<span class="hljs-string">"false"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> mx = queryMax(p1 + <span class="hljs-number">1</span>, p2 - <span class="hljs-number">1</span>);</span><br><span class="line">            <span class="hljs-keyword">if</span> (mx &lt; B[p2] &amp;&amp; B[p2] &lt;= B[p1]) &#123;</span><br><span class="line">                <span class="hljs-built_in">puts</span>(<span class="hljs-string">"maybe"</span>);</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                <span class="hljs-built_in">puts</span>(<span class="hljs-string">"false"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
         
         <div class="level is-size-7 is-uppercase">
@@ -293,7 +293,7 @@
                         文章
                     </p>
                     <p class="title has-text-weight-normal">
-                        75
+                        131
                     </p>
                 </div>
             </div>
@@ -303,7 +303,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        6
+                        8
                     </p>
                 </div>
             </div>
@@ -313,7 +313,7 @@
                         标签
                     </p>
                     <p class="title has-text-weight-normal">
-                        54
+                        75
                     </p>
                 </div>
             </div>
@@ -428,7 +428,7 @@
                 <span class="level-item">BZOJ</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">62</span>
+                <span class="level-item tag">90</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/FZOJ/">
@@ -460,9 +460,25 @@
                 <span class="level-item">学习笔记</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">2</span>
+                <span class="level-item tag">6</span>
             </span>
-        </a></li>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/网络流24题/">
+            <span class="level-start">
+                <span class="level-item">网络流24题</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">23</span>
+            </span>
+        </a><ul><li>
+        <a class="level is-marginless" href="/categories/网络流24题/LOJ/">
+            <span class="level-start">
+                <span class="level-item">LOJ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">22</span>
+            </span>
+        </a></li></ul></li>
             </ul>
         </div>
     </div>
@@ -474,7 +490,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/BFS/" style="font-size: 11.43px;">BFS</a> <a href="/tags/DFS/" style="font-size: 11.43px;">DFS</a> <a href="/tags/DP/" style="font-size: 18.57px;">DP</a> <a href="/tags/Floyd/" style="font-size: 10px;">Floyd</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/SPFA/" style="font-size: 11.43px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 14.29px;">ST表</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/set/" style="font-size: 10px;">set</a> <a href="/tags/二元关系/" style="font-size: 11.43px;">二元关系</a> <a href="/tags/二分/" style="font-size: 11.43px;">二分</a> <a href="/tags/二分图最大匹配/" style="font-size: 11.43px;">二分图最大匹配</a> <a href="/tags/二分答案/" style="font-size: 14.29px;">二分答案</a> <a href="/tags/传递闭包/" style="font-size: 12.86px;">传递闭包</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分数规划/" style="font-size: 15.71px;">分数规划</a> <a href="/tags/前后缀/" style="font-size: 10px;">前后缀</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/动态点分治/" style="font-size: 10px;">动态点分治</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/单调栈/" style="font-size: 10px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 17.14px;">单调队列</a> <a href="/tags/可持久化Trie/" style="font-size: 12.86px;">可持久化Trie</a> <a href="/tags/启发式合并/" style="font-size: 10px;">启发式合并</a> <a href="/tags/哈希/" style="font-size: 10px;">哈希</a> <a href="/tags/基环树/" style="font-size: 10px;">基环树</a> <a href="/tags/堆/" style="font-size: 10px;">堆</a> <a href="/tags/字典树/" style="font-size: 11.43px;">字典树</a> <a href="/tags/对偶图/" style="font-size: 10px;">对偶图</a> <a href="/tags/差分约束/" style="font-size: 11.43px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 14.29px;">平衡树</a> <a href="/tags/斜率优化/" style="font-size: 17.14px;">斜率优化</a> <a href="/tags/斯坦纳树/" style="font-size: 12.86px;">斯坦纳树</a> <a href="/tags/最大密度子图/" style="font-size: 10px;">最大密度子图</a> <a href="/tags/最大权闭合子图/" style="font-size: 10px;">最大权闭合子图</a> <a href="/tags/最小割/" style="font-size: 11.43px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 12.86px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 11.43px;">最小生成树</a> <a href="/tags/最短路/" style="font-size: 12.86px;">最短路</a> <a href="/tags/树上差分/" style="font-size: 10px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 14.29px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 11.43px;">树状数组</a> <a href="/tags/欧拉序/" style="font-size: 10px;">欧拉序</a> <a href="/tags/状压DP/" style="font-size: 10px;">状压DP</a> <a href="/tags/矩阵树定理/" style="font-size: 10px;">矩阵树定理</a> <a href="/tags/约数个数定理/" style="font-size: 10px;">约数个数定理</a> <a href="/tags/线段树/" style="font-size: 20px;">线段树</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/贪心/" style="font-size: 11.43px;">贪心</a> <a href="/tags/费用流/" style="font-size: 14.29px;">费用流</a> <a href="/tags/轻重链剖分/" style="font-size: 14.29px;">轻重链剖分</a> <a href="/tags/高精度/" style="font-size: 10px;">高精度</a>
+        <a href="/tags/01字典树/" style="font-size: 10px;">01字典树</a> <a href="/tags/BFS/" style="font-size: 12px;">BFS</a> <a href="/tags/DFS/" style="font-size: 11px;">DFS</a> <a href="/tags/DP/" style="font-size: 18px;">DP</a> <a href="/tags/Floyd/" style="font-size: 10px;">Floyd</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Miller-Rabin/" style="font-size: 10px;">Miller-Rabin</a> <a href="/tags/Pruefer/" style="font-size: 10px;">Pruefer</a> <a href="/tags/SPFA/" style="font-size: 11px;">SPFA</a> <a href="/tags/ST表/" style="font-size: 13px;">ST表</a> <a href="/tags/Trie/" style="font-size: 10px;">Trie</a> <a href="/tags/set/" style="font-size: 10px;">set</a> <a href="/tags/主席树/" style="font-size: 10px;">主席树</a> <a href="/tags/二元关系/" style="font-size: 11px;">二元关系</a> <a href="/tags/二分/" style="font-size: 13px;">二分</a> <a href="/tags/二分图/" style="font-size: 12px;">二分图</a> <a href="/tags/二分图多重匹配/" style="font-size: 10px;">二分图多重匹配</a> <a href="/tags/二分图最大匹配/" style="font-size: 11px;">二分图最大匹配</a> <a href="/tags/二分答案/" style="font-size: 13px;">二分答案</a> <a href="/tags/传递闭包/" style="font-size: 12px;">传递闭包</a> <a href="/tags/分块/" style="font-size: 10px;">分块</a> <a href="/tags/分层图/" style="font-size: 13px;">分层图</a> <a href="/tags/分数规划/" style="font-size: 14px;">分数规划</a> <a href="/tags/前后缀/" style="font-size: 10px;">前后缀</a> <a href="/tags/前缀和/" style="font-size: 10px;">前缀和</a> <a href="/tags/动态点分治/" style="font-size: 10px;">动态点分治</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/单调栈/" style="font-size: 11px;">单调栈</a> <a href="/tags/单调队列/" style="font-size: 19px;">单调队列</a> <a href="/tags/可持久化Trie/" style="font-size: 12px;">可持久化Trie</a> <a href="/tags/可持久化数组/" style="font-size: 10px;">可持久化数组</a> <a href="/tags/启发式合并/" style="font-size: 10px;">启发式合并</a> <a href="/tags/哈希/" style="font-size: 10px;">哈希</a> <a href="/tags/基环树/" style="font-size: 10px;">基环树</a> <a href="/tags/堆/" style="font-size: 11px;">堆</a> <a href="/tags/字典树/" style="font-size: 11px;">字典树</a> <a href="/tags/对偶图/" style="font-size: 10px;">对偶图</a> <a href="/tags/左偏树/" style="font-size: 11px;">左偏树</a> <a href="/tags/差分/" style="font-size: 11px;">差分</a> <a href="/tags/差分约束/" style="font-size: 11px;">差分约束</a> <a href="/tags/平衡树/" style="font-size: 15px;">平衡树</a> <a href="/tags/并查集/" style="font-size: 12px;">并查集</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/斜率优化/" style="font-size: 16px;">斜率优化</a> <a href="/tags/斯坦纳树/" style="font-size: 12px;">斯坦纳树</a> <a href="/tags/最大密度子图/" style="font-size: 10px;">最大密度子图</a> <a href="/tags/最大权闭合子图/" style="font-size: 10px;">最大权闭合子图</a> <a href="/tags/最大点权独立集/" style="font-size: 10px;">最大点权独立集</a> <a href="/tags/最大独立集/" style="font-size: 10px;">最大独立集</a> <a href="/tags/最小割/" style="font-size: 12px;">最小割</a> <a href="/tags/最小割树/" style="font-size: 12px;">最小割树</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最小费用最大流/" style="font-size: 16px;">最小费用最大流</a> <a href="/tags/最小路径覆盖/" style="font-size: 11px;">最小路径覆盖</a> <a href="/tags/最短路/" style="font-size: 13px;">最短路</a> <a href="/tags/最近公共祖先/" style="font-size: 12px;">最近公共祖先</a> <a href="/tags/树上启发式合并/" style="font-size: 10px;">树上启发式合并</a> <a href="/tags/树上差分/" style="font-size: 10px;">树上差分</a> <a href="/tags/树形DP/" style="font-size: 16px;">树形DP</a> <a href="/tags/树状数组/" style="font-size: 11px;">树状数组</a> <a href="/tags/树链剖分/" style="font-size: 12px;">树链剖分</a> <a href="/tags/欧拉函数/" style="font-size: 10px;">欧拉函数</a> <a href="/tags/欧拉回路/" style="font-size: 10px;">欧拉回路</a> <a href="/tags/欧拉序/" style="font-size: 10px;">欧拉序</a> <a href="/tags/状压DP/" style="font-size: 11px;">状压DP</a> <a href="/tags/矩阵树定理/" style="font-size: 10px;">矩阵树定理</a> <a href="/tags/约数个数定理/" style="font-size: 10px;">约数个数定理</a> <a href="/tags/线段树/" style="font-size: 20px;">线段树</a> <a href="/tags/网络流/" style="font-size: 11px;">网络流</a> <a href="/tags/背包/" style="font-size: 10px;">背包</a> <a href="/tags/莫队/" style="font-size: 10px;">莫队</a> <a href="/tags/贪心/" style="font-size: 17px;">贪心</a> <a href="/tags/费用流/" style="font-size: 17px;">费用流</a> <a href="/tags/轻重链剖分/" style="font-size: 13px;">轻重链剖分</a> <a href="/tags/高精度/" style="font-size: 10px;">高精度</a>
     </div>
 </div>
 
@@ -598,6 +614,83 @@
             </a>
         </li>
         
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">23</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">23</span>
+                </span>
+            </a>
+        </li>
+        
         </ul>
         </div>
     </div>
@@ -612,9 +705,16 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/01字典树/">
+                        <span class="tag">01字典树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/BFS/">
                         <span class="tag">BFS</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -628,7 +728,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DP/">
                         <span class="tag">DP</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -642,6 +742,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LCA/">
                         <span class="tag">LCA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Miller-Rabin/">
+                        <span class="tag">Miller-Rabin</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -682,6 +789,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/主席树/">
+                        <span class="tag">主席树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/二元关系/">
                         <span class="tag">二元关系</span>
                         <span class="tag is-grey">2</span>
@@ -691,7 +805,21 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/二分/">
                         <span class="tag">二分</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二分图/">
+                        <span class="tag">二分图</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二分图多重匹配/">
+                        <span class="tag">二分图多重匹配</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -720,6 +848,13 @@
                     <a class="tags has-addons" href="/tags/分块/">
                         <span class="tag">分块</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分层图/">
+                        <span class="tag">分层图</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -761,14 +896,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/单调栈/">
                         <span class="tag">单调栈</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/单调队列/">
                         <span class="tag">单调队列</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">10</span>
                     </a>
                 </div>
                 
@@ -776,6 +911,13 @@
                     <a class="tags has-addons" href="/tags/可持久化Trie/">
                         <span class="tag">可持久化Trie</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/可持久化数组/">
+                        <span class="tag">可持久化数组</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -803,7 +945,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/堆/">
                         <span class="tag">堆</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -822,6 +964,20 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/左偏树/">
+                        <span class="tag">左偏树</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/差分/">
+                        <span class="tag">差分</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/差分约束/">
                         <span class="tag">差分约束</span>
                         <span class="tag is-grey">2</span>
@@ -831,7 +987,21 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/平衡树/">
                         <span class="tag">平衡树</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/并查集/">
+                        <span class="tag">并查集</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数论/">
+                        <span class="tag">数论</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -864,9 +1034,23 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/最大点权独立集/">
+                        <span class="tag">最大点权独立集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最大独立集/">
+                        <span class="tag">最大独立集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/最小割/">
                         <span class="tag">最小割</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -880,6 +1064,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小生成树/">
                         <span class="tag">最小生成树</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最小费用最大流/">
+                        <span class="tag">最小费用最大流</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最小路径覆盖/">
+                        <span class="tag">最小路径覆盖</span>
                         <span class="tag is-grey">2</span>
                     </a>
                 </div>
@@ -887,7 +1085,21 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最短路/">
                         <span class="tag">最短路</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最近公共祖先/">
+                        <span class="tag">最近公共祖先</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树上启发式合并/">
+                        <span class="tag">树上启发式合并</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -901,7 +1113,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形DP/">
                         <span class="tag">树形DP</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -909,6 +1121,27 @@
                     <a class="tags has-addons" href="/tags/树状数组/">
                         <span class="tag">树状数组</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/欧拉函数/">
+                        <span class="tag">欧拉函数</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/欧拉回路/">
+                        <span class="tag">欧拉回路</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -922,7 +1155,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/状压DP/">
                         <span class="tag">状压DP</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -943,7 +1176,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
-                        <span class="tag is-grey">12</span>
+                        <span class="tag is-grey">16</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/网络流/">
+                        <span class="tag">网络流</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -964,14 +1204,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/贪心/">
                         <span class="tag">贪心</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/费用流/">
                         <span class="tag">费用流</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
@@ -1121,6 +1361,83 @@
             </a>
         </li>
         
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/09/">
+                <span class="level-start">
+                    <span class="level-item">九月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">八月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">23</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">23</span>
+                </span>
+            </a>
+        </li>
+        
         </ul>
         </div>
     </div>
@@ -1135,9 +1452,16 @@
             <div class="field is-grouped is-grouped-multiline">
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/01字典树/">
+                        <span class="tag">01字典树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/BFS/">
                         <span class="tag">BFS</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1151,7 +1475,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/DP/">
                         <span class="tag">DP</span>
-                        <span class="tag is-grey">8</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1165,6 +1489,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/LCA/">
                         <span class="tag">LCA</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Miller-Rabin/">
+                        <span class="tag">Miller-Rabin</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1205,6 +1536,13 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/主席树/">
+                        <span class="tag">主席树</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/二元关系/">
                         <span class="tag">二元关系</span>
                         <span class="tag is-grey">2</span>
@@ -1214,7 +1552,21 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/二分/">
                         <span class="tag">二分</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二分图/">
+                        <span class="tag">二分图</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/二分图多重匹配/">
+                        <span class="tag">二分图多重匹配</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1243,6 +1595,13 @@
                     <a class="tags has-addons" href="/tags/分块/">
                         <span class="tag">分块</span>
                         <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/分层图/">
+                        <span class="tag">分层图</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
@@ -1284,14 +1643,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/单调栈/">
                         <span class="tag">单调栈</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/单调队列/">
                         <span class="tag">单调队列</span>
-                        <span class="tag is-grey">7</span>
+                        <span class="tag is-grey">10</span>
                     </a>
                 </div>
                 
@@ -1299,6 +1658,13 @@
                     <a class="tags has-addons" href="/tags/可持久化Trie/">
                         <span class="tag">可持久化Trie</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/可持久化数组/">
+                        <span class="tag">可持久化数组</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1326,7 +1692,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/堆/">
                         <span class="tag">堆</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1345,6 +1711,20 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/左偏树/">
+                        <span class="tag">左偏树</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/差分/">
+                        <span class="tag">差分</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/差分约束/">
                         <span class="tag">差分约束</span>
                         <span class="tag is-grey">2</span>
@@ -1354,7 +1734,21 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/平衡树/">
                         <span class="tag">平衡树</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/并查集/">
+                        <span class="tag">并查集</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/数论/">
+                        <span class="tag">数论</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1387,9 +1781,23 @@
                 </div>
                 
                 <div class="control">
+                    <a class="tags has-addons" href="/tags/最大点权独立集/">
+                        <span class="tag">最大点权独立集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最大独立集/">
+                        <span class="tag">最大独立集</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
                     <a class="tags has-addons" href="/tags/最小割/">
                         <span class="tag">最小割</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
@@ -1403,6 +1811,20 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最小生成树/">
                         <span class="tag">最小生成树</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最小费用最大流/">
+                        <span class="tag">最小费用最大流</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最小路径覆盖/">
+                        <span class="tag">最小路径覆盖</span>
                         <span class="tag is-grey">2</span>
                     </a>
                 </div>
@@ -1410,7 +1832,21 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/最短路/">
                         <span class="tag">最短路</span>
+                        <span class="tag is-grey">4</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/最近公共祖先/">
+                        <span class="tag">最近公共祖先</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树上启发式合并/">
+                        <span class="tag">树上启发式合并</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1424,7 +1860,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/树形DP/">
                         <span class="tag">树形DP</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">7</span>
                     </a>
                 </div>
                 
@@ -1432,6 +1868,27 @@
                     <a class="tags has-addons" href="/tags/树状数组/">
                         <span class="tag">树状数组</span>
                         <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/树链剖分/">
+                        <span class="tag">树链剖分</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/欧拉函数/">
+                        <span class="tag">欧拉函数</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/欧拉回路/">
+                        <span class="tag">欧拉回路</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -1445,7 +1902,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/状压DP/">
                         <span class="tag">状压DP</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1466,7 +1923,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/线段树/">
                         <span class="tag">线段树</span>
-                        <span class="tag is-grey">12</span>
+                        <span class="tag is-grey">16</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/网络流/">
+                        <span class="tag">网络流</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1487,14 +1951,14 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/贪心/">
                         <span class="tag">贪心</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/费用流/">
                         <span class="tag">费用流</span>
-                        <span class="tag is-grey">4</span>
+                        <span class="tag is-grey">8</span>
                     </a>
                 </div>
                 
