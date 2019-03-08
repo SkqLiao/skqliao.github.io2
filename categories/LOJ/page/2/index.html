@@ -2,7 +2,7 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类: 网络流24题 - Skqliao&#39;s Blog</title>
+<title>分类: LOJ - Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -11,7 +11,7 @@
 <meta name="keywords" content="OI">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Skqliao&#39;s Blog">
-<meta property="og:url" content="https://skqliao.github.io/categories/网络流24题/index.html">
+<meta property="og:url" content="https://skqliao.github.io/categories/LOJ/page/2/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
 <meta property="og:description" content="An Oier&apos;s Blog">
 <meta property="og:locale" content="zh-CN">
@@ -142,7 +142,7 @@
         <ul>
             <li><a href="/categories">分类</a></li>
             
-            <li class="is-active"><a href="#" aria-current="page">网络流24题</a></li>
+            <li class="is-active"><a href="#" aria-current="page">LOJ</a></li>
         </ul>
         </nav>
     </div>
@@ -154,444 +154,16 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/177/">luogu P2761 软件补丁问题</a>
+                <a class="has-link-black-ter" href="/LOJ-6008/">LOJ 6008 餐巾计划</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T08:43:36.000Z">2018-05-07</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T08:18:20.000Z">2018-05-07</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>
-                </div>
-                
-                
-                <i class="fa fa-tag"></i>&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/状压DP/">状压DP</a>
-                </div>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>$A$ 是一个数的集合，包含 $n$ 种元素，存在 $m$ 种方法转移。 $A$ 能通过第 $i$ 种方法转移，当且仅当 $A$ 不包含 $C_i$ 中的任何元素且包含 $D_i$ 中的所有元素。 $A$ 通过第 $i$ 种方法转移的方法为：删去 $A$ 中所有与 $E_i$ 相同的元素， 增加所有 $F_i$ 中 $A$ 没有出现的元素。 通过第 $i$ 种方法转移的代价为 $P_i$，开始时 $A$ 包含所有元素，求转移到没有元素的最小代价。如果无解，输出<code>-1</code>。</p>
-<p>$1\leq n\leq 20$、$1\leq m\leq 100$。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>考虑暴力转移，每次转移是 $O(n\times m)$ 的，至多有 $2^n$ 种状态，所以复杂度是 $2^n\times n\times m$ 的，发现这么小的数据范围是可以过的。 发现合并、检查集合时比较麻烦，根据 $n\leq 20$ ，考虑转移状态压缩，用二进制下第 $i$ 位表示第 $i$ 个数是否存在。</p>
-<h3 id="位运算转移"><a href="#位运算转移" class="headerlink" title="位运算转移"></a>位运算转移</h3><p>检查 $C_i$ 即按位与，看结果是否为 $C_i$ 本身。 检查 $D_i$ 还是按位与，看结果是否为 $0$。 通过 $E_i$ 转移，这个是最复杂度的，需要两步。首先按位与得到两方都有的元素，再与原数异或。 通过 $F_i$ 转移，按位或即可。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>按位与，某一位为 $1$ 当且仅当两数该位同为 $1$ 。 按位或，某一位为 $1$ 当且仅当两数中至少一个数该位为 $1$ 。 异或，某一位为 $1$ 当且仅当两数中一个数该位为 $1$ ，另一个数该位为 $0$。 那么根据转移规则发现就是这三种运算而已，单独解释一下关于 $E_i$ 的转移。 该操作的目的即某一位若两位都是 $1$ ，则置为 $0$ ，其他不变。 那么按位与得到所有同时为 $1$ 的位，再根据 <code>1 ^ 1 = 0 ^ 0 = 0</code>、<code>0 ^ 1 = 1 ^ 0 = 1</code>，可以发现新数与原数异或即可满足要求。</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p>// Copyright 2018, Skqliao</p>
-<p>#include </p>
-<p>#define rg register</p>
-<p>#define rep(i, l, r) for (rg int i = (l), <em>##i##</em> = (r); i &lt; <em>##i##</em>; ++i)</p>
-<p>#define rof(i, l, r) for (rg int i = (l) - 1, <em>##i##</em> = (r); i &gt;= <em>##i##</em>; –i)</p>
-<p>#define ALL(x) (x).begin(), (x).end()</p>
-<p>#define SZ(x) static_cast((x).size())<br>typedef long long ll;</p>
-<p>const int MAXN = (1 &lt;&lt; 20) + 5;<br>const int MAXM = 100 + 5;</p>
-<p>int F[MAXN];<br>int n, m, Cost[MAXM];<br>int A1[MAXM], A2[MAXM];<br>int B1[MAXM], B2[MAXM];<br>std::bitset Inq;</p>
-<p>int main() {<br>    std::ios_base::sync_with_stdio(false);<br>    std::cin.tie(NULL);<br>    std::cin &gt;&gt; n &gt;&gt; m;<br>    std::string str1, str2;<br>    rep(i, 0, m) {<br>        std::cin &gt;&gt; Cost[i] &gt;&gt; str1 &gt;&gt; str2;<br>        rep(j, 0, n) {<br>            if(str1[j] == ‘+’) {<br>                A1[i] |= 1 &lt;&lt; j;<br>            } else if(str1[j] == ‘-‘) {<br>                A2[i] |= 1 &lt;&lt; j;<br>            }<br>            if(str2[j] == ‘-‘) {<br>                B1[i] |= 1 &lt;&lt; j;<br>            } else if(str2[j] == ‘+’) {<br>                B2[i] |= 1 &lt;&lt; j;<br>            }<br>        }<br>    }<br>    std::queue Que;<br>    memset(F, 0x3f, sizeof F);<br>    F[(1 &lt;&lt; n) - 1] = 0;<br>    Que.push((1 &lt;&lt; n) - 1);<br>    while(!Que.empty()) {<br>        int x = Que.front(); Que.pop();<br>        Inq[x] = 0;<br>        rep(i, 0, m) {<br>            if((x &amp; A1[i]) == A1[i] &amp;&amp; (x &amp; A2[i]) == 0) {<br>                int y = x &amp; B1[i];<br>                y = y ^ x | B2[i];<br>                if(F[y] &gt; Cost[i] + F[x]) {<br>                    F[y] = Cost[i] + F[x];<br>                    if(!Inq[y]) {<br>                        Inq[y] = 1;<br>                        Que.push(y);<br>                    }<br>                }<br>            }<br>        }<br>    }<br>    if(F[0] == F[1 &lt;&lt; n]) {<br>        F[0] = 0;<br>    }<br>    std::cout &lt;&lt; F[0] &lt;&lt; std::endl;<br>    return 0;<br>}</p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/LOJ-6003/">LOJ 6003 魔术球</a>
-            
-        </h1>
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T08:42:03.000Z">2018-05-07</time></div>&nbsp;&nbsp;
-                
-                <i class="fa fa-folder"></i>&nbsp;&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
-                </div>
-                
-                
-                <i class="fa fa-tag"></i>&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/最小路径覆盖/">最小路径覆盖</a>
-                </div>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>将 $[1, N]$ 分成 $K$ 组序列，使得每组序列相邻两数的和为完全平方数，且序列递增。 已知 $K$，求 $N$ 的最大值，并给出一组方案（按顺序输出 $K$ 个序列）。</p>
-<p>$1\leq K\leq 55$</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/LOJ-6003/#more">查看全文</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/LOJ-6002/">LOJ 6002 最小路径覆盖问题</a>
-            
-        </h1>
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T08:40:31.000Z">2018-05-07</time></div>&nbsp;&nbsp;
-                
-                <i class="fa fa-folder"></i>&nbsp;&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
-                </div>
-                
-                
-                <i class="fa fa-tag"></i>&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/最小路径覆盖/">最小路径覆盖</a>
-                </div>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>给一个 $N$ 个点， $M$ 条边的DAG，求最小路径覆盖数及其方案。</p>
-<p>$1\leq N\leq 150,1\leq M\leq 6000$</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/LOJ-6002/#more">查看全文</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/LOJ-6011/">LOJ 6011 运输问题</a>
-            
-        </h1>
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T08:39:03.000Z">2018-05-07</time></div>&nbsp;&nbsp;
-                
-                <i class="fa fa-folder"></i>&nbsp;&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
-                </div>
-                
-                
-                <i class="fa fa-tag"></i>&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/最小费用最大流/">最小费用最大流</a>
-                </div>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>有 $N$ 个仓库，库存为 $A_i$，$M$ 个商店，需求为 $B_i$，保证 $\sum{A_i} =\sum{B_i}$。 第 $i$ 个仓库每单位运送给第 $j$ 个商店的费用为 $C_{i,j}$。 求满足商店需求所需的最小运费。</p>
-<p>$1\leq n,m\leq 100$</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/LOJ-6011/#more">查看全文</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/LOJ-6012/">LOJ 6012 分配问题</a>
-            
-        </h1>
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T08:37:51.000Z">2018-05-07</time></div>&nbsp;&nbsp;
-                
-                <i class="fa fa-folder"></i>&nbsp;&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
-                </div>
-                
-                
-                <i class="fa fa-tag"></i>&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/最小费用最大流/">最小费用最大流</a>
-                </div>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>有 $n$ 件工作要分配给 $n$ 个人做。第 $i$ 个人做第 $j$ 件工作产生的效益为 $c_{i,j}$ 。 试设计一个将 $n$ 件工作分配给 $n$ 个人做的分配方案，使产生的总效益最大。 每个人只能做一个工作。</p>
-<p>$1\leq n\leq 100$</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/LOJ-6012/#more">查看全文</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/LOJ-6010/">LOJ 6010 数字梯形</a>
-            
-        </h1>
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T08:36:11.000Z">2018-05-07</time></div>&nbsp;&nbsp;
-                
-                <i class="fa fa-folder"></i>&nbsp;&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
-                </div>
-                
-                
-                <i class="fa fa-tag"></i>&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/最小费用最大流/">最小费用最大流</a>
-                </div>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>一个梯形，第一行有 $m$ 个数，共 $n$ 行，每行比上一行多一个数，每个数有一个权值 $A_i$。 从第一行的 $m$ 个数开始，每次向左下或右下移动，到第 $n$ 层结束。 求以下三种情况的权值和最大值： </p>
-<ul>
-<li>$m$ 条路径不相交 </li>
-<li>$m$ 条路径可以在数字处相交 </li>
-<li>$m$ 条路径可以在数字和边处相交</li>
-</ul>
-<p>$1\leq n,m\leq 20$</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/LOJ-6010/#more">查看全文</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/LOJ-6224/">LOJ-6224 深海机器人问题</a>
-            
-        </h1>
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T08:35:12.000Z">2018-05-07</time></div>&nbsp;&nbsp;
-                
-                <i class="fa fa-folder"></i>&nbsp;&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
-                </div>
-                
-                
-                <i class="fa fa-tag"></i>&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/最小费用最大流/">最小费用最大流</a>
-                </div>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>一个 $N * M$ 的网格图，每条边都存在权值。 现有 $A$ 个起点， $B$ 个终点。 第 $i$ 个起点可以作为 $X_i$ 条路径的起点，第 $i$ 个终点可以作为 $Y_i$ 条路径的终点。保证 $\sum{X_i}=\sum{Y_i}$ 。 每条路径只能向右或者向上移动，可以重复经过某一条边或者某个点。 求这 $\sum{X_i}$ 条路径覆盖的所有边的最大权值和（同一条边的权值只算一次）。</p>
-<p>$1\leq N,M\leq 15$ $1\leq A\leq 4$ $1\leq B\leq 6$</p>
-        </div>
-        
-        
-        <div class="level is-mobile">
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/LOJ-6224/#more">查看全文</a>
-                </div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/LOJ-6014/">LOJ 6014 最长 k 可重区间集</a>
-            
-        </h1>
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T08:32:41.000Z">2018-05-07</time></div>&nbsp;&nbsp;
-                
-                <i class="fa fa-folder"></i>&nbsp;&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
-                </div>
-                
-                
-                <i class="fa fa-tag"></i>&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/最小费用最大流/">最小费用最大流</a>
-                </div>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>直线上有 $N$ 个开区间 $(x_i,y_i)$，从中选取任意多个，满足该直线上任意一个点最多被 $K$ 个区间覆盖，求选取区间的最大长度和。</p>
-<p>$1\leq N\leq 500$ $1\leq K\leq 3$</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="O-N-2-建图方法"><a href="#O-N-2-建图方法" class="headerlink" title="$O(N^2)$ 建图方法"></a>$O(N^2)$ 建图方法</h3><p>以区间长度作为费用，目标即让总费用最大。 每个区间只能选一次，所以要拆点。 问题在于如果保证任何一个点至多被覆盖 $K$ 次。 显然，如果任意选择 $K$ 个区间，那么不可能出现某个点被覆盖超过 $K$ 次。 如果选择一个区间，再去选择一个与它不相交的区间，那么依然不会出现某个点被覆盖超过 $K$ 次的情况。 那么如果在这个基础上再选择一个与另一个区间不相交的区间呐？是否会出现某个点被覆盖 $K + 1$ 次的情况？ 令开始选取的区间为 $A_1….A_K$，第一次增加了与 $A_1$ 不相交的区间 $B_1$，第二次增加了与 $A_2$ 不相交的区间 $B_2$ ，以 $X{a,b,c}=s$ 表示区间集合 ${a,b,c}$ 覆盖的点中，被覆盖次数最大次数为 $s$ 。 根据之前的描述，$X{A_1…A_K} \leq K$ ，$X{A_1,B_1,A_2…A_k} \leq K$ 。 由于 $A_1\cap B_1=\emptyset$，所以 $X{B_1,A_2…A_k} \leq K$。 如果增加 $B_2$ 之后覆盖了某个点 $K + 1$ 次，那么就是 $X{A_1,B_1,A_2,B_2,A_3…A_K} = K+1$ 。 由于 $A_2\cap B_2=\emptyset$，所以等价为 $X{A_1,B_1,B_2…A_k} = K+1$。 集合中共有 $K+1$ 个数，若满足上式，即需要其中任意两个集合都有交，且所有交集的交不为 $\emptyset$ 。 但是 $A_1\cap B_1=\emptyset$ ，所以上式一定不成立。 也就是说增加 $B_2$ 依然不会出现某个点被覆盖 $K+1$ 次。 同理按照选取不相交区间的原则增加 $B_3$ ， $B_4$ $…$，都不会出现某个点被覆盖 $K+1$ 次的情况。 所以说问题转化为从 $N$ 个区间中任意选取 $K$ 个，选择完某区间后可以再选择一个与它不相交的区间，求选取的所有区间总长度最大值。 转化成网络流模型。</p>
-<ul>
-<li>每个区间拆点成 $X_i,Y_i$</li>
-<li>$S$ 向 $S’$ 连一条流量限制为 $K$，费用为 $0$ 的边</li>
-<li>$S’$ 向所有 $X_i$ 连接流量限制为 $1$ ，费用为 $0$ 的边</li>
-<li>$X_i$ 向 $Y_i$ 连接流量限制为 $1$ ，费用为区间长度的边</li>
-<li>$Y_i$ 向 $X_j$ 连接流量限制为 $1$ ，费用为 $0$ 的边，其中 $i\leq j$ 且区间 $i,j$ 不相交</li>
-<li>所有 $Y_i$ 向 $T$ 连接一条流量限制为 $1$， 费用为 $0$ 的边。</li>
-</ul>
-<p>求最大费用最大流。 费用取反跑最小费用流，其结果再取反即为答案。</p>
-<h3 id="O-N-times-log-N-建图方法"><a href="#O-N-times-log-N-建图方法" class="headerlink" title="$O(N\times \log{N})$ 建图方法"></a>$O(N\times \log{N})$ 建图方法</h3><p>根据 $O(N^2)$ 建图方法，我们明白了网络流模型转化的核心，即共 $K$ 条流量，任意一个点可以流向与其不相交的区间所对应的点，跑费用流。 建图的瓶颈在于找到所有不相交的区间，需要 $O(N^2)$ 的遍历。 比较显然的一点，就是如果按照左端点排序区间，如果 $(x_i,y_i)$ 与 $(x_j,y_j)$ 不相交，且 $j-i$ 最小，那么对于区间 $(x_k,y_k)(k\geq j)$ ，一定也不和 $(x_i,y_i)$ 相交。 也就是说我们可以在 $O(\log{N})$ 的时间内找到第一个与 $(x_i,y_i)$ 不相交的区间。 那么如果能让流量到达 $(x_j,y_j)$ 后“自然地向后流“，就相当于可以流到所有和 $(x_i,y_i)$ 不相交的区间。 想象整个直线是一条河，入河口流入 $K$ 点流量。这条河可以通过无限流量且费用为 $0$ 。每个节点在对应的坐标上，是一块河中一块小陆地。那么在所有区间的左右端点之间架一座桥，允许 $1$ 的流量通过，费用为区间长度。流量从 $x_i\rightarrow y_i$ 之后，这一点流量可以选择再跨越后面任何一座没有流量经过的桥，或者一直沿着河流，直到河的尽头。 这么流依然保证了其合法性，但是建图复杂度大大降低了。</p>
-<ul>
-<li>离散化所有结点，即 $h(a) $ 为 $a$ 的重标号， $0$ 和 $n’$ 分别为第一个和最后一个点</li>
-<li>$h(x_i)\rightarrow h(y_i)$ ，费用为 $y_i-x_i$，流量限制为$1$</li>
-<li>$i\rightarrow i+1$，费用为$0$，流量限制为无穷</li>
-<li>$s\rightarrow 0$，费用为 $0$ ，流量限制为 $K$</li>
-<li>$n’\rightarrow T$ ，费用为 $0$ ，流量限制为 $K$</li>
-<li>求 $S-T$ 最大费用最大流，方法同理</li>
-</ul>
-<p>离散化复杂度 $O(N\times \log{N})$ ，求 $h(a)$ 的复杂度 $O(\log{N})$，所以建图复杂度为$O(N\times \log{N})$ 。</p>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
-<li>从来没有说过 $y_i\geq x_i$</li>
-</ul>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><h3 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Copyright 2018, Skqliao</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rg register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rep(i, l, r) for (rg int i = (l), _##i##_ = (r); i &lt; _##i##_; ++i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rof(i, l, r) for (rg int i = (l) - 1, _##i##_ = (r); i &gt;= _##i##_; --i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ALL(x) (x).begin(), (x).end()</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SZ(x) static_cast<span class="hljs-meta-string">&lt;int&gt;((x).size())</span></span></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> mcmf &#123;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">1000</span> + <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXM = MAXN * MAXN;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> v, nxt, f, c;</span><br><span class="line">&#125;E[MAXM &lt;&lt; <span class="hljs-number">2</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> S, T, F, C;</span><br><span class="line"><span class="hljs-keyword">int</span> H[MAXN], cntE;</span><br><span class="line"><span class="hljs-keyword">int</span> Lp[MAXN], Le[MAXN], Dis[MAXN];</span><br><span class="line"><span class="hljs-keyword">bool</span> Inq[MAXN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    E[++cntE] = (Edge) &#123;v, H[u], f, c&#125;;</span><br><span class="line">    H[u] = cntE;</span><br><span class="line">    E[++cntE] = (Edge) &#123;u, H[v], <span class="hljs-number">0</span>, -c&#125;;</span><br><span class="line">    H[v] = cntE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(H, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> H);</span><br><span class="line">    cntE = <span class="hljs-number">-1</span>;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> N, K;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; P[MAXN];</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;N, &amp;K);</span><br><span class="line">    S = N * <span class="hljs-number">2</span>, T = N * <span class="hljs-number">2</span> + <span class="hljs-number">2</span>;</span><br><span class="line">    addEdge(S, S + <span class="hljs-number">1</span>, K, <span class="hljs-number">0</span>);</span><br><span class="line">    rep(i, <span class="hljs-number">0</span>, N) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;P[i].first, &amp;P[i].second);</span><br><span class="line">        <span class="hljs-keyword">if</span>(P[i].first &gt; P[i].second) &#123;</span><br><span class="line">            <span class="hljs-built_in">std</span>::swap(P[i].first, P[i].second);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">std</span>::sort(P, P + N);</span><br><span class="line">    rep(i, <span class="hljs-number">0</span>, N) &#123;</span><br><span class="line">        addEdge(S + <span class="hljs-number">1</span>, i, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">        addEdge(i + N, T, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">        addEdge(i, i + N, <span class="hljs-number">1</span>, P[i].first - P[i].second);</span><br><span class="line">        rep(j, i + <span class="hljs-number">1</span>, N) &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span>(P[j].first &gt;= P[i].second) &#123;</span><br><span class="line">                addEdge(i + N, j, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">spfa</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; Que;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Dis, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> Dis);</span><br><span class="line">    <span class="hljs-keyword">int</span> INF = Dis[<span class="hljs-number">0</span>];</span><br><span class="line">    Dis[S] = <span class="hljs-number">0</span>;</span><br><span class="line">    Que.push(S);</span><br><span class="line">    <span class="hljs-keyword">while</span>(!Que.empty()) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = Que.front(); Que.pop();</span><br><span class="line">        Inq[x] = <span class="hljs-literal">false</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = H[x]; ~i; i = E[i].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> &amp;v = E[i].v;</span><br><span class="line">            <span class="hljs-keyword">if</span>(E[i].f &amp;&amp; Dis[v] &gt; Dis[x] + E[i].c) &#123;</span><br><span class="line">                Dis[v] = Dis[x] + E[i].c;</span><br><span class="line">                Lp[v] = x, Le[v] = i;</span><br><span class="line">                <span class="hljs-keyword">if</span>(!Inq[v]) &#123;</span><br><span class="line">                    Inq[v] = <span class="hljs-literal">true</span>;</span><br><span class="line">                    Que.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> Dis[T] != INF;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mcmf</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="hljs-keyword">while</span>(spfa()) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> f = INT_MAX;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = T; i != S; i = Lp[i]) &#123;</span><br><span class="line">            f = <span class="hljs-built_in">std</span>::min(f, E[Le[i]].f);</span><br><span class="line">        &#125;</span><br><span class="line">        F += f;</span><br><span class="line">        C += Dis[T] * f;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = T; i != S; i = Lp[i]) &#123;</span><br><span class="line">            E[Le[i]].f -= f;</span><br><span class="line">            E[Le[i] ^ <span class="hljs-number">1</span>].f += f;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, -C);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    mcmf::mcmf();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h3><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Copyright 2018, Skqliao</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rg register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rep(i, l, r) for (rg int i = (l), _##i##_ = (r); i &lt; _##i##_; ++i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rof(i, l, r) for (rg int i = (l) - 1, _##i##_ = (r); i &gt;= _##i##_; --i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ALL(x) (x).begin(), (x).end()</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SZ(x) static_cast<span class="hljs-meta-string">&lt;int&gt;((x).size())</span></span></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">namespace</span> mcmf &#123;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">1000</span> + <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXM = MAXN * MAXN;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> v, nxt, f, c;</span><br><span class="line">&#125;E[MAXM &lt;&lt; <span class="hljs-number">2</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> S, T, F, C;</span><br><span class="line"><span class="hljs-keyword">int</span> H[MAXN], cntE;</span><br><span class="line"><span class="hljs-keyword">int</span> Lp[MAXN], Le[MAXN], Dis[MAXN];</span><br><span class="line"><span class="hljs-keyword">bool</span> Inq[MAXN];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">    E[++cntE] = (Edge) &#123;v, H[u], f, c&#125;;</span><br><span class="line">    H[u] = cntE;</span><br><span class="line">    E[++cntE] = (Edge) &#123;u, H[v], <span class="hljs-number">0</span>, -c&#125;;</span><br><span class="line">    H[v] = cntE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(H, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> H);</span><br><span class="line">    cntE = <span class="hljs-number">-1</span>;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> N, K;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; P[MAXN];</span><br><span class="line">    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;N, &amp;K);</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> Hash[MAXN], total = <span class="hljs-number">0</span>;</span><br><span class="line">    rep(i, <span class="hljs-number">0</span>, N) &#123;</span><br><span class="line">        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;P[i].first, &amp;P[i].second);</span><br><span class="line">        <span class="hljs-keyword">if</span>(P[i].first &gt; P[i].second) &#123;</span><br><span class="line">            <span class="hljs-built_in">std</span>::swap(P[i].first, P[i].second);</span><br><span class="line">        &#125;</span><br><span class="line">        Hash[total++] = P[i].first;</span><br><span class="line">        Hash[total++] = P[i].second;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">std</span>::sort(Hash, Hash + total);</span><br><span class="line">    total = <span class="hljs-built_in">std</span>::unique(Hash, Hash + total) - Hash;</span><br><span class="line">    S = total, T = total + <span class="hljs-number">1</span>;</span><br><span class="line">    addEdge(S, <span class="hljs-number">0</span>, K, <span class="hljs-number">0</span>);</span><br><span class="line">    addEdge(total - <span class="hljs-number">1</span>, T, K, <span class="hljs-number">0</span>);</span><br><span class="line">    rep(i, <span class="hljs-number">1</span>, total) &#123;</span><br><span class="line">        addEdge(i - <span class="hljs-number">1</span>, i, INT_MAX, <span class="hljs-number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    rep(i, <span class="hljs-number">0</span>, N) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = <span class="hljs-built_in">std</span>::lower_bound(Hash, Hash + total, P[i].first) - Hash;</span><br><span class="line">        <span class="hljs-keyword">int</span> y = <span class="hljs-built_in">std</span>::lower_bound(Hash, Hash + total, P[i].second) - Hash;</span><br><span class="line">        addEdge(x, y, <span class="hljs-number">1</span>, P[i].first - P[i].second);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">spfa</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; Que;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(Dis, <span class="hljs-number">0x3f</span>, <span class="hljs-keyword">sizeof</span> Dis);</span><br><span class="line">    <span class="hljs-keyword">int</span> INF = Dis[<span class="hljs-number">0</span>];</span><br><span class="line">    Dis[S] = <span class="hljs-number">0</span>;</span><br><span class="line">    Que.push(S);</span><br><span class="line">    <span class="hljs-keyword">while</span>(!Que.empty()) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = Que.front(); Que.pop();</span><br><span class="line">        Inq[x] = <span class="hljs-literal">false</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = H[x]; ~i; i = E[i].nxt) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> &amp;v = E[i].v;</span><br><span class="line">            <span class="hljs-keyword">if</span>(E[i].f &amp;&amp; Dis[v] &gt; Dis[x] + E[i].c) &#123;</span><br><span class="line">                Dis[v] = Dis[x] + E[i].c;</span><br><span class="line">                Lp[v] = x, Le[v] = i;</span><br><span class="line">                <span class="hljs-keyword">if</span>(!Inq[v]) &#123;</span><br><span class="line">                    Inq[v] = <span class="hljs-literal">true</span>;</span><br><span class="line">                    Que.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> Dis[T] != INF;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mcmf</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="hljs-keyword">while</span>(spfa()) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> f = INT_MAX;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = T; i != S; i = Lp[i]) &#123;</span><br><span class="line">            f = <span class="hljs-built_in">std</span>::min(f, E[Le[i]].f);</span><br><span class="line">        &#125;</span><br><span class="line">        F += f;</span><br><span class="line">        C += Dis[T] * f;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = T; i != S; i = Lp[i]) &#123;</span><br><span class="line">            E[Le[i]].f -= f;</span><br><span class="line">            E[Le[i] ^ <span class="hljs-number">1</span>].f += f;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, -C);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    mcmf::mcmf();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/LOJ-6227/">LOJ-6227 最长 k 可重线段集问题</a>
-            
-        </h1>
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T08:24:02.000Z">2018-05-07</time></div>&nbsp;&nbsp;
-                
-                <i class="fa fa-folder"></i>&nbsp;&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
                 </div>
                 
                 
@@ -605,15 +177,15 @@
         </div>
         
         <div class="content">
-            <p>有 $N$ 条开线段，可以从中选择任意数量的开线段，使得对于任意直线 $x=p$ ，至多有 $K$ 条线段和它有交点。求选取的开线段的长度之和的最大值。</p>
-<p>$1\leq N\leq 500$ $1\leq K\leq 13$</p>
+            <p>共 $n$ 天，每天需要 $R_i$ 块干净的纸巾。纸巾用完一次就脏了，可以选择清洗后使用或不再使用。 已知新买纸巾的价格为 $p$ ，花 $m$ 天快洗纸巾的价格为 $f$ ，花 $n$ 天慢洗纸巾的价格为 $s$ 。 求最小花费。</p>
+<p>$n \leq 2000$，$R_i \leq 10^7$，$p,f,s \leq 10^4$ 。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/LOJ-6227/#more">查看全文</a>
+                <a class="button is-size-7 is-light" href="/LOJ-6008/#more">查看全文</a>
                 </div>
             </div>
         </div>
@@ -632,16 +204,66 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/LOJ-6225/">LOJ-6225 火星探险问题</a>
+                <a class="has-link-black-ter" href="/LOJ-6013/">LOJ 6013 负载平衡</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T08:22:20.000Z">2018-05-07</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T07:24:33.000Z">2018-05-07</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/最小费用最大流/">最小费用最大流</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>G公司有 $N$ 个沿铁路运输线环形排列的仓库，每个仓库存储的货物数量为 $A_i$。 如何用最少搬运量可以使 $N$ 个仓库的库存数量相同。 搬运货物时，只能在相邻的仓库之间搬运。</p>
+<p>$1\leq N\leq 100$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/LOJ-6013/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/LOJ-6122/">LOJ-6122 航空路线问题</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T03:19:27.000Z">2018-05-07</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
                 </div>
                 
                 
@@ -655,15 +277,370 @@
         </div>
         
         <div class="content">
-            <p>$Q\times P$ 的网格图，起点位于左上角 $(1,1)$ ，终点位于右下角 $(Q,P)$。 现在有 $N$ 个机器人从起点出发，每次只能向右或向下移动一格，且不能碰到障碍物。 每个格子有三种可能的状态：空地、有标本、有障碍物。 第一个抵达有标本的格子的机器人会取走该格子的标本，每个格子可以同时容纳多个机器人。 如果不能抵达终点，路上收集的标本将作废。 给出每个机器人的移动方案，使得采集到最多的标本，且最多的机器人达到终点。</p>
-<p>$P,Q\leq 35$</p>
+            <p>有 $N$ 个结点， $M$ 条无向边。现想从结点 $1$ 走到 $N$ 再走回 $1$，且每个结点至多只能访问一次（除了结点 $1$）。 求该路径的最大长度并顺序输出途经结点，如果不存在，输出<code>No Solution!</code></p>
+<p>$1\leq N\leq 100$</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/LOJ-6225/#more">查看全文</a>
+                <a class="button is-size-7 is-light" href="/LOJ-6122/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/LOJ-6004/">LOJ 6004 圆桌聚餐</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T03:17:52.000Z">2018-05-07</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/网络流/">网络流</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>有 $N$ 个单位分别有 $A_i$ 个代表，有 $M$ 张餐桌，分别可容纳 $B_i$ 个人。 不存在同一个单位的两名代表再同一张餐桌上，求是否存在分配方案可以满足该要求。 如果有，输出每个单位各个代表的餐桌编号。</p>
+<p>$1\leq m\leq150, 1\leq n\leq 270$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/LOJ-6004/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/LOJ-6001/">LOJ 6001 太空飞行计划</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T03:16:52.000Z">2018-05-07</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/网络流/">网络流</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>有 $n$ 个集合，选择第 $i$ 个集合可以获得 $C_i$ 的收益，但是必须购买其中包含的所有元素（不同集合中出现的相同元素只需要购买一次），购买 第 $j$ 个元素的花费为 $A_j$ 。 求最大收益，以及选择的集合及其包含的所有元素。</p>
+<p>$1\leq n\leq 50$、$1\leq m\leq 100$。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/LOJ-6001/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/LOJ-6121/">LOJ 6121 孤岛营救问题</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T03:13:57.000Z">2018-05-07</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/BFS/">BFS</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/分层图/">分层图</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>一个 $N \times M$ 的网格图，其中相邻的格子之间可能互通，共有三种情况如下： - 已经连通 - 有一堵墙，无法逾越 - 有一扇编号为 $A_i$ 的门，需要对应编号的钥匙打开（钥匙可以多次使用） 已知你现在位于 $(1,1)$，需要抵达 $(N, M)$ 。 有 $P$ 种门，门和墙的总数为 $K$ ，共 $S$ 把钥匙。 走到相邻的格子花费 $1$ 时间，捡起钥匙和打开门不消耗时间。 求抵达目的地的最短时间，如果无法抵达，输出 <code>-1</code> 。</p>
+<p>$N,M,P\leq 10$ $K\leq 150$ $S\leq 14$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/LOJ-6121/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/LOJ-6005/">LOJ 6005 最长递增子序列</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T03:12:47.000Z">2018-05-07</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/分层图/">分层图</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>有一个长度为 $N$ 的序列 $A$，求解以下询问： </p>
+<ul>
+<li>最长不下降子序列的长度 $K$ </li>
+<li>原序列最多可以取出长度为 $K$ 的不下降子序列的个数 （每个数只能用一次） </li>
+<li>如果 $A_1$ 和 $A_N$ 可以取无数次，再求第二问</li>
+</ul>
+<p>$1\leq N\leq 500$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/LOJ-6005/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/LOJ-6015/">LOJ 6015 星际转移</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T03:11:12.000Z">2018-05-07</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/分层图/">分层图</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>地球和月球中间有 $n$ 个太空站，有 $m$ 艘太空船， $k$ 个人要从地球前往月球。 已知每个太空站可以容纳无限多的人，每艘太空船的承载人数为 $H_i$ ，以及它们的行驶路线（经过的每一个太空站编号）。 任意两个太空站之间的行驶时间均为 $1$，太空船周期行驶（终点站再回到初始站） 乘客可以选择在任意整数时刻下车或上车，这个操作不消耗时间。 假设所有太空船0时刻都在初始站，求所有人从地球转移到月球的最短时间。 如果不能到达，输出<code>0</code>。</p>
+<p>$n \leq 13$，$m \leq 20$，$k \leq 50$。</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/LOJ-6015/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/LOJ-6223/">LOJ 6223 汽车加油行驶问题</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T03:09:37.000Z">2018-05-07</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/分层图/">分层图</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/最小费用最大流/">最小费用最大流</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>一个 $N * N$ 的网格图，起点为 $(1,1)$ （左上角），终点为 $(N,N)$ （右下角）。 一辆汽车从起点出发，油量为满（ $K$ ），每走一格油量消耗 $1$ ，剩余 $0$ 的时候无法行驶。 有些点有加油站，如果走到该点，必须加满，费用为 $A$ 。 如果该点没有加油站，可以选择增设加油站，费用为 $C$ （不算加油的费用）。 每经过一条网格边，如果是往左或往上走，费用为 $B$ ；如果向下或者向右走，没有花费。 求最小花费。</p>
+<p>$2\leq N\leq 100$ $2\leq K\leq 10$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/LOJ-6223/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/LOJ-6226/">LOJ 6226 骑士共存问题</a>
+            
+        </h1>
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T03:08:04.000Z">2018-05-07</time></div>&nbsp;&nbsp;
+                
+                <i class="fa fa-folder"></i>&nbsp;&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
+                </div>
+                
+                
+                <i class="fa fa-tag"></i>&nbsp;
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/tags/二分图/">二分图</a>&nbsp;,&nbsp;<a class="has-link-grey -link" href="/tags/最大独立集/">最大独立集</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>一个位于点 $S$ 的骑士可以攻击到所有标记为 $X$ 的红色格子，如下图所示。 <img src="https://cdn.luogu.org/upload/pic/2669.png" alt="img"> （图源水印） 在一个 $N * N$ 的棋盘上，有 $M$ 个格子不能放置骑士，坐标为 $(X_i,Y_i)$ 。 求最多能放多少个骑士，使得他们两两之间无法相互攻击。</p>
+<p>$1\leq N\leq 200$ $M\leq N^2$</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/LOJ-6226/#more">查看全文</a>
                 </div>
             </div>
         </div>
@@ -680,19 +657,19 @@
     
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
-        <div class="pagination-previous is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/网络流24题/page/0/">上一页</a>
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/categories/LOJ/">上一页</a>
         </div>
         <div class="pagination-next">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/网络流24题/page/2/">下一页</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/LOJ/page/3/">下一页</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
-            <li><a class="pagination-link is-current" href="/categories/网络流24题/">1</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/categories/LOJ/">1</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/categories/网络流24题/page/2/">2</a></li>
+            <li><a class="pagination-link is-current" href="/categories/LOJ/page/2/">2</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/categories/网络流24题/page/3/">3</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/categories/LOJ/page/3/">3</a></li>
             
         </ul>
     </nav>
@@ -752,7 +729,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        7
                     </p>
                 </div>
             </div>
@@ -877,7 +854,7 @@
                 <span class="level-item">BZOJ</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">90</span>
+                <span class="level-item tag">91</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/FZOJ/">
@@ -896,6 +873,14 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/LOJ/">
+            <span class="level-start">
+                <span class="level-item">LOJ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">23</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/codeforces/">
             <span class="level-start">
                 <span class="level-item">codeforces</span>
@@ -911,23 +896,7 @@
             <span class="level-end">
                 <span class="level-item tag">6</span>
             </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/网络流24题/">
-            <span class="level-start">
-                <span class="level-item">网络流24题</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">23</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/网络流24题/LOJ/">
-            <span class="level-start">
-                <span class="level-item">LOJ</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">22</span>
-            </span>
-        </a></li></ul></li>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -961,7 +930,7 @@
                     <a href="/BZOJ-5335/" class="has-link-black-ter is-size-6">「TJOI 2018」BZOJ 5335 智力竞赛</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
-                        &nbsp;
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
                         <a class="has-link-grey -link" href="/tags/二分图最大匹配/">二分图最大匹配</a> , <a class="has-link-grey -link" href="/tags/二分答案/">二分答案</a> , <a class="has-link-grey -link" href="/tags/传递闭包/">传递闭包</a>
                     </p>
@@ -1708,7 +1677,7 @@
                     <a href="/BZOJ-5335/" class="has-link-black-ter is-size-6">「TJOI 2018」BZOJ 5335 智力竞赛</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
-                        &nbsp;
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
                         <a class="has-link-grey -link" href="/tags/二分图最大匹配/">二分图最大匹配</a> , <a class="has-link-grey -link" href="/tags/二分答案/">二分答案</a> , <a class="has-link-grey -link" href="/tags/传递闭包/">传递闭包</a>
                     </p>

@@ -2,7 +2,7 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>分类: LOJ - Skqliao&#39;s Blog</title>
+<title>分类: BZOJ - Skqliao&#39;s Blog</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -11,7 +11,7 @@
 <meta name="keywords" content="OI">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Skqliao&#39;s Blog">
-<meta property="og:url" content="https://skqliao.github.io/categories/网络流24题/LOJ/page/3/index.html">
+<meta property="og:url" content="https://skqliao.github.io/categories/BZOJ/page/10/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
 <meta property="og:description" content="An Oier&apos;s Blog">
 <meta property="og:locale" content="zh-CN">
@@ -142,9 +142,7 @@
         <ul>
             <li><a href="/categories">分类</a></li>
             
-            <li><a href="/categories/网络流24题/">网络流24题</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">LOJ</a></li>
+            <li class="is-active"><a href="#" aria-current="page">BZOJ</a></li>
         </ul>
         </nav>
     </div>
@@ -156,22 +154,22 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/LOJ-6000/">LOJ 6000 搭配飞行员</a>
+                <a class="has-link-black-ter" href="/BZOJ-3211/">BZOJ 3211 花神游历各国</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T03:03:06.000Z">2018-05-07</time></div>&nbsp;&nbsp;
+                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-14T11:29:13.000Z">2018-06-14</time></div>&nbsp;&nbsp;
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
+                <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>
                 </div>
                 
                 
                 <i class="fa fa-tag"></i>&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/二分图/">二分图</a>
+                <a class="has-link-grey -link" href="/tags/线段树/">线段树</a>
                 </div>
                 
                 
@@ -179,59 +177,15 @@
         </div>
         
         <div class="content">
-            <p>有$N$ 个点，其中编号为$1-M$ 的点可以和编号为 $M+1-N$ 的点匹配。 已知所有允许的匹配点对 $(a,b)$ ，求最大匹配数，并输出配对方案。 如果不存在，输出<code>No Solution!</code> 。</p>
-<p>$1\leq M\leq N\leq 100$</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>裸的二分图最大匹配。 考虑匈牙利算法，复杂度 $O(n\times m)$ ，复杂度有点高（虽然也能跑过）。 考虑Hopcroft-Karp算法，复杂度 $O(\sqrt{n}\times m)$ ，但是我不会写。 考虑最大流算法。 根据陈胤伯的集训队论文《浅谈图的匹配算法及其应用》，得知利用Dinic算法进行二分图最大匹配的复杂度亦为 $O(\sqrt{n}\times m)$ ，遂选择之。 建图方法很简单，新建源点 $S$ 和汇点 $T$ ，$S$ 、 $T$ 分别与二分图的两部分的每个点连接流量限度为 $1$ 的边， 可以匹配的点对 $(a,b)$ 亦连接流量限制为 $1$ 的边。跑得 $S-T$ 最大流即原二分图最大匹配数。 至于匹配方案，根据残余网络，输出所有剩余流量为 $0$ 且不与 $S、T$ 相连的边的点对即可。</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// Copyright 2018, Skqliao</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rg register</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rep(i, l, r) for (rg int i = (l), _##i##_ = (r); i &lt; _##i##_; ++i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> rof(i, l, r) for (rg int i = (l) - 1, _##i##_ = (r); i &gt;= _##i##_; --i)</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> ALL(x) (x).begin(), (x).end()</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SZ(x) static_cast<span class="hljs-meta-string">&lt;int&gt;((x).size())</span></span></span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ll;</span><br><span class="line"><span class="hljs-keyword">namespace</span> io &#123;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">char</span> <span class="hljs-title">gc</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> getchar();</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt; <span class="hljs-title">inline</span> <span class="hljs-title">T</span> <span class="hljs-title">gt</span>() &#123;</span></span><br><span class="line">    <span class="hljs-keyword">register</span> T x;</span><br><span class="line">    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span> &gt;&gt; x;</span><br><span class="line">    <span class="hljs-keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span></span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXSIZE = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">22</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">char</span> <span class="hljs-title">gc</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> In[MAXSIZE], *at = In, *en = In;</span><br><span class="line">    <span class="hljs-keyword">if</span> (at == en) &#123;</span><br><span class="line">        en = (at = In) + fread(In, <span class="hljs-number">1</span>, MAXSIZE, <span class="hljs-built_in">stdin</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> at == en ? EOF : *at++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt; <span class="hljs-title">inline</span> <span class="hljs-title">T</span> <span class="hljs-title">gt</span>() &#123;</span></span><br><span class="line">    <span class="hljs-keyword">register</span> <span class="hljs-keyword">char</span> c;</span><br><span class="line">    <span class="hljs-keyword">while</span> (c = gc(), !<span class="hljs-built_in">isdigit</span>(c) &amp;&amp; c != <span class="hljs-string">'-'</span>) &#123;&#125;</span><br><span class="line">    <span class="hljs-keyword">register</span> <span class="hljs-keyword">bool</span> f = c == <span class="hljs-string">'-'</span>;</span><br><span class="line">    <span class="hljs-keyword">register</span> T x = f ? <span class="hljs-number">0</span> : c - <span class="hljs-string">'0'</span>;</span><br><span class="line">    <span class="hljs-keyword">for</span> (c = gc(); <span class="hljs-built_in">isdigit</span>(c); c = gc()) &#123;</span><br><span class="line">        x = x * <span class="hljs-number">10</span> + c - <span class="hljs-string">'0'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> f ? -x : x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span></span><br><span class="line">&#125;  <span class="hljs-comment">// namespace io</span></span><br><span class="line"><span class="hljs-keyword">namespace</span> dinic &#123;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">100</span> + <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXM = <span class="hljs-number">10000</span> + <span class="hljs-number">5</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = INT_MAX;</span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Edge</span> &#123;</span></span><br><span class="line">    <span class="hljs-keyword">int</span> v, f, nxt;</span><br><span class="line">&#125; E[MAXM &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-keyword">int</span> N, M, S, T, flow, ffffc, tim;</span><br><span class="line"><span class="hljs-keyword">int</span> H[MAXN], cntE;</span><br><span class="line"><span class="hljs-keyword">int</span> Dis[MAXN], Cur[MAXN], Lv[MAXN];</span><br><span class="line"><span class="hljs-keyword">int</span> Flow[MAXM &lt;&lt; <span class="hljs-number">1</span>];</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">bfs</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> Que[MAXN];</span><br><span class="line">    <span class="hljs-keyword">int</span> qh = <span class="hljs-number">0</span>, qt = <span class="hljs-number">0</span>;</span><br><span class="line">    Dis[S] = <span class="hljs-number">1</span>, Lv[S] = ++tim;</span><br><span class="line">    <span class="hljs-keyword">for</span> (Que[qt++] = S; qh &lt; qt;) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> &amp;u = Que[qh++];</span><br><span class="line">        <span class="hljs-keyword">if</span> (u == T) &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = H[u]; ~i; i = E[i].nxt) &#123;</span><br><span class="line">                <span class="hljs-keyword">int</span> &amp;v = E[i].v;</span><br><span class="line">                <span class="hljs-keyword">if</span> (E[i].f &amp;&amp; Lv[v] != tim) &#123;</span><br><span class="line">                    Dis[v] = Dis[u] + <span class="hljs-number">1</span>;</span><br><span class="line">                    Lv[v] = tim;</span><br><span class="line">                    Que[qt++] = v;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u, <span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> f = <span class="hljs-number">1</span>)</span> </span>&#123;</span><br><span class="line">    E[++cntE] = (Edge) &#123;v, f, H[u]&#125;;</span><br><span class="line">    H[u] = cntE;</span><br><span class="line">    E[++cntE] = (Edge) &#123;u, <span class="hljs-number">0</span>, H[v]&#125;;</span><br><span class="line">    H[v] = cntE;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    M = io::gt&lt;<span class="hljs-keyword">int</span>&gt;(), N = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">    S = <span class="hljs-number">0</span>, T = N + <span class="hljs-number">1</span>;</span><br><span class="line">    cntE = <span class="hljs-number">-1</span>;</span><br><span class="line">    <span class="hljs-built_in">memset</span>(H, <span class="hljs-number">-1</span>, <span class="hljs-keyword">sizeof</span> H);</span><br><span class="line">    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> x = io::gt&lt;<span class="hljs-keyword">int</span>&gt;(), y = io::gt&lt;<span class="hljs-keyword">int</span>&gt;();</span><br><span class="line">        <span class="hljs-keyword">if</span> (x + y == <span class="hljs-number">-2</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        addEdge(x, y);</span><br><span class="line">    &#125;</span><br><span class="line">    rep(i, <span class="hljs-number">1</span>, M + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        addEdge(S, i);</span><br><span class="line">    &#125;</span><br><span class="line">    rep(i, M + <span class="hljs-number">1</span>, N + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        addEdge(i, T);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> maxf)</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (x == T || !maxf) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> maxf;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">int</span> left = maxf;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> &amp;i = Cur[x]; ~i; i = E[i].nxt) &#123;</span><br><span class="line">        <span class="hljs-keyword">int</span> &amp;v = E[i].v;</span><br><span class="line">        <span class="hljs-keyword">if</span> (Dis[v] == Dis[x] + <span class="hljs-number">1</span> &amp;&amp; E[i].f &amp;&amp; Lv[v] == tim) &#123;</span><br><span class="line">            <span class="hljs-keyword">int</span> flow = dfs(v, <span class="hljs-built_in">std</span>::min(E[i].f, left));</span><br><span class="line">            <span class="hljs-keyword">if</span> (!flow) &#123;</span><br><span class="line">                Dis[v] = <span class="hljs-number">-1</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                left -= flow;</span><br><span class="line">                E[i].f -= flow;</span><br><span class="line">                Flow[i ^ <span class="hljs-number">1</span>] += flow;</span><br><span class="line">                ffffc = <span class="hljs-number">1</span>;</span><br><span class="line">                <span class="hljs-keyword">if</span> (!left) &#123;</span><br><span class="line">                    <span class="hljs-keyword">return</span> maxf;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> maxf - left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dinic</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;</span><br><span class="line">        <span class="hljs-keyword">while</span> (bfs()) &#123;</span><br><span class="line">            <span class="hljs-built_in">memcpy</span>(Cur, H, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>) * (N + <span class="hljs-number">1</span>));</span><br><span class="line">            <span class="hljs-keyword">int</span> res = dfs(S, INF);</span><br><span class="line">            ans += res;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">if</span> (!ffffc) &#123;</span><br><span class="line">            <span class="hljs-keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        rep(i, <span class="hljs-number">0</span>, cntE + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">            E[i].f += Flow[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">memset</span>(Flow, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">int</span>) * (cntE + <span class="hljs-number">1</span>));</span><br><span class="line">        ffffc = <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">match</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="hljs-keyword">int</span> res = dinic();</span><br><span class="line">    <span class="hljs-keyword">if</span> (res == <span class="hljs-number">0</span>) &#123;</span><br><span class="line">        <span class="hljs-built_in">puts</span>(<span class="hljs-string">"No Solution!"</span>);</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, res);</span><br><span class="line">        rep(i, <span class="hljs-number">1</span>, M + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = H[i]; ~j; j = E[j].nxt) &#123;</span><br><span class="line">                <span class="hljs-keyword">if</span>(!E[j].f &amp;&amp; E[j].v != S &amp;&amp; E[j].v != T) &#123;</span><br><span class="line">                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d %d\n"</span>, i, E[j].v);</span><br><span class="line">                    <span class="hljs-keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;  <span class="hljs-comment">// namespace dinic</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">    dinic::match();</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/LOJ-6006/">LOJ 6006 试题库</a>
-            
-        </h1>
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <div><i class="fa fa-calendar"></i>&nbsp;<time class="has-text-grey is-size-7 is-uppercase" datetime="2018-05-07T03:01:16.000Z">2018-05-07</time></div>&nbsp;&nbsp;
-                
-                <i class="fa fa-folder"></i>&nbsp;&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
-                </div>
-                
-                
-                <i class="fa fa-tag"></i>&nbsp;
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/tags/二分图多重匹配/">二分图多重匹配</a>
-                </div>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <p>有 $n$ 个数， $m$ 个属性。第 $i$ 个数有 $A_i$ 个属性，分别为 $B_{i,j}$ 。 从中选择 $k$ 个数，使得这 $m$ 个属性中，第 $i$ 个属性有 $C_i$ 个数。 输出任意一组解的每个属性对应的数，如果无解输出<code>No Solution!</code>。</p>
-<p>$2\leq k\leq 20, k\leq n\leq 1000$</p>
+            <p>维护一个序列，支持区间开方（向下取整）和区间求和。 序列长为 $N$，共 $M$ 次操作。</p>
+<p>$1\leq N.M\leq 100000 $，序列中元素 $0\leq A_i\leq 10^{12}$ 。</p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/LOJ-6006/#more">查看全文</a>
+                <a class="button is-size-7 is-light" href="/BZOJ-3211/#more">查看全文</a>
                 </div>
             </div>
         </div>
@@ -249,18 +203,20 @@
 <div class="card card-transparent">
     <nav class="pagination is-centered" role="navigation" aria-label="pagination">
         <div class="pagination-previous">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/网络流24题/LOJ/page/2/">上一页</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/BZOJ/page/9/">上一页</a>
         </div>
         <div class="pagination-next is-invisible is-hidden-mobile">
-            <a class="is-flex-grow has-text-black-ter" href="/categories/网络流24题/LOJ/page/4/">下一页</a>
+            <a class="is-flex-grow has-text-black-ter" href="/categories/BZOJ/page/11/">下一页</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
             
-            <li><a class="pagination-link has-text-black-ter" href="/categories/网络流24题/LOJ/">1</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/categories/BZOJ/">1</a></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/categories/网络流24题/LOJ/page/2/">2</a></li>
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link is-current" href="/categories/网络流24题/LOJ/page/3/">3</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/categories/BZOJ/page/9/">9</a></li>
+            
+            <li><a class="pagination-link is-current" href="/categories/BZOJ/page/10/">10</a></li>
             
         </ul>
     </nav>
@@ -320,7 +276,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        7
                     </p>
                 </div>
             </div>
@@ -445,7 +401,7 @@
                 <span class="level-item">BZOJ</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">90</span>
+                <span class="level-item tag">91</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/FZOJ/">
@@ -464,6 +420,14 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/LOJ/">
+            <span class="level-start">
+                <span class="level-item">LOJ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">23</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/codeforces/">
             <span class="level-start">
                 <span class="level-item">codeforces</span>
@@ -479,23 +443,7 @@
             <span class="level-end">
                 <span class="level-item tag">6</span>
             </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/网络流24题/">
-            <span class="level-start">
-                <span class="level-item">网络流24题</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">23</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/网络流24题/LOJ/">
-            <span class="level-start">
-                <span class="level-item">LOJ</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">22</span>
-            </span>
-        </a></li></ul></li>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -529,7 +477,7 @@
                     <a href="/BZOJ-5335/" class="has-link-black-ter is-size-6">「TJOI 2018」BZOJ 5335 智力竞赛</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
-                        &nbsp;
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
                         <a class="has-link-grey -link" href="/tags/二分图最大匹配/">二分图最大匹配</a> , <a class="has-link-grey -link" href="/tags/二分答案/">二分答案</a> , <a class="has-link-grey -link" href="/tags/传递闭包/">传递闭包</a>
                     </p>
@@ -1276,7 +1224,7 @@
                     <a href="/BZOJ-5335/" class="has-link-black-ter is-size-6">「TJOI 2018」BZOJ 5335 智力竞赛</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
-                        &nbsp;
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
                         <a class="has-link-grey -link" href="/tags/二分图最大匹配/">二分图最大匹配</a> , <a class="has-link-grey -link" href="/tags/二分答案/">二分答案</a> , <a class="has-link-grey -link" href="/tags/传递闭包/">传递闭包</a>
                     </p>

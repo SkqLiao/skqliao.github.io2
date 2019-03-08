@@ -542,7 +542,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/177/">luogu P2761 软件补丁问题</a>
+                <a class="has-link-black-ter" href="/LOJ-6009/">LOJ 6009 软件补丁问题</a>
             
         </h1>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
@@ -551,7 +551,7 @@
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
                 </div>
                 
                 
@@ -566,23 +566,17 @@
         
         <div class="content">
             <p>$A$ 是一个数的集合，包含 $n$ 种元素，存在 $m$ 种方法转移。 $A$ 能通过第 $i$ 种方法转移，当且仅当 $A$ 不包含 $C_i$ 中的任何元素且包含 $D_i$ 中的所有元素。 $A$ 通过第 $i$ 种方法转移的方法为：删去 $A$ 中所有与 $E_i$ 相同的元素， 增加所有 $F_i$ 中 $A$ 没有出现的元素。 通过第 $i$ 种方法转移的代价为 $P_i$，开始时 $A$ 包含所有元素，求转移到没有元素的最小代价。如果无解，输出<code>-1</code>。</p>
-<p>$1\leq n\leq 20$、$1\leq m\leq 100$。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>考虑暴力转移，每次转移是 $O(n\times m)$ 的，至多有 $2^n$ 种状态，所以复杂度是 $2^n\times n\times m$ 的，发现这么小的数据范围是可以过的。 发现合并、检查集合时比较麻烦，根据 $n\leq 20$ ，考虑转移状态压缩，用二进制下第 $i$ 位表示第 $i$ 个数是否存在。</p>
-<h3 id="位运算转移"><a href="#位运算转移" class="headerlink" title="位运算转移"></a>位运算转移</h3><p>检查 $C_i$ 即按位与，看结果是否为 $C_i$ 本身。 检查 $D_i$ 还是按位与，看结果是否为 $0$。 通过 $E_i$ 转移，这个是最复杂度的，需要两步。首先按位与得到两方都有的元素，再与原数异或。 通过 $F_i$ 转移，按位或即可。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>按位与，某一位为 $1$ 当且仅当两数该位同为 $1$ 。 按位或，某一位为 $1$ 当且仅当两数中至少一个数该位为 $1$ 。 异或，某一位为 $1$ 当且仅当两数中一个数该位为 $1$ ，另一个数该位为 $0$。 那么根据转移规则发现就是这三种运算而已，单独解释一下关于 $E_i$ 的转移。 该操作的目的即某一位若两位都是 $1$ ，则置为 $0$ ，其他不变。 那么按位与得到所有同时为 $1$ 的位，再根据 <code>1 ^ 1 = 0 ^ 0 = 0</code>、<code>0 ^ 1 = 1 ^ 0 = 1</code>，可以发现新数与原数异或即可满足要求。</p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><p>// Copyright 2018, Skqliao</p>
-<p>#include </p>
-<p>#define rg register</p>
-<p>#define rep(i, l, r) for (rg int i = (l), <em>##i##</em> = (r); i &lt; <em>##i##</em>; ++i)</p>
-<p>#define rof(i, l, r) for (rg int i = (l) - 1, <em>##i##</em> = (r); i &gt;= <em>##i##</em>; –i)</p>
-<p>#define ALL(x) (x).begin(), (x).end()</p>
-<p>#define SZ(x) static_cast((x).size())<br>typedef long long ll;</p>
-<p>const int MAXN = (1 &lt;&lt; 20) + 5;<br>const int MAXM = 100 + 5;</p>
-<p>int F[MAXN];<br>int n, m, Cost[MAXM];<br>int A1[MAXM], A2[MAXM];<br>int B1[MAXM], B2[MAXM];<br>std::bitset Inq;</p>
-<p>int main() {<br>    std::ios_base::sync_with_stdio(false);<br>    std::cin.tie(NULL);<br>    std::cin &gt;&gt; n &gt;&gt; m;<br>    std::string str1, str2;<br>    rep(i, 0, m) {<br>        std::cin &gt;&gt; Cost[i] &gt;&gt; str1 &gt;&gt; str2;<br>        rep(j, 0, n) {<br>            if(str1[j] == ‘+’) {<br>                A1[i] |= 1 &lt;&lt; j;<br>            } else if(str1[j] == ‘-‘) {<br>                A2[i] |= 1 &lt;&lt; j;<br>            }<br>            if(str2[j] == ‘-‘) {<br>                B1[i] |= 1 &lt;&lt; j;<br>            } else if(str2[j] == ‘+’) {<br>                B2[i] |= 1 &lt;&lt; j;<br>            }<br>        }<br>    }<br>    std::queue Que;<br>    memset(F, 0x3f, sizeof F);<br>    F[(1 &lt;&lt; n) - 1] = 0;<br>    Que.push((1 &lt;&lt; n) - 1);<br>    while(!Que.empty()) {<br>        int x = Que.front(); Que.pop();<br>        Inq[x] = 0;<br>        rep(i, 0, m) {<br>            if((x &amp; A1[i]) == A1[i] &amp;&amp; (x &amp; A2[i]) == 0) {<br>                int y = x &amp; B1[i];<br>                y = y ^ x | B2[i];<br>                if(F[y] &gt; Cost[i] + F[x]) {<br>                    F[y] = Cost[i] + F[x];<br>                    if(!Inq[y]) {<br>                        Inq[y] = 1;<br>                        Que.push(y);<br>                    }<br>                }<br>            }<br>        }<br>    }<br>    if(F[0] == F[1 &lt;&lt; n]) {<br>        F[0] = 0;<br>    }<br>    std::cout &lt;&lt; F[0] &lt;&lt; std::endl;<br>    return 0;<br>}</p>
-
+<p>$1\leq n\leq 20,1\leq m\leq 100$。</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/LOJ-6009/#more">查看全文</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -607,7 +601,7 @@
                 
                 <i class="fa fa-folder"></i>&nbsp;&nbsp;
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/网络流24题/">网络流24题</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/网络流24题/LOJ/">LOJ</a>
+                <a class="has-link-grey -link" href="/categories/LOJ/">LOJ</a>
                 </div>
                 
                 
@@ -726,7 +720,7 @@
                         分类
                     </p>
                     <p class="title has-text-weight-normal">
-                        8
+                        7
                     </p>
                 </div>
             </div>
@@ -851,7 +845,7 @@
                 <span class="level-item">BZOJ</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">90</span>
+                <span class="level-item tag">91</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/FZOJ/">
@@ -870,6 +864,14 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
+        <a class="level is-marginless" href="/categories/LOJ/">
+            <span class="level-start">
+                <span class="level-item">LOJ</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">23</span>
+            </span>
+        </a></li><li>
         <a class="level is-marginless" href="/categories/codeforces/">
             <span class="level-start">
                 <span class="level-item">codeforces</span>
@@ -885,23 +887,7 @@
             <span class="level-end">
                 <span class="level-item tag">6</span>
             </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/网络流24题/">
-            <span class="level-start">
-                <span class="level-item">网络流24题</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">23</span>
-            </span>
-        </a><ul><li>
-        <a class="level is-marginless" href="/categories/网络流24题/LOJ/">
-            <span class="level-start">
-                <span class="level-item">LOJ</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">22</span>
-            </span>
-        </a></li></ul></li>
+        </a></li>
             </ul>
         </div>
     </div>
@@ -935,7 +921,7 @@
                     <a href="/BZOJ-5335/" class="has-link-black-ter is-size-6">「TJOI 2018」BZOJ 5335 智力竞赛</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
-                        &nbsp;
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
                         <a class="has-link-grey -link" href="/tags/二分图最大匹配/">二分图最大匹配</a> , <a class="has-link-grey -link" href="/tags/二分答案/">二分答案</a> , <a class="has-link-grey -link" href="/tags/传递闭包/">传递闭包</a>
                     </p>
@@ -1682,7 +1668,7 @@
                     <a href="/BZOJ-5335/" class="has-link-black-ter is-size-6">「TJOI 2018」BZOJ 5335 智力竞赛</a>
                     <p class="is-size-7 is-uppercase">
                         <i class="fa fa-folder"></i>&nbsp;
-                        &nbsp;
+                        <a class="has-link-grey -link" href="/categories/BZOJ/">BZOJ</a>&nbsp;
                         <i class="fa fa-tag"></i>&nbsp;
                         <a class="has-link-grey -link" href="/tags/二分图最大匹配/">二分图最大匹配</a> , <a class="has-link-grey -link" href="/tags/二分答案/">二分答案</a> , <a class="has-link-grey -link" href="/tags/传递闭包/">传递闭包</a>
                     </p>
