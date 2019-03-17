@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -76,7 +76,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Gemini',
+    scheme: 'Pisces',
     version: '7.0.1',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -103,7 +103,7 @@
 
 
   <meta name="description" content="数轴从左到右有 $n + 1$ 点，每个点有 $A_i$ 个人，相邻两点距离为 $B_i$。一个人移动 $1$ 的花费为 $1$。第 $n + 1$ 个点为集合点，现可以在前 $n$ 个点中再选择两个点作为集合点，如此一共有三个集合点。所有人必须向右移动到某一个集合点中，求所有人移动花费总和的最小值。 $n\leq 20000$">
-<meta name="keywords" content="DP,斜率优化,单调队列">
+<meta name="keywords" content="斜率优化,DP,单调队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「CEOI 2004」JZOJ 1131 锯木场选址">
 <meta property="og:url" content="https://skqliao.github.io/JZOJ-1131/index.html">
@@ -535,9 +535,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/DP/" rel="tag"># DP</a>
-          
             <a href="/tags/斜率优化/" rel="tag"># 斜率优化</a>
+          
+            <a href="/tags/DP/" rel="tag"># DP</a>
           
             <a href="/tags/单调队列/" rel="tag"># 单调队列</a>
           
@@ -545,27 +545,6 @@
       
 
       
-      
-        <div class="post-widgets">
-        
-
-        
-
-        
-          
-          <div class="social_share">
-            
-            
-              <div id="needsharebutton-postbottom">
-                <span class="btn">
-                  <i class="fa fa-share-alt" aria-hidden="true"></i>
-                </span>
-              </div>
-            
-            
-          </div>
-        
-        </div>
       
       
 
@@ -988,10 +967,6 @@
 
       
 
-      <div id="music163player">
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="110" src="//music.163.com/outchain/player?type=0&id=782633017&auto=0&height=90"></iframe>
-      </div>
-      
     </div>
   </aside>
   
@@ -1023,7 +998,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
 
 
 
@@ -1076,6 +1051,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
     
@@ -1155,7 +1136,6 @@
   <script src="/js/src/affix.js?v=7.0.1"></script>
 
   <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
-
 
 
 
@@ -1590,18 +1570,18 @@
   <script src="/lib/needsharebutton/needsharebutton.js"></script>
   <script>
     
-      pbOptions = {};
-      
-        pbOptions.iconStyle = "box";
-      
-        pbOptions.boxForm = "horizontal";
-      
-        pbOptions.position = "bottomCenter";
-      
-        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
-      
-      new needShareButton('#needsharebutton-postbottom', pbOptions);
     
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
     
   </script>
 
