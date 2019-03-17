@@ -99,7 +99,7 @@
 
 
   <meta name="description" content="对于序列 $A_1,A_2,\cdots,A_n$ ，构造递增序列 $B_1,B_2,\cdots,B_n$ ，使得$R=\sum{|A_i-B_i|}$ 最小。求 $R$ 的最小值。  $n\leq 10^6,A_i\leq 2\times 10^9$ 。">
-<meta name="keywords" content="左偏树,贪心">
+<meta name="keywords" content="贪心,左偏树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「Baltic2004」BZOJ 1367 sequence">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1367/index.html">
@@ -541,9 +541,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/左偏树/" rel="tag"># 左偏树</a>
-          
             <a href="/tags/贪心/" rel="tag"># 贪心</a>
+          
+            <a href="/tags/左偏树/" rel="tag"># 左偏树</a>
           
         </div>
       
@@ -1461,6 +1461,46 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 

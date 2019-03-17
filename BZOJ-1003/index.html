@@ -99,7 +99,7 @@
 
 
   <meta name="description" content="一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。 $n\leq 100,m\leq 20$">
-<meta name="keywords" content="DP,最短路">
+<meta name="keywords" content="最短路,DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「ZJOI 2006」BZOJ 1003 物流运输">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1003/index.html">
@@ -531,9 +531,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/DP/" rel="tag"># DP</a>
-          
             <a href="/tags/最短路/" rel="tag"># 最短路</a>
+          
+            <a href="/tags/DP/" rel="tag"># DP</a>
           
         </div>
       
@@ -1451,6 +1451,46 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 

@@ -99,7 +99,7 @@
 
 
   <meta name="description" content="无权树上有黑点和白点共 $N$ 个，开始均为白点。有 $M$个操作，分为两种：取反点 $x$的颜色或查询树上白点对的最大距离。 $N\leq 100000, M\leq 500000$">
-<meta name="keywords" content="ST表,动态点分治,堆,欧拉序">
+<meta name="keywords" content="欧拉序,ST表,堆,动态点分治">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「ZJOI 2007」BZOJ 1095 捉迷藏">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1095/index.html">
@@ -539,13 +539,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ST表/" rel="tag"># ST表</a>
+            <a href="/tags/欧拉序/" rel="tag"># 欧拉序</a>
           
-            <a href="/tags/动态点分治/" rel="tag"># 动态点分治</a>
+            <a href="/tags/ST表/" rel="tag"># ST表</a>
           
             <a href="/tags/堆/" rel="tag"># 堆</a>
           
-            <a href="/tags/欧拉序/" rel="tag"># 欧拉序</a>
+            <a href="/tags/动态点分治/" rel="tag"># 动态点分治</a>
           
         </div>
       
@@ -1463,6 +1463,46 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
