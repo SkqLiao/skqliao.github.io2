@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -72,7 +72,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '7.0.1',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -99,7 +99,7 @@
 
 
   <meta name="description" content="直线上有 $N$ 个点，距离原点距离分别为 $A_i$ 。有 $M$ 条线用来连接。每条线连接两个点，且每个点只能被连接一次，线的长度为两点间的距离。求这些线长度和的最小值。  $2\leq N\leq 100000, A_i \leq 1000000000$">
-<meta name="keywords" content="平衡树,贪心">
+<meta name="keywords" content="贪心,平衡树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「CTSC 2007」BZOJ 1150 数据备份">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1150/index.html">
@@ -509,6 +509,10 @@
     </div>
 
     
+      
+
+
+    
 
     
     
@@ -527,9 +531,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/平衡树/" rel="tag"># 平衡树</a>
-          
             <a href="/tags/贪心/" rel="tag"># 贪心</a>
+          
+            <a href="/tags/平衡树/" rel="tag"># 平衡树</a>
           
         </div>
       
@@ -1022,7 +1026,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
 
 
 
@@ -1154,6 +1158,7 @@
   <script src="/js/src/affix.js?v=7.0.1"></script>
 
   <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
 
 
 
@@ -1600,6 +1605,38 @@
 
 
   
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
 
   
 

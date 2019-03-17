@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -72,7 +72,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Gemini',
     version: '7.0.1',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
@@ -99,7 +99,7 @@
 
 
   <meta name="description" content="从左到右有若干个点，点 $1$ 和点 $i$ 的距离为 $D_i$，点 $i$ 有 $A_i$ 个货物，在点 $i$ 建仓库的费用为 $C_i$。现要在若干个点建造仓库，使得每个点的货物向右能移动到某个仓库中，每个货物运动 $1$ 距离的花费为 $1$。求建造与移动的总花费的最小值。 $N\leq 1000000$">
-<meta name="keywords" content="斜率优化,DP,单调队列">
+<meta name="keywords" content="DP,斜率优化,单调队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「ZJOI 2007」BZOJ 1096 仓库建设">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1096/index.html">
@@ -504,6 +504,10 @@
     </div>
 
     
+      
+
+
+    
 
     
     
@@ -522,9 +526,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/斜率优化/" rel="tag"># 斜率优化</a>
-          
             <a href="/tags/DP/" rel="tag"># DP</a>
+          
+            <a href="/tags/斜率优化/" rel="tag"># 斜率优化</a>
           
             <a href="/tags/单调队列/" rel="tag"># 单调队列</a>
           
@@ -1019,7 +1023,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.0.1</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.1</div>
 
 
 
@@ -1151,6 +1155,7 @@
   <script src="/js/src/affix.js?v=7.0.1"></script>
 
   <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
 
 
 
@@ -1597,6 +1602,38 @@
 
 
   
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
 
   
 
