@@ -22,6 +22,10 @@
 <meta name="theme-color" content="#222">
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
 
 
 
@@ -99,7 +103,7 @@
 
 
   <meta name="description" content="直线上有 $N$ 个点，距离原点距离分别为 $A_i$ 。有 $M$ 条线用来连接。每条线连接两个点，且每个点只能被连接一次，线的长度为两点间的距离。求这些线长度和的最小值。  $2\leq N\leq 100000, A_i \leq 1000000000$">
-<meta name="keywords" content="贪心,平衡树">
+<meta name="keywords" content="平衡树,贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「CTSC 2007」BZOJ 1150 数据备份">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1150/index.html">
@@ -531,66 +535,14 @@
       
         <div class="post-tags">
           
-            <a href="/tags/贪心/" rel="tag"># 贪心</a>
-          
             <a href="/tags/平衡树/" rel="tag"># 平衡树</a>
           
-        </div>
-      
-
-      
-      
-        <div class="post-widgets">
-        
-
-        
-
-        
+            <a href="/tags/贪心/" rel="tag"># 贪心</a>
           
-          <div class="social_share">
-            
-              <div>
-                
-
-<script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
-
-
-  
-
-
-<div class="likely">
-	
- 	 	<div class="twitter">Tweet</div>
-	
- 	 	<div class="facebook">Share</div>
-	
- 	 	<div class="linkedin">Link</div>
-	
- 	 	<div class="gplus">Plus</div>
-	
- 	 	<div class="vkontakte">Share</div>
-	
- 	 	<div class="odnoklassniki">Class</div>
-	
- 	 	<div class="telegram">Send</div>
-	
- 	 	<div class="whatsapp">Send</div>
-	
- 	 	<div class="pinterest">Pin</div>
-	
-</div>
-
-              </div>
-            
-            
-            
-          </div>
-        
         </div>
+      
+
+      
       
       
 
@@ -1079,6 +1031,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
     
@@ -1588,6 +1546,26 @@
   
 
   
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
 
   
 

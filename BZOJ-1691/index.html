@@ -22,6 +22,10 @@
 <meta name="theme-color" content="#222">
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
 
 
 
@@ -99,7 +103,7 @@
 
 
   <meta name="description" content="$N$ 头奶牛， $M$ 种草料。第 $i$ 头奶牛要求其草料价格不小于 $A_i$，鲜嫩程度不小于 $B_i$ 。要求奶牛吃的草料互不相同，求最小花费。如果无解，输出 $-1$ 。$N,M\leq 100000$ 。">
-<meta name="keywords" content="贪心,平衡树">
+<meta name="keywords" content="平衡树,贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「Usaco2007 Dec」BZOJ 1691 挑剔的美食家">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1691/index.html">
@@ -525,66 +529,14 @@
       
         <div class="post-tags">
           
-            <a href="/tags/贪心/" rel="tag"># 贪心</a>
-          
             <a href="/tags/平衡树/" rel="tag"># 平衡树</a>
           
-        </div>
-      
-
-      
-      
-        <div class="post-widgets">
-        
-
-        
-
-        
+            <a href="/tags/贪心/" rel="tag"># 贪心</a>
           
-          <div class="social_share">
-            
-              <div>
-                
-
-<script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
-
-
-  
-
-
-<div class="likely">
-	
- 	 	<div class="twitter">Tweet</div>
-	
- 	 	<div class="facebook">Share</div>
-	
- 	 	<div class="linkedin">Link</div>
-	
- 	 	<div class="gplus">Plus</div>
-	
- 	 	<div class="vkontakte">Share</div>
-	
- 	 	<div class="odnoklassniki">Class</div>
-	
- 	 	<div class="telegram">Send</div>
-	
- 	 	<div class="whatsapp">Send</div>
-	
- 	 	<div class="pinterest">Pin</div>
-	
-</div>
-
-              </div>
-            
-            
-            
-          </div>
-        
         </div>
+      
+
+      
       
       
 
@@ -1073,6 +1025,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
     
@@ -1582,6 +1540,26 @@
   
 
   
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
 
   
 

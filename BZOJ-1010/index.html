@@ -22,6 +22,10 @@
 <meta name="theme-color" content="#222">
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
 
 
 
@@ -99,7 +103,7 @@
 
 
   <meta name="description" content="用若干个区间覆盖 $n$ 个数 $A[1 \cdots n]$，区间 $[l,r]$ 的花费为 $(\sum\limits_{i=l}^{r}{A[i]}+r-l-L)^2$。求总花费的最小值。 $n\leq 50000,A_i,L &amp;gt; 0$">
-<meta name="keywords" content="DP,斜率优化,单调队列">
+<meta name="keywords" content="斜率优化,DP,单调队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「HNOI 2008」BZOJ 1010 玩具装箱toy">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1010/index.html">
@@ -531,9 +535,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/DP/" rel="tag"># DP</a>
-          
             <a href="/tags/斜率优化/" rel="tag"># 斜率优化</a>
+          
+            <a href="/tags/DP/" rel="tag"># DP</a>
           
             <a href="/tags/单调队列/" rel="tag"># 单调队列</a>
           
@@ -541,58 +545,6 @@
       
 
       
-      
-        <div class="post-widgets">
-        
-
-        
-
-        
-          
-          <div class="social_share">
-            
-              <div>
-                
-
-<script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
-
-
-  
-
-
-<div class="likely">
-	
- 	 	<div class="twitter">Tweet</div>
-	
- 	 	<div class="facebook">Share</div>
-	
- 	 	<div class="linkedin">Link</div>
-	
- 	 	<div class="gplus">Plus</div>
-	
- 	 	<div class="vkontakte">Share</div>
-	
- 	 	<div class="odnoklassniki">Class</div>
-	
- 	 	<div class="telegram">Send</div>
-	
- 	 	<div class="whatsapp">Send</div>
-	
- 	 	<div class="pinterest">Pin</div>
-	
-</div>
-
-              </div>
-            
-            
-            
-          </div>
-        
-        </div>
       
       
 
@@ -1081,6 +1033,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
     
@@ -1590,6 +1548,26 @@
   
 
   
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
 
   
 

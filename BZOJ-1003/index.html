@@ -22,6 +22,10 @@
 <meta name="theme-color" content="#222">
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
 
 
 
@@ -99,7 +103,7 @@
 
 
   <meta name="description" content="一共有 $n$ 天，每天要在无向图 $G$ 中从 $1$ 走到 $m$。有 $k$ 个限制条件，即不能在第 $[l,r]$ 天中经过点 $i$。每天的花费为路径总长度，每次更换线路（相比于前一天）会额外增加 $k$ 的花费，求最小花费。 $n\leq 100,m\leq 20$">
-<meta name="keywords" content="最短路,DP">
+<meta name="keywords" content="DP,最短路">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「ZJOI 2006」BZOJ 1003 物流运输">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1003/index.html">
@@ -525,66 +529,14 @@
       
         <div class="post-tags">
           
-            <a href="/tags/最短路/" rel="tag"># 最短路</a>
-          
             <a href="/tags/DP/" rel="tag"># DP</a>
           
-        </div>
-      
-
-      
-      
-        <div class="post-widgets">
-        
-
-        
-
-        
+            <a href="/tags/最短路/" rel="tag"># 最短路</a>
           
-          <div class="social_share">
-            
-              <div>
-                
-
-<script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
-
-
-  
-
-
-<div class="likely">
-	
- 	 	<div class="twitter">Tweet</div>
-	
- 	 	<div class="facebook">Share</div>
-	
- 	 	<div class="linkedin">Link</div>
-	
- 	 	<div class="gplus">Plus</div>
-	
- 	 	<div class="vkontakte">Share</div>
-	
- 	 	<div class="odnoklassniki">Class</div>
-	
- 	 	<div class="telegram">Send</div>
-	
- 	 	<div class="whatsapp">Send</div>
-	
- 	 	<div class="pinterest">Pin</div>
-	
-</div>
-
-              </div>
-            
-            
-            
-          </div>
-        
         </div>
+      
+
+      
       
       
 
@@ -1073,6 +1025,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
     
@@ -1582,6 +1540,26 @@
   
 
   
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
 
   
 

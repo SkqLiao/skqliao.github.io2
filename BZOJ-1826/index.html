@@ -22,6 +22,10 @@
 <meta name="theme-color" content="#222">
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
 
 
 
@@ -99,7 +103,7 @@
 
 
   <meta name="description" content="起初有 $M$ 个空位置。有 $N$ 次插入，若插入的数在位置上，则无需操作；否则需要用它替换掉原位置中的一个数。每次可以自由选择替换的位置，求最小替换次数。  $M\leq N\leq 100000$ 。">
-<meta name="keywords" content="贪心,堆">
+<meta name="keywords" content="堆,贪心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「JSOI2010」BZOJ 1826 缓存交换">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1826/index.html">
@@ -528,66 +532,14 @@
       
         <div class="post-tags">
           
-            <a href="/tags/贪心/" rel="tag"># 贪心</a>
-          
             <a href="/tags/堆/" rel="tag"># 堆</a>
           
-        </div>
-      
-
-      
-      
-        <div class="post-widgets">
-        
-
-        
-
-        
+            <a href="/tags/贪心/" rel="tag"># 贪心</a>
           
-          <div class="social_share">
-            
-              <div>
-                
-
-<script src="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/ilyabirman-likely@2/release/likely.css">
-
-
-  
-
-
-<div class="likely">
-	
- 	 	<div class="twitter">Tweet</div>
-	
- 	 	<div class="facebook">Share</div>
-	
- 	 	<div class="linkedin">Link</div>
-	
- 	 	<div class="gplus">Plus</div>
-	
- 	 	<div class="vkontakte">Share</div>
-	
- 	 	<div class="odnoklassniki">Class</div>
-	
- 	 	<div class="telegram">Send</div>
-	
- 	 	<div class="whatsapp">Send</div>
-	
- 	 	<div class="pinterest">Pin</div>
-	
-</div>
-
-              </div>
-            
-            
-            
-          </div>
-        
         </div>
+      
+
+      
       
       
 
@@ -1076,6 +1028,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
     
@@ -1585,6 +1543,26 @@
   
 
   
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  <script>
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
 
   
 
