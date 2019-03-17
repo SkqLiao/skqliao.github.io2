@@ -103,7 +103,7 @@
 
 
   <meta name="description" content="对于序列 $A_1,A_2,\cdots,A_n$ ，构造递增序列 $B_1,B_2,\cdots,B_n$ ，使得$R=\sum{|A_i-B_i|}$ 最小。求 $R$ 的最小值。  $n\leq 10^6,A_i\leq 2\times 10^9$ 。">
-<meta name="keywords" content="左偏树,贪心">
+<meta name="keywords" content="贪心,左偏树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「Baltic2004」BZOJ 1367 sequence">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1367/index.html">
@@ -539,14 +539,35 @@
       
         <div class="post-tags">
           
-            <a href="/tags/左偏树/" rel="tag"># 左偏树</a>
-          
             <a href="/tags/贪心/" rel="tag"># 贪心</a>
+          
+            <a href="/tags/左偏树/" rel="tag"># 左偏树</a>
           
         </div>
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
       
       
 
@@ -951,6 +972,10 @@
 
       
 
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=782633017&auto=0&height=430"></iframe>
+      </div>
+
     </div>
   </aside>
   
@@ -1035,12 +1060,6 @@
       </div>
     
 
-    
-      <div id="needsharebutton-float">
-        <span class="btn">
-          <i class="fa fa-share-alt" aria-hidden="true"></i>
-        </span>
-      </div>
     
 
     
@@ -1555,18 +1574,18 @@
   <script src="/lib/needsharebutton/needsharebutton.js"></script>
   <script>
     
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
     
-      flOptions = {};
-      
-        flOptions.iconStyle = "box";
-      
-        flOptions.boxForm = "horizontal";
-      
-        flOptions.position = "middleRight";
-      
-        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
-      
-      new needShareButton('#needsharebutton-float', flOptions);
     
   </script>
 

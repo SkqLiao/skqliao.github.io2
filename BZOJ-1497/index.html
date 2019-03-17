@@ -103,7 +103,7 @@
 
 
   <meta name="description" content="有 $N$ 个点，选择点 $i$ 花费 $A_i$ 的代价。有 $M$ 个关系，如果点 $x_i,y_i$ 均被选择，则可以获得收益 $B_i$。求收益-代价的最大值。 $N\leq 5000,M\leq 50000$">
-<meta name="keywords" content="最小割,最大权闭合子图">
+<meta name="keywords" content="最大权闭合子图,最小割">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「NOI 2006」BZOJ 1497 最大获利">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1497/index.html">
@@ -534,14 +534,35 @@
       
         <div class="post-tags">
           
-            <a href="/tags/最小割/" rel="tag"># 最小割</a>
-          
             <a href="/tags/最大权闭合子图/" rel="tag"># 最大权闭合子图</a>
+          
+            <a href="/tags/最小割/" rel="tag"># 最小割</a>
           
         </div>
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
       
       
 
@@ -946,6 +967,10 @@
 
       
 
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=782633017&auto=0&height=430"></iframe>
+      </div>
+
     </div>
   </aside>
   
@@ -1030,12 +1055,6 @@
       </div>
     
 
-    
-      <div id="needsharebutton-float">
-        <span class="btn">
-          <i class="fa fa-share-alt" aria-hidden="true"></i>
-        </span>
-      </div>
     
 
     
@@ -1550,18 +1569,18 @@
   <script src="/lib/needsharebutton/needsharebutton.js"></script>
   <script>
     
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
     
-      flOptions = {};
-      
-        flOptions.iconStyle = "box";
-      
-        flOptions.boxForm = "horizontal";
-      
-        flOptions.position = "middleRight";
-      
-        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
-      
-      new needShareButton('#needsharebutton-float', flOptions);
     
   </script>
 

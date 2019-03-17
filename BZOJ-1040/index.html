@@ -103,7 +103,7 @@
 
 
   <meta name="description" content="每个点有权值 $W_i$，选择点 $i$ 后不能选择点 $A_i$。选择任意多个点，使得权值和最大。 $N\leq 1000000$">
-<meta name="keywords" content="基环树,树形DP">
+<meta name="keywords" content="树形DP,基环树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「ZJOI 2008」BZOJ 1040 骑士">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1040/index.html">
@@ -530,14 +530,35 @@
       
         <div class="post-tags">
           
-            <a href="/tags/基环树/" rel="tag"># 基环树</a>
-          
             <a href="/tags/树形DP/" rel="tag"># 树形DP</a>
+          
+            <a href="/tags/基环树/" rel="tag"># 基环树</a>
           
         </div>
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
       
       
 
@@ -942,6 +963,10 @@
 
       
 
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=782633017&auto=0&height=430"></iframe>
+      </div>
+
     </div>
   </aside>
   
@@ -1026,12 +1051,6 @@
       </div>
     
 
-    
-      <div id="needsharebutton-float">
-        <span class="btn">
-          <i class="fa fa-share-alt" aria-hidden="true"></i>
-        </span>
-      </div>
     
 
     
@@ -1546,18 +1565,18 @@
   <script src="/lib/needsharebutton/needsharebutton.js"></script>
   <script>
     
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
     
-      flOptions = {};
-      
-        flOptions.iconStyle = "box";
-      
-        flOptions.boxForm = "horizontal";
-      
-        flOptions.position = "middleRight";
-      
-        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
-      
-      new needShareButton('#needsharebutton-float', flOptions);
     
   </script>
 

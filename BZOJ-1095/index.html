@@ -103,7 +103,7 @@
 
 
   <meta name="description" content="无权树上有黑点和白点共 $N$ 个，开始均为白点。有 $M$个操作，分为两种：取反点 $x$的颜色或查询树上白点对的最大距离。 $N\leq 100000, M\leq 500000$">
-<meta name="keywords" content="欧拉序,ST表,动态点分治,堆">
+<meta name="keywords" content="欧拉序,动态点分治,堆,ST表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「ZJOI 2007」BZOJ 1095 捉迷藏">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1095/index.html">
@@ -539,16 +539,37 @@
           
             <a href="/tags/欧拉序/" rel="tag"># 欧拉序</a>
           
-            <a href="/tags/ST表/" rel="tag"># ST表</a>
-          
             <a href="/tags/动态点分治/" rel="tag"># 动态点分治</a>
           
             <a href="/tags/堆/" rel="tag"># 堆</a>
+          
+            <a href="/tags/ST表/" rel="tag"># ST表</a>
           
         </div>
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
       
       
 
@@ -953,6 +974,10 @@
 
       
 
+      <div id="music163player">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=782633017&auto=0&height=430"></iframe>
+      </div>
+
     </div>
   </aside>
   
@@ -1037,12 +1062,6 @@
       </div>
     
 
-    
-      <div id="needsharebutton-float">
-        <span class="btn">
-          <i class="fa fa-share-alt" aria-hidden="true"></i>
-        </span>
-      </div>
     
 
     
@@ -1557,18 +1576,18 @@
   <script src="/lib/needsharebutton/needsharebutton.js"></script>
   <script>
     
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
     
-      flOptions = {};
-      
-        flOptions.iconStyle = "box";
-      
-        flOptions.boxForm = "horizontal";
-      
-        flOptions.position = "middleRight";
-      
-        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
-      
-      new needShareButton('#needsharebutton-float', flOptions);
     
   </script>
 
