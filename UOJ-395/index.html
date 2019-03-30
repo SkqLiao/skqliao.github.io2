@@ -109,18 +109,18 @@
 
 
 
-  <meta name="description" content="title: 「NOI 2018」UOJ 395 你的名字 date: 2019-03-30 16:58:56 tags:  后缀自动机 线段树合并 categories: UOJ   给定字符串  S        ，有  M         个询问。每次询问给定区间  [L,R]                     和字符串  T        。求  T         中不在  S[">
-<meta name="keywords" content="OI">
+  <meta name="description" content="给定字符串  S        ，有  M         个询问。每次询问给定区间  [L,R]                     和字符串  T        。求  T         中不在  S[L,R]                        中出现的本质不同的子串个数。  |S|,|T|\leq 5\times 10^5,\sum|T|\leq 10^6,M\leq 10">
+<meta name="keywords" content="后缀自动机,线段树合并">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Skqliao&#39;s Blog">
+<meta property="og:title" content="「NOI 2018」UOJ 395 你的名字">
 <meta property="og:url" content="https://skqliao.github.io/UOJ-395/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="title: 「NOI 2018」UOJ 395 你的名字 date: 2019-03-30 16:58:56 tags:  后缀自动机 线段树合并 categories: UOJ   给定字符串  S        ，有  M         个询问。每次询问给定区间  [L,R]                     和字符串  T        。求  T         中不在  S[">
+<meta property="og:description" content="给定字符串  S        ，有  M         个询问。每次询问给定区间  [L,R]                     和字符串  T        。求  T         中不在  S[L,R]                        中出现的本质不同的子串个数。  |S|,|T|\leq 5\times 10^5,\sum|T|\leq 10^6,M\leq 10">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-30T09:00:55.126Z">
+<meta property="og:updated_time" content="2019-03-30T09:07:32.463Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Skqliao&#39;s Blog">
-<meta name="twitter:description" content="title: 「NOI 2018」UOJ 395 你的名字 date: 2019-03-30 16:58:56 tags:  后缀自动机 线段树合并 categories: UOJ   给定字符串  S        ，有  M         个询问。每次询问给定区间  [L,R]                     和字符串  T        。求  T         中不在  S[">
+<meta name="twitter:title" content="「NOI 2018」UOJ 395 你的名字">
+<meta name="twitter:description" content="给定字符串  S        ，有  M         个询问。每次询问给定区间  [L,R]                     和字符串  T        。求  T         中不在  S[L,R]                        中出现的本质不同的子串个数。  |S|,|T|\leq 5\times 10^5,\sum|T|\leq 10^6,M\leq 10">
 
 
 
@@ -139,7 +139,7 @@
   };
 </script>
 
-  <title> | Skqliao's Blog</title>
+  <title>「NOI 2018」UOJ 395 你的名字 | Skqliao's Blog</title>
   
 
 
@@ -429,7 +429,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">「NOI 2018」UOJ 395 你的名字
 
               
             
@@ -455,12 +455,34 @@
                 
               
 
-              <time title="创建时间：2019-03-30 17:00:55" itemprop="dateCreated datePublished" datetime="2019-03-30T17:00:55+08:00">2019-03-30</time>
+              <time title="创建时间：2019-03-30 16:58:56 / 修改时间：17:07:32" itemprop="dateCreated datePublished" datetime="2019-03-30T16:58:56+08:00">2019-03-30</time>
             
 
+            
+              
+
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/UOJ/" itemprop="url" rel="index"><span itemprop="name">UOJ</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -497,18 +519,7 @@
       
 
       
-        <hr>
-<p>title: 「NOI 2018」UOJ 395 你的名字
-date: 2019-03-30 16:58:56
-tags:</p>
-<ul>
-<li>后缀自动机</li>
-<li>线段树合并
-categories:</li>
-<li>UOJ</li>
-</ul>
-<hr>
-<p>给定字符串 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.499ex" height="2.176ex" style="vertical-align: -0.338ex;" viewbox="0 -791.3 645.5 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-1-Title">
+        <p>给定字符串 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.499ex" height="2.176ex" style="vertical-align: -0.338ex;" viewbox="0 -791.3 645.5 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-1-Title">
 <title id="MathJax-SVG-1-Title">S</title>
 <defs aria-hidden="true">
 <path stroke-width="1" id="E1-MJMATHI-53" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"/>
@@ -1009,6 +1020,14 @@ categories:</li>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/后缀自动机/" rel="tag"># 后缀自动机</a>
+          
+            <a href="/tags/线段树合并/" rel="tag"># 线段树合并</a>
+          
+        </div>
+      
 
       
       
@@ -1018,8 +1037,8 @@ categories:</li>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019-03-27-test/" rel="next" title="2019-03-27-test">
-                <i class="fa fa-chevron-left"></i> 2019-03-27-test
+              <a href="/BZOJ-3238/" rel="next" title="「AHOI 2013」BZOJ 3238 差异">
+                <i class="fa fa-chevron-left"></i> 「AHOI 2013」BZOJ 3238 差异
               </a>
             
           </div>
@@ -1102,7 +1121,7 @@ categories:</li>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">138</span>
+                    <span class="site-state-item-count">137</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1137,7 +1156,9 @@ categories:</li>
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1304,7 +1325,9 @@ categories:</li>
                     
                       
                     
-                    <span class="site-state-item-count">75</span>
+                      
+                    
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
