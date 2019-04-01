@@ -1915,7 +1915,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6eff21;
+  background: #47ffd4;
 }
 .links-of-blogroll {
   margin-top: 10px;
@@ -2956,7 +2956,7 @@ ul.breadcrumb li+li:last-child {
 }
 @media screen and (min-width: 1200px) {
   body {
-    background-image: url("https://i.loli.net/2019/03/07/5c80d3a9398a9.jpg");
+    background-image: url("/images/background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
