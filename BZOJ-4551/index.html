@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
 <meta property="og:description" content="在有根树  T         中，有两种操作：给某点  x         打标记、查询离某点  x         最近被打标记的祖先，数据范围  10^6               。  1\leq N, Q\leq 100000">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-08T03:33:40.719Z">
+<meta property="og:updated_time" content="2019-04-02T02:01:22.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「TJOI&#x2F;HEOI2016」BZOJ 4551 树">
 <meta name="twitter:description" content="在有根树  T         中，有两种操作：给某点  x         打标记、查询离某点  x         最近被打标记的祖先，数据范围  10^6               。  1\leq N, Q\leq 100000">
@@ -472,7 +472,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-08 11:33:40" itemprop="dateModified" datetime="2019-03-08T11:33:40+08:00">2019-03-08</time>
+                <time title="修改时间：2019-04-02 10:01:22" itemprop="dateModified" datetime="2019-04-02T10:01:22+08:00">2019-04-02</time>
               
             
           </span>
@@ -597,7 +597,7 @@
 </svg></span></p>
 <a id="more"></a>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2>
-<p>跟<a href="https://skqliao.cf/?p=956" target="_blank" rel="noopener">【dfs序+线段树】[USACO10FEB]「luogu P2982 Slowing down」</a> 思路相同，反着考虑标记一个点对其他点的影响。</p>
+<p>跟USACO10 FEB Slowing down 思路相同，反着考虑标记一个点对其他点的影响。</p>
 <p>显然标记一个点后会影响以它为根的整棵子树。</p>
 <p>那么用线段树维护每个点DFS序后，离它最近的被打标记的祖先。</p>
 <p>比较原值和新值的大小关系进行更新操作，易得标号大的点更深（在同一棵子树中）。</p>
