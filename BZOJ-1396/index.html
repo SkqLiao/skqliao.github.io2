@@ -109,18 +109,18 @@
 
 
 
-  <meta name="description" content="对于字符串  S        ，对于  \forall i           ，求包含位置  i         且只出现一次的最短子串的长度。  |S|\leq 10^5">
+  <meta name="description" content="在字符串  S         中，对于  \forall i           ，求包含位置  i         且只出现一次的最短子串的长度。  |S|\leq 10^5">
 <meta name="keywords" content="后缀自动机">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ 1396 识别子串">
 <meta property="og:url" content="https://skqliao.github.io/BZOJ-1396/index.html">
 <meta property="og:site_name" content="Skqliao&#39;s Blog">
-<meta property="og:description" content="对于字符串  S        ，对于  \forall i           ，求包含位置  i         且只出现一次的最短子串的长度。  |S|\leq 10^5">
+<meta property="og:description" content="在字符串  S         中，对于  \forall i           ，求包含位置  i         且只出现一次的最短子串的长度。  |S|\leq 10^5">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-25T13:45:55.090Z">
+<meta property="og:updated_time" content="2019-04-07T12:35:33.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BZOJ 1396 识别子串">
-<meta name="twitter:description" content="对于字符串  S        ，对于  \forall i           ，求包含位置  i         且只出现一次的最短子串的长度。  |S|\leq 10^5">
+<meta name="twitter:description" content="在字符串  S         中，对于  \forall i           ，求包含位置  i         且只出现一次的最短子串的长度。  |S|\leq 10^5">
 
 
 
@@ -455,12 +455,24 @@
                 
               
 
-              <time title="创建时间：2019-03-25 21:11:31 / 修改时间：21:45:55" itemprop="dateCreated datePublished" datetime="2019-03-25T21:11:31+08:00">2019-03-25</time>
+              <time title="创建时间：2019-03-25 21:11:31" itemprop="dateCreated datePublished" datetime="2019-03-25T21:11:31+08:00">2019-03-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-07 20:35:33" itemprop="dateModified" datetime="2019-04-07T20:35:33+08:00">2019-04-07</time>
               
             
           </span>
@@ -519,7 +531,7 @@
       
 
       
-        <p>对于字符串 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.499ex" height="2.176ex" style="vertical-align: -0.338ex;" viewbox="0 -791.3 645.5 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-1-Title">
+        <p>在字符串 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.499ex" height="2.176ex" style="vertical-align: -0.338ex;" viewbox="0 -791.3 645.5 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-1-Title">
 <title id="MathJax-SVG-1-Title">S</title>
 <defs aria-hidden="true">
 <path stroke-width="1" id="E1-MJMATHI-53" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"/>
@@ -527,7 +539,7 @@
 <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">
  <use xlink:href="#E1-MJMATHI-53" x="0" y="0"/>
 </g>
-</svg></span>，对于 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.095ex" height="2.176ex" style="vertical-align: -0.338ex;" viewbox="0 -791.3 902 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-2-Title">
+</svg></span> 中，对于 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.095ex" height="2.176ex" style="vertical-align: -0.338ex;" viewbox="0 -791.3 902 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-2-Title">
 <title id="MathJax-SVG-2-Title">\forall i</title>
 <defs aria-hidden="true">
 <path stroke-width="1" id="E2-MJMAIN-2200" d="M0 673Q0 684 7 689T20 694Q32 694 38 680T82 567L126 451H430L473 566Q483 593 494 622T512 668T519 685Q524 694 538 694Q556 692 556 674Q556 670 426 329T293 -15Q288 -22 278 -22T263 -15Q260 -11 131 328T0 673ZM414 410Q414 411 278 411T142 410L278 55L414 410Z"/>
@@ -586,7 +598,7 @@
 <g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">
  <use xlink:href="#E6-MJMATHI-70" x="0" y="0"/>
 </g>
-</svg></span>，它能位置包含 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="11.069ex" height="2.843ex" style="vertical-align: -0.838ex;" viewbox="0 -863.1 4765.7 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-7-Title">
+</svg></span>，它能包含位置 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="11.069ex" height="2.843ex" style="vertical-align: -0.838ex;" viewbox="0 -863.1 4765.7 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-7-Title">
 <title id="MathJax-SVG-7-Title">[1,max(p)]</title>
 <defs aria-hidden="true">
 <path stroke-width="1" id="E7-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"/>
@@ -910,7 +922,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">139</span>
+                    <span class="site-state-item-count">144</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1120,7 +1132,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">78</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
