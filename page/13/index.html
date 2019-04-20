@@ -410,6 +410,234 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://skqliao.github.io/Miller-Rabin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Skqliao">
+      <meta itemprop="description" content="An Oier's Blog">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Skqliao's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/Miller-Rabin/" class="post-title-link" itemprop="url">Miller–Rabin学习笔记</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-07-21 23:34:51" itemprop="dateCreated datePublished" datetime="2018-07-21T23:34:51+08:00">2018-07-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-19 09:25:56" itemprop="dateModified" datetime="2019-04-19T09:25:56+08:00">2019-04-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>对于检查一个数是否为素数，有不少方法。比如基于素数定义的朴素算法，复杂度<span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="7.582ex" height="3.176ex" style="vertical-align: -0.838ex;" viewbox="0 -1006.6 3264.5 1367.4" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-1-Title">
+<title id="MathJax-SVG-1-Title">O(\sqrt{N})</title>
+<defs aria-hidden="true">
+<path stroke-width="1" id="E1-MJMATHI-4F" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"/>
+<path stroke-width="1" id="E1-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/>
+<path stroke-width="1" id="E1-MJMATHI-4E" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/>
+<path stroke-width="1" id="E1-MJMAIN-221A" d="M95 178Q89 178 81 186T72 200T103 230T169 280T207 309Q209 311 212 311H213Q219 311 227 294T281 177Q300 134 312 108L397 -77Q398 -77 501 136T707 565T814 786Q820 800 834 800Q841 800 846 794T853 782V776L620 293L385 -193Q381 -200 366 -200Q357 -200 354 -197Q352 -195 256 15L160 225L144 214Q129 202 113 190T95 178Z"/>
+<path stroke-width="1" id="E1-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">
+ <use xlink:href="#E1-MJMATHI-4F" x="0" y="0"/>
+ <use xlink:href="#E1-MJMAIN-28" x="763" y="0"/>
+<g transform="translate(1153,0)">
+ <use xlink:href="#E1-MJMAIN-221A" x="0" y="47"/>
+<rect stroke="none" width="888" height="60" x="833" y="788"/>
+ <use xlink:href="#E1-MJMATHI-4E" x="833" y="0"/>
+</g>
+ <use xlink:href="#E1-MJMAIN-29" x="2875" y="0"/>
+</g>
+</svg></span> ；比如当筛取 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.554ex" height="2.843ex" style="vertical-align: -0.838ex;" viewbox="0 -863.1 2391.2 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-2-Title">
+<title id="MathJax-SVG-2-Title">[1,N]</title>
+<defs aria-hidden="true">
+<path stroke-width="1" id="E2-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"/>
+<path stroke-width="1" id="E2-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/>
+<path stroke-width="1" id="E2-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/>
+<path stroke-width="1" id="E2-MJMATHI-4E" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/>
+<path stroke-width="1" id="E2-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">
+ <use xlink:href="#E2-MJMAIN-5B" x="0" y="0"/>
+ <use xlink:href="#E2-MJMAIN-31" x="278" y="0"/>
+ <use xlink:href="#E2-MJMAIN-2C" x="779" y="0"/>
+ <use xlink:href="#E2-MJMATHI-4E" x="1224" y="0"/>
+ <use xlink:href="#E2-MJMAIN-5D" x="2112" y="0"/>
+</g>
+</svg></span> 中所有素数时，可以通过欧拉筛实现 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.646ex" height="2.843ex" style="vertical-align: -0.838ex;" viewbox="0 -863.1 2431 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-3-Title">
+<title id="MathJax-SVG-3-Title">O(N)</title>
+<defs aria-hidden="true">
+<path stroke-width="1" id="E3-MJMATHI-4F" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"/>
+<path stroke-width="1" id="E3-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/>
+<path stroke-width="1" id="E3-MJMATHI-4E" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/>
+<path stroke-width="1" id="E3-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">
+ <use xlink:href="#E3-MJMATHI-4F" x="0" y="0"/>
+ <use xlink:href="#E3-MJMAIN-28" x="763" y="0"/>
+ <use xlink:href="#E3-MJMATHI-4E" x="1153" y="0"/>
+ <use xlink:href="#E3-MJMAIN-29" x="2041" y="0"/>
+</g>
+</svg></span> 的线性筛. 如果要检测大量的随机数是否为素数，这两个方法显然都不适用。对于这种情况，我们使用基于<strong>素数定理逆命题的Miller-Rabin素性测试</strong>。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/Miller-Rabin/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://skqliao.github.io/BZOJ-3436/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -907,7 +1135,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/LOJ-6009/" class="post-title-link" itemprop="url">LOJ 6009 软件补丁问题</a>
+                <a href="/LOJ-6009/" class="post-title-link" itemprop="url">「网络流 24 题」LOJ 6009 软件补丁问题</a>
               
             
           </h1>
@@ -949,7 +1177,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-08 14:09:15" itemprop="dateModified" datetime="2019-03-08T14:09:15+08:00">2019-03-08</time>
+                <time title="修改时间：2019-04-19 09:18:36" itemprop="dateModified" datetime="2019-04-19T09:18:36+08:00">2019-04-19</time>
               
             
           </span>
@@ -1264,7 +1492,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/LOJ-6003/" class="post-title-link" itemprop="url">LOJ 6003 魔术球</a>
+                <a href="/LOJ-6003/" class="post-title-link" itemprop="url">「网络流 24 题」LOJ 6003 魔术球</a>
               
             
           </h1>
@@ -1306,7 +1534,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-08 14:28:42" itemprop="dateModified" datetime="2019-03-08T14:28:42+08:00">2019-03-08</time>
+                <time title="修改时间：2019-04-19 09:18:19" itemprop="dateModified" datetime="2019-04-19T09:18:19+08:00">2019-04-19</time>
               
             
           </span>
@@ -1510,7 +1738,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/LOJ-6002/" class="post-title-link" itemprop="url">LOJ 6002 最小路径覆盖问题</a>
+                <a href="/LOJ-6002/" class="post-title-link" itemprop="url">「网络流 24 题」LOJ 6002 最小路径覆盖问题</a>
               
             
           </h1>
@@ -1552,7 +1780,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-08 13:06:02" itemprop="dateModified" datetime="2019-03-08T13:06:02+08:00">2019-03-08</time>
+                <time title="修改时间：2019-04-19 09:18:16" itemprop="dateModified" datetime="2019-04-19T09:18:16+08:00">2019-04-19</time>
               
             
           </span>
@@ -1740,7 +1968,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/LOJ-6011/" class="post-title-link" itemprop="url">LOJ 6011 运输问题</a>
+                <a href="/LOJ-6011/" class="post-title-link" itemprop="url">「网络流 24 题」LOJ 6011 运输问题</a>
               
             
           </h1>
@@ -1782,7 +2010,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-08 14:09:56" itemprop="dateModified" datetime="2019-03-08T14:09:56+08:00">2019-03-08</time>
+                <time title="修改时间：2019-04-19 09:18:41" itemprop="dateModified" datetime="2019-04-19T09:18:41+08:00">2019-04-19</time>
               
             
           </span>
@@ -2033,7 +2261,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/LOJ-6012/" class="post-title-link" itemprop="url">LOJ 6012 分配问题</a>
+                <a href="/LOJ-6012/" class="post-title-link" itemprop="url">「网络流 24 题」LOJ 6012 分配问题</a>
               
             
           </h1>
@@ -2075,7 +2303,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-08 14:09:55" itemprop="dateModified" datetime="2019-03-08T14:09:55+08:00">2019-03-08</time>
+                <time title="修改时间：2019-04-19 09:18:44" itemprop="dateModified" datetime="2019-04-19T09:18:44+08:00">2019-04-19</time>
               
             
           </span>
@@ -2296,7 +2524,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/LOJ-6010/" class="post-title-link" itemprop="url">LOJ 6010 数字梯形</a>
+                <a href="/LOJ-6010/" class="post-title-link" itemprop="url">「网络流 24 题」LOJ 6010 数字梯形</a>
               
             
           </h1>
@@ -2338,7 +2566,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-08 14:27:38" itemprop="dateModified" datetime="2019-03-08T14:27:38+08:00">2019-03-08</time>
+                <time title="修改时间：2019-04-19 09:18:39" itemprop="dateModified" datetime="2019-04-19T09:18:39+08:00">2019-04-19</time>
               
             
           </span>
@@ -2570,7 +2798,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/LOJ-6224/" class="post-title-link" itemprop="url">LOJ 6224 深海机器人问题</a>
+                <a href="/LOJ-6224/" class="post-title-link" itemprop="url">「网络流 24 题」LOJ 6224 深海机器人问题</a>
               
             
           </h1>
@@ -2612,7 +2840,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-02 10:02:26" itemprop="dateModified" datetime="2019-04-02T10:02:26+08:00">2019-04-02</time>
+                <time title="修改时间：2019-04-19 09:19:03" itemprop="dateModified" datetime="2019-04-19T09:19:03+08:00">2019-04-19</time>
               
             
           </span>
@@ -2867,260 +3095,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://skqliao.github.io/LOJ-6014/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Skqliao">
-      <meta itemprop="description" content="An Oier's Blog">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Skqliao's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/LOJ-6014/" class="post-title-link" itemprop="url">LOJ 6014 最长 k 可重区间集</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-07 16:32:41" itemprop="dateCreated datePublished" datetime="2018-05-07T16:32:41+08:00">2018-05-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-08 14:27:04" itemprop="dateModified" datetime="2019-03-08T14:27:04+08:00">2019-03-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LOJ/" itemprop="url" rel="index"><span itemprop="name">LOJ</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>直线上有 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.064ex" height="2.176ex" style="vertical-align: -0.338ex;" viewbox="0 -791.3 888.5 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-1-Title">
-<title id="MathJax-SVG-1-Title">N</title>
-<defs aria-hidden="true">
-<path stroke-width="1" id="E1-MJMATHI-4E" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/>
-</defs>
-<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">
- <use xlink:href="#E1-MJMATHI-4E" x="0" y="0"/>
-</g>
-</svg></span> 个开区间 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="6.912ex" height="2.843ex" style="vertical-align: -0.838ex;" viewbox="0 -863.1 2975.8 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-2-Title">
-<title id="MathJax-SVG-2-Title">(x_i,y_i)</title>
-<defs aria-hidden="true">
-<path stroke-width="1" id="E2-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/>
-<path stroke-width="1" id="E2-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"/>
-<path stroke-width="1" id="E2-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"/>
-<path stroke-width="1" id="E2-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/>
-<path stroke-width="1" id="E2-MJMATHI-79" d="M21 287Q21 301 36 335T84 406T158 442Q199 442 224 419T250 355Q248 336 247 334Q247 331 231 288T198 191T182 105Q182 62 196 45T238 27Q261 27 281 38T312 61T339 94Q339 95 344 114T358 173T377 247Q415 397 419 404Q432 431 462 431Q475 431 483 424T494 412T496 403Q496 390 447 193T391 -23Q363 -106 294 -155T156 -205Q111 -205 77 -183T43 -117Q43 -95 50 -80T69 -58T89 -48T106 -45Q150 -45 150 -87Q150 -107 138 -122T115 -142T102 -147L99 -148Q101 -153 118 -160T152 -167H160Q177 -167 186 -165Q219 -156 247 -127T290 -65T313 -9T321 21L315 17Q309 13 296 6T270 -6Q250 -11 231 -11Q185 -11 150 11T104 82Q103 89 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"/>
-<path stroke-width="1" id="E2-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/>
-</defs>
-<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">
- <use xlink:href="#E2-MJMAIN-28" x="0" y="0"/>
-<g transform="translate(389,0)">
- <use xlink:href="#E2-MJMATHI-78" x="0" y="0"/>
- <use transform="scale(0.707)" xlink:href="#E2-MJMATHI-69" x="809" y="-213"/>
-</g>
- <use xlink:href="#E2-MJMAIN-2C" x="1306" y="0"/>
-<g transform="translate(1751,0)">
- <use xlink:href="#E2-MJMATHI-79" x="0" y="0"/>
- <use transform="scale(0.707)" xlink:href="#E2-MJMATHI-69" x="693" y="-213"/>
-</g>
- <use xlink:href="#E2-MJMAIN-29" x="2586" y="0"/>
-</g>
-</svg></span>，从中选取任意多个，满足该直线上任意一个点最多被 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.066ex" height="2.176ex" style="vertical-align: -0.338ex;" viewbox="0 -791.3 889.5 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-3-Title">
-<title id="MathJax-SVG-3-Title">K</title>
-<defs aria-hidden="true">
-<path stroke-width="1" id="E3-MJMATHI-4B" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"/>
-</defs>
-<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">
- <use xlink:href="#E3-MJMATHI-4B" x="0" y="0"/>
-</g>
-</svg></span> 个区间覆盖，求选取区间的最大长度和。</p>
-<p><span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="12.91ex" height="2.343ex" style="vertical-align: -0.505ex;" viewbox="0 -791.3 5558.6 1008.6" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-4-Title">
-<title id="MathJax-SVG-4-Title">1\leq N\leq 500</title>
-<defs aria-hidden="true">
-<path stroke-width="1" id="E4-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/>
-<path stroke-width="1" id="E4-MJMAIN-2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"/>
-<path stroke-width="1" id="E4-MJMATHI-4E" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"/>
-<path stroke-width="1" id="E4-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"/>
-<path stroke-width="1" id="E4-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"/>
-</defs>
-<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">
- <use xlink:href="#E4-MJMAIN-31" x="0" y="0"/>
- <use xlink:href="#E4-MJMAIN-2264" x="778" y="0"/>
- <use xlink:href="#E4-MJMATHI-4E" x="1834" y="0"/>
- <use xlink:href="#E4-MJMAIN-2264" x="3000" y="0"/>
-<g transform="translate(4057,0)">
- <use xlink:href="#E4-MJMAIN-35"/>
- <use xlink:href="#E4-MJMAIN-30" x="500" y="0"/>
- <use xlink:href="#E4-MJMAIN-30" x="1001" y="0"/>
-</g>
-</g>
-</svg></span> <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="10.588ex" height="2.343ex" style="vertical-align: -0.505ex;" viewbox="0 -791.3 4558.6 1008.6" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg" aria-labelledby="MathJax-SVG-5-Title">
-<title id="MathJax-SVG-5-Title">1\leq K\leq 3</title>
-<defs aria-hidden="true">
-<path stroke-width="1" id="E5-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/>
-<path stroke-width="1" id="E5-MJMAIN-2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"/>
-<path stroke-width="1" id="E5-MJMATHI-4B" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"/>
-<path stroke-width="1" id="E5-MJMAIN-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"/>
-</defs>
-<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)" aria-hidden="true">
- <use xlink:href="#E5-MJMAIN-31" x="0" y="0"/>
- <use xlink:href="#E5-MJMAIN-2264" x="778" y="0"/>
- <use xlink:href="#E5-MJMATHI-4B" x="1834" y="0"/>
- <use xlink:href="#E5-MJMAIN-2264" x="3001" y="0"/>
- <use xlink:href="#E5-MJMAIN-33" x="4058" y="0"/>
-</g>
-</svg></span></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/LOJ-6014/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3169,7 +3143,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">145</span>
+                    <span class="site-state-item-count">146</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -3385,7 +3359,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">81</span>
+                      
+                    
+                    <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
